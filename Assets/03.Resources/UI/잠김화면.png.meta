@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d6a17bfd8fd358f4596cde6512c153c3
+guid: fd4dde1944b363f438a9cce4f99541d4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 166932094592396570
-    second: Stage4_BossSlime2_0
+      213: 6971125169963474060
+    second: "\uC7A0\uAE40\uD654\uBA74_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stage4_BossSlime2_0
+      name: "\uC7A0\uAE40\uD654\uBA74_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 14
-        height: 6
+        width: 40
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1daac70bdf015200800000000000000
-      internalID: 166932094592396570
+      spriteID: c8c157058696eb060800000000000000
+      internalID: 6971125169963474060
       vertices: []
       indices: 
       edges: []
@@ -160,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Stage4_BossSlime2_0: 166932094592396570
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
