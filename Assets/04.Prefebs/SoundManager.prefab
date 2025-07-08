@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 4677536145772608683}
   buttonClickClip: {fileID: 8300000, guid: 52731267d129d6746ac5f08fe0495a05, type: 3}
-  fireTrapClip: {fileID: 0}
-  slimeJumpClip: {fileID: 0}
+  fireTrapClip: {fileID: 8300000, guid: 4e33f34fcab39aa48b98f62652ba4165, type: 3}
+  slimeJumpClip: {fileID: 8300000, guid: 48a38cc5f35fe6242afa3e6af298faa3, type: 3}
 --- !u!82 &4677536145772608683
 AudioSource:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class FireSpawner : MonoBehaviour
 
     void SpawnFire()
     {
+        SoundManager.Instance.PlayFireTrap();
         Instantiate(firePrefab, transform.position, Quaternion.identity);
     }
 }
