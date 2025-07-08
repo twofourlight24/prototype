@@ -25,6 +25,7 @@ TagManager:
   - Boss
   - Katana
   - Thorn
+  - HealSlime
   layers:
   - Default
   - TransparentFX

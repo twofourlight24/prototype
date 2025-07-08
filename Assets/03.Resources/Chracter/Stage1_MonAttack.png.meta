@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: d6a17bfd8fd358f4596cde6512c153c3
+guid: cf4147efea0a1bc43b9a4457b0836cc3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 166932094592396570
-    second: Stage4_BossSlime2_0
+      213: 1105866009098975444
+    second: Stage1_MonAttack_0
+  - first:
+      213: 6741400542521545062
+    second: Stage1_MonAttack_1
+  - first:
+      213: 1749694304272754453
+    second: Stage1_MonAttack_2
+  - first:
+      213: 6700230271556745372
+    second: Stage1_MonAttack_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stage4_BossSlime2_0
+      name: Stage1_MonAttack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 14
-        height: 6
+        y: 1
+        width: 31
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1daac70bdf015200800000000000000
-      internalID: 166932094592396570
+      spriteID: 4d8f581b643d85f00800000000000000
+      internalID: 1105866009098975444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage1_MonAttack_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6615f9173144e8d50800000000000000
+      internalID: 6741400542521545062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage1_MonAttack_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 517a3bf03b9284810800000000000000
+      internalID: 1749694304272754453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage1_MonAttack_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c987571ceeffbfc50800000000000000
+      internalID: 6700230271556745372
       vertices: []
       indices: 
       edges: []
@@ -160,8 +235,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Stage4_BossSlime2_0: 166932094592396570
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

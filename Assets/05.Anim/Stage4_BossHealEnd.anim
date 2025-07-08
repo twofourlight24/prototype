@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stage4_BossHealReady
+  m_Name: Stage4_BossHealEnd
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,17 +21,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -3711158053520277441, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - time: 0.083333336
-      value: {fileID: -5396191121517202824, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - time: 0.16666667
-      value: {fileID: 3220604991263535498, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - time: 0.25
-      value: {fileID: 1130447876960331548, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - time: 0.33333334
-      value: {fileID: -4300183638083383526, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - time: 0.41666666
       value: {fileID: -7741779319364320632, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - time: 0.083333336
+      value: {fileID: -4300183638083383526, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - time: 0.16666667
+      value: {fileID: 1130447876960331548, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - time: 0.25
+      value: {fileID: 3220604991263535498, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - time: 0.33333334
+      value: {fileID: -5396191121517202824, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - time: 0.41666666
+      value: {fileID: -3711158053520277441, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,12 +54,12 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -3711158053520277441, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - {fileID: -5396191121517202824, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - {fileID: 3220604991263535498, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - {fileID: 1130447876960331548, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
-    - {fileID: -4300183638083383526, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
     - {fileID: -7741779319364320632, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - {fileID: -4300183638083383526, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - {fileID: 1130447876960331548, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - {fileID: 3220604991263535498, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - {fileID: -5396191121517202824, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
+    - {fileID: -3711158053520277441, guid: c638a4b5e5d120240a734e7668dc8056, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -86,7 +86,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.41666666
-    functionName: OnHealReadyAnimationEnd
+    functionName: OnHealSkillEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: d6a17bfd8fd358f4596cde6512c153c3
+guid: b188fdf95df94234398bf9525257f26c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 166932094592396570
-    second: Stage4_BossSlime2_0
+      213: -5355040240188542741
+    second: Stage4_BossSword_0
+  - first:
+      213: 7066815034955711589
+    second: Stage4_BossSword_1
+  - first:
+      213: -1115226118171601186
+    second: Stage4_BossSword_2
+  - first:
+      213: -642428039543219400
+    second: Stage4_BossSword_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stage4_BossSlime2_0
+      name: Stage4_BossSword_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 14
-        height: 6
+        width: 118
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1daac70bdf015200800000000000000
-      internalID: 166932094592396570
+      spriteID: be0b3a516431fa5b0800000000000000
+      internalID: -5355040240188542741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_BossSword_1
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 80
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 564cceb25de521260800000000000000
+      internalID: 7066815034955711589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_BossSword_2
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 122
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed6d42611cbe580f0800000000000000
+      internalID: -1115226118171601186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_BossSword_3
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 0
+        width: 121
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b964d0a13a517f0800000000000000
+      internalID: -642428039543219400
       vertices: []
       indices: 
       edges: []
@@ -160,8 +235,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Stage4_BossSlime2_0: 166932094592396570
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

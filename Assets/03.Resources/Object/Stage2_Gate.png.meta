@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d6a17bfd8fd358f4596cde6512c153c3
+guid: eb7f6aa3e51fe744b84e4ba10b5ddff9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 166932094592396570
-    second: Stage4_BossSlime2_0
+      213: 5063702728023424985
+    second: Stage2_Gate_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stage4_BossSlime2_0
+      name: Stage2_Gate_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 14
-        height: 6
+        width: 24
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1daac70bdf015200800000000000000
-      internalID: 166932094592396570
+      spriteID: 9df33007dc2e54640800000000000000
+      internalID: 5063702728023424985
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Stage4_BossSlime2_0: 166932094592396570
+      Stage2_Gate_0: 5063702728023424985
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

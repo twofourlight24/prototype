@@ -1001,6 +1001,11 @@ MonoBehaviour:
   dashPerMoveDuration: 0.48
   dashAttackCollider: {fileID: 1113013968}
   dashDamage: 50
+  healSkillHpThreshold: 450
+  healSlimePrefab: {fileID: 6485188460041280908, guid: 641aaabfa215fdc4db379f4c58aea0e8, type: 3}
+  healSlimeCount: 4
+  healSlimeDuration: 10
+  healAmountPerSlime: 50
 --- !u!1 &160433914
 GameObject:
   m_ObjectHideFlags: 0
