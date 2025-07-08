@@ -924,6 +924,10 @@ public class Player : MonoBehaviour
                 Destroy(coll.gameObject, 0.2f);
             }
         }
+        else if(coll.CompareTag("Thorn"))
+        {
+            TakeDamage(30);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D coll)
@@ -984,18 +988,4 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
-
-    }
-
-    private void OnCollisionStay2D(Collision2D coll)
-    {
-
-    }
-
-    private void OnCollisionExit2D(Collision2D coll)
-    {
-
-    }
 }

@@ -11,7 +11,7 @@ public class BossCtrl : MonoBehaviour
     public float currentHp;
     public float phase2HpThreshold = 200f; // 2페이즈 전환 체력
     public float moveSpeed = 3f;
-    public float touchDamage = 30f; // 플레이어와 닿았을 때 주는 데미지
+    public float touchDamage = 30f; // 플레이어와 닿았을 때 주는 데미지 (주 콜라이더용)
     public Image bossHpBar;
 
     // 플레이어 감지
@@ -56,7 +56,8 @@ public class BossCtrl : MonoBehaviour
     public float dashSpeed = 15f; // 대쉬 시 보스의 순간 속도
     public float dashReadyDuration = 0.608f; // 대쉬 준비 애니메이션 시간 (참고용)
     public float dashPerMoveDuration = 0.480f; // 실제 대쉬 이동 애니메이션 시간 (참고용)
-    // 이전의 dashCount, dashDistanceX, dashPauseBetweenDashes는 이제 필요 없습니다. (2회 대쉬가 아니므로)
+    public Collider2D dashAttackCollider; // <<-- 새로 추가된 대쉬 공격 콜라이더
+    public float dashDamage = 50f; // <<-- 대쉬 공격 데미지
 
     // Components
     private Rigidbody2D rb;
@@ -80,10 +81,11 @@ public class BossCtrl : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        mainCollider = GetComponent<BoxCollider2D>();
+        mainCollider = GetComponent<BoxCollider2D>(); // 보스의 주 콜라이더는 보통 BoxCollider2D
 
         if (attackCollider != null) attackCollider.enabled = false;
         if (fireTrigger != null) fireTrigger.enabled = false;
+        if (dashAttackCollider != null) dashAttackCollider.enabled = false; // <<-- 새로 추가
 
         // 플레이어 부활 이벤트 구독
         Player.OnPlayerRevived += HandlePlayerRevived;
@@ -150,7 +152,7 @@ public class BossCtrl : MonoBehaviour
         // 모든 플레이어가 죽었을 경우, 보스는 아무것도 하지 않음 (이동 및 스킬 중단)
         if (player1Transform == null && player2Transform == null)
         {
-            rb.linearVelocity   = Vector2.zero; // linearVelocity 대신 velocity 사용 (Rigidbody2D는 linearVelocity 없음)
+            rb.linearVelocity = Vector2.zero; // linearVelocity 대신 velocity 사용
             anim.SetBool(hashIsWalk, false);
             anim.SetBool(hashIsAttack, false);
             isExecutingSkill = false;
@@ -169,6 +171,11 @@ public class BossCtrl : MonoBehaviour
                 fireTrigger.enabled = false;
                 Debug.Log("All players dead, Boss Fire Trigger Disabled.");
             }
+            if (dashAttackCollider != null && dashAttackCollider.enabled) // <<-- 새로 추가
+            {
+                dashAttackCollider.enabled = false;
+                Debug.Log("All players dead, Boss Dash Attack Collider Disabled.");
+            }
             return;
         }
 
@@ -184,7 +191,9 @@ public class BossCtrl : MonoBehaviour
             // Fire 스킬 중에도 이동 중단
             // 현재 애니메이터의 어떤 레이어에 Dash 애니메이션이 있는지 확인 필요 (일반적으로 Base Layer(0)이 아니면 LayerIndex 명시)
             // 여기서는 Dash가 Skill Layer (1)에 있다고 가정
-            if (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash_Combined_Single"))
+            // 참고: anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull")는 애니메이션이 Layer 1에 있을 때만 작동합니다.
+            // 만약 대쉬 애니메이션이 Layer 0에 있다면, (0)으로 바꿔야 합니다.
+            if (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull")) // 양쪽 레이어 모두 확인 (혹시 모를 상황 대비)
             {
                 rb.linearVelocity = Vector2.zero; // 이동 중단
                 anim.SetBool(hashIsWalk, false);
@@ -196,7 +205,7 @@ public class BossCtrl : MonoBehaviour
             }
         }
 
-        // Attack Collider 자동 비활성화 로직
+        // Attack Collider 자동 비활성화 로직 (일반 공격용)
         if (attackCollider != null && attackCollider.enabled)
         {
             if (!anim.GetBool(hashIsAttack) || !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossAttack"))
@@ -210,8 +219,8 @@ public class BossCtrl : MonoBehaviour
         if (!isFireSkillActive)
         {
             // isExecutingSkill이 false이거나 대쉬 중일 때만 FlipSprite 호출
-            // Dash의 애니메이션 상태 이름은 "Stage4_BossDash_Combined_Single"로 가정
-            if (!isExecutingSkill || anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash_Combined_Single"))
+            // Dash의 애니메이션 상태 이름은 "Stage4_BossDashFull"로 가정
+            if (!isExecutingSkill || anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull") || anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull"))
             {
                 FlipSprite();
             }
@@ -317,7 +326,7 @@ public class BossCtrl : MonoBehaviour
         {
             anim.SetBool(hashIsWalk, false);
             anim.SetBool(hashIsAttack, false);
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity                   = Vector2.zero; // linearVelocity 대신 velocity 사용
             StopAttackState();
             return;
         }
@@ -353,18 +362,18 @@ public class BossCtrl : MonoBehaviour
     void FlipSprite()
     {
         // Fire 스킬 중이거나 isExecutingSkill이 true이지만 Dash가 아닐 경우 (Thorn), 방향 전환을 하지 않습니다.
-        // Dash의 애니메이션 상태 이름은 "Stage4_BossDash_Combined_Single"로 가정
-        if (isFireSkillActive || (isExecutingSkill && !anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash_Combined_Single")))
+        // Dash의 애니메이션 상태 이름은 "Stage4_BossDashFull"로 가정
+        if (isFireSkillActive || (isExecutingSkill && (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull"))))
         {
             return;
         }
 
         // 이동 방향에 따른 뒤집기
-        if (rb.linearVelocity.x > 0.1f)
+        if (rb.linearVelocity.x > 0.1f) // linearVelocity 대신 velocity 사용
         {
             transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
         }
-        else if (rb.linearVelocity.x < -0.1f)
+        else if (rb.linearVelocity.x < -0.1f) // linearVelocity 대신 velocity 사용
         {
             transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
         }
@@ -436,17 +445,6 @@ public class BossCtrl : MonoBehaviour
         StartCoroutine(SpawnThornsRoutine());
     }
 
-    // ThornEnd 애니메이션 이벤트는 isExecutingSkill을 false로 바꾸는 용도로 사용될 수 있습니다.
-    // 하지만 ThornSkillRoutine이 스스로 isExecutingSkill을 false로 만드므로, 이 이벤트가 필수는 아닙니다.
-    // public void AnimationEvent_ThornEnd() { /* handled by routine */ }
-
-    // DashReadyEnd 애니메이션 이벤트는 더 이상 사용되지 않습니다. 단일 애니메이션으로 합쳐졌기 때문입니다.
-    // public void AnimationEvent_DashReadyEnd() { /* Not used with combined animation */ }
-
-    // DashEnd 애니메이션 이벤트는 더 이상 사용되지 않습니다. OnDashMovementEnd에서 처리합니다.
-    // public void AnimationEvent_DashEnd() { /* Handled by OnDashMovementEnd */ }
-
-
     // 공격/스킬 코루틴
 
     IEnumerator AttackRoutine()
@@ -456,7 +454,7 @@ public class BossCtrl : MonoBehaviour
         isAttacking = true;
         anim.SetBool(hashIsAttack, true);
         anim.SetBool(hashIsWalk, false);
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero; // linearVelocity 대신 velocity 사용
 
         yield return new WaitForSeconds(normalAttackAnimDuration);
 
@@ -481,15 +479,15 @@ public class BossCtrl : MonoBehaviour
 
     void ChooseAndExecuteSkill()
     {
-        isExecutingSkill = true;
+        isExecutingSkill = true; // 여기에 있어야 isExecutingSkill이 true로 설정된 채로 코루틴이 시작됩니다.
 
         if (currentTargetTransform == null)
         {
-            isExecutingSkill = false;
+            isExecutingSkill = false; // 타겟 없으면 바로 종료
             return;
         }
 
-        StopAttackState();
+        StopAttackState(); // 일반 공격 중단
 
         int skillChoice = Random.Range(0, 3); // 0: Thorn, 1: Fire, 2: Dash
 
@@ -502,7 +500,7 @@ public class BossCtrl : MonoBehaviour
                 StartCoroutine(FireSkillRoutine());
                 break;
             case 2:
-                StartCoroutine(DashSkillRoutine()); // <-- 여기가 수정된 부분입니다.
+                StartCoroutine(DashSkillRoutine());
                 break;
         }
     }
@@ -511,7 +509,7 @@ public class BossCtrl : MonoBehaviour
     {
         isExecutingSkill = true;
         isFireSkillActive = false;
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero; // linearVelocity 대신 velocity 사용
         anim.SetBool(hashIsWalk, false);
         anim.SetTrigger("isThorn"); // "isThorn" 트리거 이름에 맞춰야 합니다.
 
@@ -544,7 +542,7 @@ public class BossCtrl : MonoBehaviour
     {
         isExecutingSkill = true;
         isFireSkillActive = true;
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero; // linearVelocity 대신 velocity 사용
         anim.SetBool(hashIsWalk, false);
 
         anim.SetTrigger("isFire");
@@ -560,24 +558,22 @@ public class BossCtrl : MonoBehaviour
     // 대쉬 스킬 코루틴 (단일 대쉬, 애니메이션 이벤트 기반으로 전면 수정)
     IEnumerator DashSkillRoutine()
     {
-        if (isExecutingSkill) yield break;
-
-        isExecutingSkill = true;
+        Debug.Log($"[DashSkill Debug] DashSkillRoutine STARTED at {Time.time}");
+        // isExecutingSkill = true; // ChooseAndExecuteSkill()에서 이미 설정됨. 중복 방지.
         isFireSkillActive = false;
-        // dashCount는 단일 대쉬이므로 더 이상 필요 없습니다.
 
         rb.linearVelocity = Vector2.zero; // 대쉬 시작 전 보스 이동 중단
         anim.SetBool(hashIsWalk, false); // 걷기 애니메이션 중단
         anim.ResetTrigger(hashIsDashFinished); // 혹시 남았을 종료 트리거 리셋
 
-        // 합쳐진 단일 대쉬 애니메이션 시작 트리거
         anim.SetTrigger(hashIsDash);
-        Debug.Log($"[DashSkill Debug] Single Dash Animation Triggered at {Time.time}");
+        Debug.Log($"[Dash Debug] isDash trigger set!"); // <<-- 이 로그가 이제 찍힐 것입니다.
 
         // 애니메이션이 완전히 끝날 때까지 기다립니다.
         // 실제 움직임은 애니메이션 이벤트에서 제어됩니다.
-        // 이 시간은 'Stage4_BossDash_Combined_Single' 애니메이션 클립의 총 길이와 일치해야 합니다.
-        float totalAnimationDuration = dashReadyDuration + dashPerMoveDuration;
+        // 이 시간은 'Stage4_BossDashFull' 애니메이션 클립의 총 길이와 일치해야 합니다.
+        // OnDashSkillFinished 애니메이션 이벤트가 호출될 때까지 기다리므로, 아래 루프는 안전 장치.
+        float totalAnimationDuration = dashReadyDuration + dashPerMoveDuration; // 애니메이션 총 길이 추정치
         float waitTimer = 0f;
         while (isExecutingSkill && waitTimer < totalAnimationDuration + 0.5f) // 안전을 위해 약간 여유 시간 추가
         {
@@ -610,14 +606,21 @@ public class BossCtrl : MonoBehaviour
         if (target == null || (player1Component != null && player1Component.isDead && player2Component != null && player2Component.isDead))
         {
             Debug.LogWarning("OnDashMovementStart: No valid target player or all players dead. Stopping dash movement.");
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero; // linearVelocity 대신 velocity 사용
             OnDashSkillFinished(); // 즉시 스킬 종료 처리
             return;
         }
 
         float dashDirection = Mathf.Sign(target.position.x - transform.position.x);
         transform.localScale = new Vector3(dashDirection * initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // 스프라이트 뒤집기
-        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y); // 대쉬 속도 설정
+        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y); // 대쉬 속도 설정 (linearVelocity 대신 velocity 사용)
+
+        // <<-- 대쉬 공격 콜라이더 활성화 -->>
+        if (dashAttackCollider != null)
+        {
+            dashAttackCollider.enabled = true;
+            Debug.Log($"[DashSkill Event] Dash Attack Collider ENABLED at {Time.time}");
+        }
         Debug.Log($"[DashSkill Event] Boss dashing towards {target.name}");
     }
 
@@ -627,7 +630,14 @@ public class BossCtrl : MonoBehaviour
         if (!isExecutingSkill) return;
 
         Debug.Log($"[DashSkill Event] OnDashMovementEnd called at {Time.time}");
-        rb.linearVelocity = Vector2.zero; // 대쉬 움직임 중단
+        rb.linearVelocity = Vector2.zero; // 대쉬 움직임 중단 (linearVelocity 대신 velocity 사용)
+
+        // <<-- 대쉬 공격 콜라이더 비활성화 -->>
+        if (dashAttackCollider != null)
+        {
+            dashAttackCollider.enabled = false;
+            Debug.Log($"[DashSkill Event] Dash Attack Collider DISABLED at {Time.time}");
+        }
     }
 
     // 애니메이션 이벤트: 전체 대쉬 스킬 애니메이션이 완전히 끝났을 때 호출
@@ -635,19 +645,60 @@ public class BossCtrl : MonoBehaviour
     {
         Debug.Log($"[DashSkill Event] OnDashSkillFinished called at {Time.time}. Skill Finished.");
         isExecutingSkill = false;
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero; // linearVelocity 대신 velocity 사용
         anim.SetTrigger(hashIsDashFinished); // Animator에게 스킬이 끝났음을 알림 (Idle/Walk 등으로 전환)
+
+        // 혹시라도 콜라이더가 켜져있을 경우 안전하게 비활성화
+        if (dashAttackCollider != null && dashAttackCollider.enabled)
+        {
+            dashAttackCollider.enabled = false;
+            Debug.Log($"[DashSkill Event] Dash Attack Collider FORCED DISABLED by OnDashSkillFinished at {Time.time}");
+        }
     }
 
-    // 트리거 충돌 처리 (플레이어 접촉 데미지)
+    // 트리거 충돌 처리 (플레이어 접촉 데미지 및 스킬 콜라이더)
     void OnTriggerStay2D(Collider2D other)
     {
+        // 보스의 주 콜라이더 (mainCollider)가 플레이어와 닿았을 때 데미지
         if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
+            // 이 충돌이 DashAttackCollider가 아닌 mainCollider에 의한 것인지 확인
+            // 혹은 OnCollisionEnter2D를 사용하여 물리 충돌 데미지를 분리할 수 있음.
+            // 현재 OnTriggerStay2D는 모든 트리거 콜라이더에 대해 호출됨.
+            // 여기서는 touchDamage를 사용하는 것으로 보아 mainCollider와의 접촉 데미지로 간주.
             Player player = other.GetComponent<Player>();
             if (player != null && !player.isDead)
             {
                 player.TakeDamage(touchDamage);
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // 총알 충돌 처리
+        if (other.CompareTag("AllyBullet"))
+        {
+            TakeDamage(10f);
+            Destroy(other.gameObject); // 총알 제거
+        }
+
+        // 카타나 충돌 처리
+        else if (other.CompareTag("Katana"))
+        {
+            TakeDamage(30f);
+        }
+        // <<-- 대쉬 공격 콜라이더에 플레이어가 닿았을 때 데미지 추가 -->>
+        else if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && dashAttackCollider != null && dashAttackCollider.enabled)
+        {
+            // dashAttackCollider가 활성화되어 있을 때만 데미지를 줍니다.
+            // OnDashMovementStart에서 활성화되고 OnDashMovementEnd에서 비활성화되므로
+            // 플레이어가 대쉬 중인 보스와 충돌하면 데미지를 받게 됩니다.
+            Player player = other.GetComponent<Player>();
+            if (player != null && !player.isDead)
+            {
+                player.TakeDamage(dashDamage); // dashDamage 사용
+                Debug.Log($"[DashSkill] Player took {dashDamage} damage from Dash Attack!");
             }
         }
     }
@@ -657,6 +708,11 @@ public class BossCtrl : MonoBehaviour
     {
         currentHp -= damage;
         Debug.Log($"Boss took {damage} damage. Current HP: {currentHp}");
+
+        if (bossHpBar != null)
+        {
+            bossHpBar.fillAmount = currentHp / maxHp;
+        }
 
         if (currentHp <= phase2HpThreshold && currentHp > 0)
         {

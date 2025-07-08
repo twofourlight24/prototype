@@ -23,6 +23,8 @@ TagManager:
   - Boom
   - Tentacle
   - Boss
+  - Katana
+  - Thorn
   layers:
   - Default
   - TransparentFX
@@ -37,8 +39,8 @@ TagManager:
   - SmallMonster
   - Player_Dead
   - Boss
-  - 
-  - 
+  - BossAttack
+  - Katana
   - 
   - 
   - 
