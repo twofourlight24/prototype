@@ -1,60 +1,79 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class BossCtrl : MonoBehaviour
 {
+    // ë³´ìŠ¤ í•µì‹¬ ìŠ¤íƒ¯
     [Header("Boss Core Stats")]
     public float maxHp = 500f;
     public float currentHp;
-    public float phase2HpThreshold = 200f; // 2ÆäÀÌÁî ÀüÈ¯ Ã¼·Â
+    public float phase2HpThreshold = 200f; // 2í˜ì´ì¦ˆ ì „í™˜ ì²´ë ¥
     public float moveSpeed = 3f;
-    public float touchDamage = 30f; // ÇÃ·¹ÀÌ¾î¿Í ´ê¾ÒÀ» ¶§ ÁÖ´Â µ¥¹ÌÁö
+    public float touchDamage = 30f; // í”Œë ˆì´ì–´ì™€ ë‹¿ì•˜ì„ ë•Œ ì£¼ëŠ” ë°ë¯¸ì§€
+    public Image bossHpBar;
 
+    // í”Œë ˆì´ì–´ ê°ì§€
     [Header("Player Detection")]
-    public Transform player1Transform; // ÇÃ·¹ÀÌ¾î 1 Æ®·£½ºÆû (ÀÎ½ºÆåÅÍ¿¡¼­ ÇÒ´ç ±ÇÀå)
-    public Transform player2Transform; // ÇÃ·¹ÀÌ¾î 2 Æ®·£½ºÆû (ÀÎ½ºÆåÅÍ¿¡¼­ ÇÒ´ç ±ÇÀå)
-    private Transform currentTargetTransform; // ÇöÀç ÃßÀû ´ë»ó ÇÃ·¹ÀÌ¾îÀÇ Transform
-    private Transform furthestPlayerTransform; // °¡Àå ¸Õ ÇÃ·¹ÀÌ¾îÀÇ Transform (Thorn ½ºÅ³¿ë)
+    public Transform player1Transform; // í”Œë ˆì´ì–´ 1 íŠ¸ëœìŠ¤í¼ (ì¸ìŠ¤í™í„°ì—ì„œ í• ë‹¹ ê¶Œì¥)
+    public Transform player2Transform; // í”Œë ˆì´ì–´ 2 íŠ¸ëœìŠ¤í¼ (ì¸ìŠ¤í™í„°ì—ì„œ í• ë‹¹ ê¶Œì¥)
+    private Transform currentTargetTransform; // í˜„ì¬ ì¶”ì  ëŒ€ìƒ í”Œë ˆì´ì–´ì˜ Transform
+    private Transform furthestPlayerTransform; // ê°€ì¥ ë¨¼ í”Œë ˆì´ì–´ì˜ Transform (Thorn ìŠ¤í‚¬ìš©)
 
-    // Player ÄÄÆ÷³ÍÆ®¸¦ Ä³½ÌÇÏ¿© isDead »óÅÂ¸¦ È®ÀÎÇÒ ¼ö ÀÖµµ·Ï Ãß°¡
+    // Player ì»´í¬ë„ŒíŠ¸ ìºì‹±
     private Player player1Component;
     private Player player2Component;
 
+    // ê³µê²© ì„¤ì •
     [Header("Attack Settings")]
-    public float attackRangeX = 2f; // XÁÂÇ¥ ±âÁØ °ø°İ ¹üÀ§
-    public Collider2D attackCollider; // °ø°İ ½Ã È°¼ºÈ­µÉ Äİ¶óÀÌ´õ (¿¹: ±ÙÁ¢ °ø°İ ÆÇÁ¤)
+    public float attackRangeX = 2f; // Xì¢Œí‘œ ê¸°ì¤€ ê³µê²© ë²”ìœ„
+    public Collider2D attackCollider; // ê³µê²© ì‹œ í™œì„±í™”ë  ì½œë¼ì´ë” (ì˜ˆ: ê·¼ì ‘ ê³µê²© íŒì •)
+    public float normalAttackAnimDuration = 1.0f; // ì¼ë°˜ ê³µê²© ì• ë‹ˆë©”ì´ì…˜ ì§€ì† ì‹œê°„ (ì¶”ì •ì¹˜, Animatorì—ì„œ í™•ì¸ í•„ìš”)
 
+    // ìŠ¤í‚¬ ì„¤ì •
     [Header("Skill Settings")]
-    public float minSkillInterval = 7f; // ÃÖ¼Ò ½ºÅ³ ¹ßµ¿ ÁÖ±â
-    public float maxSkillInterval = 10f; // ÃÖ´ë ½ºÅ³ ¹ßµ¿ ÁÖ±â
+    public float minSkillInterval = 7f; // ìµœì†Œ ìŠ¤í‚¬ ë°œë™ ì£¼ê¸°
+    public float maxSkillInterval = 10f; // ìµœëŒ€ ìŠ¤í‚¬ ë°œë™ ì£¼ê¸°
     private float nextSkillTime;
-    private bool isExecutingSkill = false; // º¸½º ÀÌµ¿À» ¸ØÃß´Â Æ¯¼ö ½ºÅ³(°¡½Ã, ºÒ, ´ë½¬)ÀÌ ¹ßµ¿ ÁßÀÎÁö ¿©ºÎ
+    public bool isExecutingSkill = false; // ë³´ìŠ¤ ì´ë™ì„ ë©ˆì¶”ëŠ” íŠ¹ìˆ˜ ìŠ¤í‚¬(ê°€ì‹œ, ë¶ˆ, ëŒ€ì‰¬)ì´ ë°œë™ ì¤‘ì¸ì§€ ì—¬ë¶€
 
+    // Thorn ìŠ¤í‚¬
     [Header("Thorn Skill")]
     public GameObject thornPrefab;
-    public List<Transform> thornSpawners = new List<Transform>(); // 3°³ÀÇ Thorn Spawner
-    public float thornSpawnDelay = 0.1f; // °¢ Thorn ½ºÆ÷³Ê °£ÀÇ µô·¹ÀÌ
-    public float thornAnimDuration = 2.0f; // Thorn ¾Ö´Ï¸ŞÀÌ¼Ç ¿¹»ó Áö¼Ó ½Ã°£ (Animator¿¡¼­ Á¤È®ÇÑ ±æÀÌ È®ÀÎ ÈÄ ¼³Á¤)
+    public List<Transform> thornSpawners = new List<Transform>(); // 3ê°œì˜ Thorn Spawner
+    public float thornSpawnDelay = 0.1f; // ê° Thorn ìŠ¤í¬ë„ˆ ê°„ì˜ ë”œë ˆì´
+    public float thornAnimDuration = 2.0f; // Thorn ì• ë‹ˆë©”ì´ì…˜ ì˜ˆìƒ ì§€ì† ì‹œê°„ (Animatorì—ì„œ ì •í™•í•œ ê¸¸ì´ í™•ì¸ í›„ ì„¤ì •)
 
+    // Fire ìŠ¤í‚¬
     [Header("Fire Skill")]
-    public Collider2D fireTrigger; // Fire ½ºÅ³ ½Ã È°¼ºÈ­µÉ Æ®¸®°Å
-    public float fireAnimDuration = 1.5f; // Fire ¾Ö´Ï¸ŞÀÌ¼Ç ¿¹»ó Áö¼Ó ½Ã°£
+    public Collider2D fireTrigger; // Fire ìŠ¤í‚¬ ì‹œ í™œì„±í™”ë  íŠ¸ë¦¬ê±°
+    public float fireAnimDuration = 1.5f; // Fire ì• ë‹ˆë©”ì´ì…˜ ì˜ˆìƒ ì§€ì† ì‹œê°„
+    private bool isFireSkillActive = false; // Fire ìŠ¤í‚¬ì´ í˜„ì¬ í™œì„±í™”ë˜ì—ˆëŠ”ì§€ ì¶”ì í•˜ëŠ” ì „ìš© í”Œë˜ê·¸
 
+    // Dash ìŠ¤í‚¬ (ìˆ˜ì •ëœ ë¶€ë¶„)
     [Header("Dash Skill")]
-    public float dashDistanceX = 10f; // ´ë½¬ ÀÌµ¿ °Å¸® (XÃà ±âÁØ)
-    public float dashPerMoveDuration = 0.5f; // °¢ ´ë½¬ ¿òÁ÷ÀÓÀÇ Áö¼Ó ½Ã°£ (Dash ¾Ö´Ï¸ŞÀÌ¼Ç°ú ¸ÂÃç¾ß ÇÔ)
-    private int dashCount = 0; // ´ë½¬ ½ºÅ³ Áß ¸î ¹ø ´ë½¬Çß´ÂÁö (Player1 -> Player2)
-    public float dashReadyAnimDuration = 1.0f; // DashReady ¾Ö´Ï¸ŞÀÌ¼Ç ¿¹»ó Áö¼Ó ½Ã°£
-    public float dashPauseBetweenDashes = 0.5f; // °¢ ´ë½¬ »çÀÌÀÇ ÂªÀº µô·¹ÀÌ
+    public float dashSpeed = 15f; // ëŒ€ì‰¬ ì‹œ ë³´ìŠ¤ì˜ ìˆœê°„ ì†ë„
+    public float dashReadyDuration = 0.608f; // ëŒ€ì‰¬ ì¤€ë¹„ ì• ë‹ˆë©”ì´ì…˜ ì‹œê°„ (ì°¸ê³ ìš©)
+    public float dashPerMoveDuration = 0.480f; // ì‹¤ì œ ëŒ€ì‰¬ ì´ë™ ì• ë‹ˆë©”ì´ì…˜ ì‹œê°„ (ì°¸ê³ ìš©)
+    // ì´ì „ì˜ dashCount, dashDistanceX, dashPauseBetweenDashesëŠ” ì´ì œ í•„ìš” ì—†ìŠµë‹ˆë‹¤. (2íšŒ ëŒ€ì‰¬ê°€ ì•„ë‹ˆë¯€ë¡œ)
 
     // Components
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer spriteRenderer;
-    private BoxCollider2D mainCollider; // º¸½ºÀÇ ÁÖ Äİ¶óÀÌ´õ (ÇÃ·¹ÀÌ¾î Á¢ÃË µ¥¹ÌÁö¿ë)
+    private BoxCollider2D mainCollider; // ë³´ìŠ¤ì˜ ì£¼ ì½œë¼ì´ë” (í”Œë ˆì´ì–´ ì ‘ì´‰ ë°ë¯¸ì§€ìš©)
 
-    private Vector3 initialLocalScale; // º¸½ºÀÇ ÃÊ±â ·ÎÄÃ ½ºÄÉÀÏ ÀúÀå
+    private Vector3 initialLocalScale; // ë³´ìŠ¤ì˜ ì´ˆê¸° ë¡œì»¬ ìŠ¤ì¼€ì¼ ì €ì¥
+
+    // í˜„ì¬ ê³µê²© ì¤‘ì¸ì§€ í™•ì¸í•˜ëŠ” í”Œë˜ê·¸ (ì½”ë£¨í‹´ ì¤‘ë³µ ì‹¤í–‰ ë°©ì§€ ë° ìƒíƒœ ê´€ë¦¬)
+    private bool isAttacking = false;
+
+    // ì• ë‹ˆë©”ì´í„° íŒŒë¼ë¯¸í„° í•´ì‹œ (ì„±ëŠ¥ ìµœì í™”)
+    private int hashIsAttack;
+    private int hashIsDash; // "isDash" íŠ¸ë¦¬ê±° (ìƒˆë¡œ í†µí•©ëœ ëŒ€ì‰¬ ì• ë‹ˆë©”ì´ì…˜ ì‹œì‘ìš©)
+    private int hashIsDashFinished; // "isDashFinished" íŠ¸ë¦¬ê±° (ëŒ€ì‰¬ ìŠ¤í‚¬ ì¢…ë£Œìš©)
+    private int hashIsWalk; // "isWalk" bool íŒŒë¼ë¯¸í„° ì¶”ê°€
 
     void Awake()
     {
@@ -66,36 +85,45 @@ public class BossCtrl : MonoBehaviour
         if (attackCollider != null) attackCollider.enabled = false;
         if (fireTrigger != null) fireTrigger.enabled = false;
 
-        // ÀÎ½ºÆåÅÍ¿¡¼­ ÇÒ´çµÇÁö ¾Ê¾Ò´Ù¸é ÅÂ±×·Î Ã£°í Player ÄÄÆ÷³ÍÆ®µµ Ä³½Ì
-        if (player1Transform == null)
+        // í”Œë ˆì´ì–´ ë¶€í™œ ì´ë²¤íŠ¸ êµ¬ë…
+        Player.OnPlayerRevived += HandlePlayerRevived;
+
+        // ì´ˆê¸° í”Œë ˆì´ì–´ ì°¾ê¸° (Awakeì—ì„œ FindWithTag ì‚¬ìš©)
+        GameObject p1Obj = GameObject.FindWithTag("Player1");
+        if (p1Obj != null)
         {
-            GameObject p1Obj = GameObject.FindWithTag("Player1");
-            if (p1Obj != null)
-            {
-                player1Transform = p1Obj.transform;
-                player1Component = p1Obj.GetComponent<Player>();
-            }
+            player1Transform = p1Obj.transform;
+            player1Component = p1Obj.GetComponent<Player>();
         }
         else
         {
-            player1Component = player1Transform.GetComponent<Player>();
+            Debug.LogWarning("Player1 object with tag 'Player1' not found in scene!");
         }
 
-        if (player2Transform == null)
+        GameObject p2Obj = GameObject.FindWithTag("Player2");
+        if (p2Obj != null)
         {
-            GameObject p2Obj = GameObject.FindWithTag("Player2");
-            if (p2Obj != null)
-            {
-                player2Transform = p2Obj.transform;
-                player2Component = p2Obj.GetComponent<Player>();
-            }
+            player2Transform = p2Obj.transform;
+            player2Component = p2Obj.GetComponent<Player>();
         }
         else
         {
-            player2Component = player2Transform.GetComponent<Player>();
+            Debug.LogWarning("Player2 object with tag 'Player2' not found in scene!");
         }
 
-        initialLocalScale = transform.localScale; // ÃÊ±â ·ÎÄÃ ½ºÄÉÀÏ ÀúÀå
+        initialLocalScale = transform.localScale; // ì´ˆê¸° ë¡œì»¬ ìŠ¤ì¼€ì¼ ì €ì¥
+
+        // Animator íŒŒë¼ë¯¸í„° í•´ì‹œ ê°’ ë¯¸ë¦¬ ê³„ì‚°
+        hashIsAttack = Animator.StringToHash("isAttack");
+        hashIsDash = Animator.StringToHash("isDash"); // "isDash" íŠ¸ë¦¬ê±° ì´ë¦„ì— ë§ì¶°ì•¼ í•©ë‹ˆë‹¤.
+        hashIsDashFinished = Animator.StringToHash("isDashFinished"); // "isDashFinished" íŠ¸ë¦¬ê±° ì´ë¦„ì— ë§ì¶°ì•¼ í•©ë‹ˆë‹¤.
+        hashIsWalk = Animator.StringToHash("isWalk"); // "isWalk" íŒŒë¼ë¯¸í„° ì´ë¦„ì— ë§ì¶°ì•¼ í•©ë‹ˆë‹¤.
+    }
+
+    void OnDestroy()
+    {
+        // ì˜¤ë¸Œì íŠ¸ íŒŒê´´ ì‹œ ì´ë²¤íŠ¸ êµ¬ë… í•´ì œ (ë©”ëª¨ë¦¬ ëˆ„ìˆ˜ ë°©ì§€)
+        Player.OnPlayerRevived -= HandlePlayerRevived;
     }
 
     void Start()
@@ -103,87 +131,182 @@ public class BossCtrl : MonoBehaviour
         currentHp = maxHp;
         SetNextSkillTime();
 
-        if (player1Transform == null || player2Transform == null)
+        if (player1Transform == null && player2Transform == null)
         {
-            Debug.LogWarning("Player 1 ¶Ç´Â Player 2 Æ®·£½ºÆûÀÌ ÇÒ´çµÇÁö ¾Ê¾Ò½À´Ï´Ù! ÇÃ·¹ÀÌ¾î ÃßÀûÀÌ Á¦´ë·Î ÀÛµ¿ÇÏÁö ¾ÊÀ» ¼ö ÀÖ½À´Ï´Ù.", this);
+            Debug.LogWarning("ê²Œì„ ì‹œì‘ ì‹œ í”Œë ˆì´ì–´ íŠ¸ëœìŠ¤í¼ì´ ëª¨ë‘ í• ë‹¹ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. í”Œë ˆì´ì–´ ìƒì„± ë° íƒœê·¸ë¥¼ í™•ì¸í•˜ì„¸ìš”.", this);
         }
     }
 
     void Update()
     {
-        UpdateTargetPlayer(); // ÇöÀç ÃßÀû ´ë»ó ÇÃ·¹ÀÌ¾î ¾÷µ¥ÀÌÆ®
+        // ë³´ìŠ¤ ì²´ë ¥ë°” ì—…ë°ì´íŠ¸
+        if (bossHpBar != null)
+        {
+            bossHpBar.fillAmount = currentHp / maxHp;
+        }
 
-        // Á×¾úÀ» ¶§´Â ¾Æ¹«°Íµµ ÇÏÁö ¾ÊÀ½ (ÃßÈÄ ±¸Çö)
-        // if (currentHp <= 0) return; // ÁÖ¼® ÇØÁ¦ÇÏ¿© º¸½º Á×À½ ·ÎÁ÷ Ãß°¡ °¡´É
+        UpdateTargetPlayerState(); // í”Œë ˆì´ì–´ ì‚¬ë§ ì—¬ë¶€ë§Œ í™•ì¸í•˜ê³  Transformì„ nullë¡œ ì„¤ì •
 
-        if (!isExecutingSkill) // Æ¯¼ö ½ºÅ³(°¡½Ã, ºÒ, ´ë½¬) ÁßÀÌ ¾Æ´Ò ¶§¸¸ ÀÏ¹İ ÀÌµ¿ ¹× ½ºÅ³ ÄğÅ¸ÀÓ Ã¼Å©
+        // ëª¨ë“  í”Œë ˆì´ì–´ê°€ ì£½ì—ˆì„ ê²½ìš°, ë³´ìŠ¤ëŠ” ì•„ë¬´ê²ƒë„ í•˜ì§€ ì•ŠìŒ (ì´ë™ ë° ìŠ¤í‚¬ ì¤‘ë‹¨)
+        if (player1Transform == null && player2Transform == null)
+        {
+            rb.linearVelocity   = Vector2.zero; // linearVelocity ëŒ€ì‹  velocity ì‚¬ìš© (Rigidbody2DëŠ” linearVelocity ì—†ìŒ)
+            anim.SetBool(hashIsWalk, false);
+            anim.SetBool(hashIsAttack, false);
+            isExecutingSkill = false;
+            isFireSkillActive = false;
+
+            StopAllCoroutines();
+            isAttacking = false;
+
+            if (attackCollider != null && attackCollider.enabled)
+            {
+                attackCollider.enabled = false;
+                Debug.Log("All players dead, Boss Attack Collider Disabled.");
+            }
+            if (fireTrigger != null && fireTrigger.enabled)
+            {
+                fireTrigger.enabled = false;
+                Debug.Log("All players dead, Boss Fire Trigger Disabled.");
+            }
+            return;
+        }
+
+        // í”Œë ˆì´ì–´ê°€ í•œ ëª…ì´ë¼ë„ ì‚´ì•„ìˆë‹¤ë©´
+        if (!isExecutingSkill) // íŠ¹ìˆ˜ ìŠ¤í‚¬(ê°€ì‹œ, ë¶ˆ, ëŒ€ì‰¬) ì¤‘ì´ ì•„ë‹ ë•Œë§Œ ì¼ë°˜ ì´ë™ ë° ìŠ¤í‚¬ ì¿¨íƒ€ì„ ì²´í¬
         {
             HandleMovementAndAttackDecision();
-            CheckSkillCooldown(); // ½ºÅ³ ÄğÅ¸ÀÓ Ã¼Å©
+            CheckSkillCooldown(); // ìŠ¤í‚¬ ì¿¨íƒ€ì„ ì²´í¬
         }
-        else // Æ¯¼ö ½ºÅ³ ½ÇÇà ÁßÀÏ ¶§
+        else // íŠ¹ìˆ˜ ìŠ¤í‚¬ ì‹¤í–‰ ì¤‘ì¼ ë•Œ
         {
-            // Dash ¾Ö´Ï¸ŞÀÌ¼Ç »óÅÂÀÏ ¶§¸¸ ÀÌµ¿À» Çã¿ë (DashRoutine¿¡¼­ Á¦¾î)
-            // ±× ¿ÜÀÇ ½ºÅ³ (Attack, Thorn, Fire, DashReady) Áß¿¡´Â ÀÌµ¿À» ¸ØÃã
-            // NOTE: SkillLayer ÀÎµ¦½º°¡ 1¹øÀÌ¶ó¸é GetCurrentAnimatorStateInfo(1)·Î º¯°æÇØ¾ß ÇÕ´Ï´Ù.
-            // (ÀÌÀü ´ëÈ­¿¡¼­ 1¹øÀ¸·Î º¯°æÇÏ¿© ÇØ°áµÇ¼Ì´Ù°í ÇÏ¼ÌÀ¸¹Ç·Î 1·Î º¯°æ)
-            if (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash"))
+            // ìŠ¤í‚¬ ì¤‘ì—ëŠ” ì´ë™ ì¤‘ë‹¨ (ëŒ€ì‰¬ ìŠ¤í‚¬ì€ ì´ë™ ë¡œì§ì´ ë‹¤ë¥´ë¯€ë¡œ ì˜ˆì™¸ ì²˜ë¦¬)
+            // Fire ìŠ¤í‚¬ ì¤‘ì—ë„ ì´ë™ ì¤‘ë‹¨
+            // í˜„ì¬ ì• ë‹ˆë©”ì´í„°ì˜ ì–´ë–¤ ë ˆì´ì–´ì— Dash ì• ë‹ˆë©”ì´ì…˜ì´ ìˆëŠ”ì§€ í™•ì¸ í•„ìš” (ì¼ë°˜ì ìœ¼ë¡œ Base Layer(0)ì´ ì•„ë‹ˆë©´ LayerIndex ëª…ì‹œ)
+            // ì—¬ê¸°ì„œëŠ” Dashê°€ Skill Layer (1)ì— ìˆë‹¤ê³  ê°€ì •
+            if (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash_Combined_Single"))
             {
-                rb.linearVelocity = Vector2.zero; // ÀÌµ¿ Áß´Ü
-                anim.SetBool("isWalk", false);
+                rb.linearVelocity = Vector2.zero; // ì´ë™ ì¤‘ë‹¨
+                anim.SetBool(hashIsWalk, false);
+            }
+            // ìŠ¤í‚¬ ì¤‘ì—ëŠ” isAttackingì´ falseì—¬ì•¼ í•¨ (ì¼ë°˜ ê³µê²©ê³¼ ê²¹ì¹˜ì§€ ì•Šë„ë¡)
+            if (isAttacking)
+            {
+                StopAttackState();
             }
         }
 
-        FlipSprite();
+        // Attack Collider ìë™ ë¹„í™œì„±í™” ë¡œì§
+        if (attackCollider != null && attackCollider.enabled)
+        {
+            if (!anim.GetBool(hashIsAttack) || !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossAttack"))
+            {
+                attackCollider.enabled = false;
+            }
+        }
+
+        // Fire ìŠ¤í‚¬ ì¤‘ì´ê±°ë‚˜ isExecutingSkillì´ trueì´ì§€ë§Œ Dashê°€ ì•„ë‹ ê²½ìš° (Thorn), ë°©í–¥ ì „í™˜ì„ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+        // isFireSkillActiveëŠ” Fire ìŠ¤í‚¬ ì¤‘ì¼ ë•Œ FlipSpriteë¥¼ ì™„ì „íˆ ë§‰ê¸° ìœ„í•¨
+        if (!isFireSkillActive)
+        {
+            // isExecutingSkillì´ falseì´ê±°ë‚˜ ëŒ€ì‰¬ ì¤‘ì¼ ë•Œë§Œ FlipSprite í˜¸ì¶œ
+            // Dashì˜ ì• ë‹ˆë©”ì´ì…˜ ìƒíƒœ ì´ë¦„ì€ "Stage4_BossDash_Combined_Single"ë¡œ ê°€ì •
+            if (!isExecutingSkill || anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash_Combined_Single"))
+            {
+                FlipSprite();
+            }
+        }
     }
 
-    void UpdateTargetPlayer()
+    // í”Œë ˆì´ì–´ê°€ ë¶€í™œí–ˆì„ ë•Œ í˜¸ì¶œë  ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
+    private void HandlePlayerRevived(Transform revivedPlayerTransform, Player revivedPlayerComponent)
     {
-        // Á×Àº ÇÃ·¹ÀÌ¾î´Â null·Î Ã³¸®ÇÏ¿© ÃßÀû ´ë»ó¿¡¼­ Á¦¿Ü
+        if (revivedPlayerComponent.playerType == Player.PlayerType.Player1)
+        {
+            player1Transform = revivedPlayerTransform;
+            player1Component = revivedPlayerComponent;
+            Debug.Log("BossCtrl: Player1 has revived, re-targeting!");
+        }
+        else if (revivedPlayerComponent.playerType == Player.PlayerType.Player2)
+        {
+            player2Transform = revivedPlayerTransform;
+            player2Component = revivedPlayerComponent;
+            Debug.Log("BossCtrl: Player2 has revived, re-targeting!");
+        }
+    }
+
+    // UpdateTargetPlayer í•¨ìˆ˜ë¥¼ í”Œë ˆì´ì–´ì˜ ì‚¬ë§ ì—¬ë¶€ë§Œ ì²´í¬í•˜ë„ë¡ ë³€ê²½
+    void UpdateTargetPlayerState()
+    {
+        Transform prevTargetTransform = currentTargetTransform;
+
+        // Player Componentê°€ nullì´ ì•„ë‹ˆë©´ì„œ isDeadë¼ë©´ Transformë„ nullë¡œ ì„¤ì •
         if (player1Component != null && player1Component.isDead)
         {
             player1Transform = null;
             player1Component = null;
         }
+
         if (player2Component != null && player2Component.isDead)
         {
             player2Transform = null;
             player2Component = null;
         }
 
+        float distToP1 = (player1Transform != null) ? Vector2.Distance(transform.position, player1Transform.position) : float.MaxValue;
+        float distToP2 = (player2Transform != null) ? Vector2.Distance(transform.position, player2Transform.position) : float.MaxValue;
+
         if (player1Transform == null && player2Transform == null)
         {
             currentTargetTransform = null;
             furthestPlayerTransform = null;
-            return; // ÃßÀûÇÒ ÇÃ·¹ÀÌ¾î°¡ ¾øÀ¸¸é Á¾·á
         }
-
-        float distToP1 = (player1Transform != null) ? Vector2.Distance(transform.position, player1Transform.position) : float.MaxValue;
-        float distToP2 = (player2Transform != null) ? Vector2.Distance(transform.position, player2Transform.position) : float.MaxValue;
-
-        // ÇÃ·¹ÀÌ¾î°¡ ÇÑ ¸í¸¸ ³²¾ÒÀ» °æ¿ì
-        if (player1Transform == null)
+        else if (player1Transform == null)
         {
             currentTargetTransform = player2Transform;
-            furthestPlayerTransform = player2Transform; // ³²Àº ÇÑ ¸íÀ» °¡Àå ¸Õ ÇÃ·¹ÀÌ¾î·Îµµ ¼³Á¤
+            furthestPlayerTransform = player2Transform;
         }
         else if (player2Transform == null)
         {
             currentTargetTransform = player1Transform;
-            furthestPlayerTransform = player1Transform; // ³²Àº ÇÑ ¸íÀ» °¡Àå ¸Õ ÇÃ·¹ÀÌ¾î·Îµµ ¼³Á¤
+            furthestPlayerTransform = player1Transform;
         }
-        // ÇÃ·¹ÀÌ¾î°¡ µÎ ¸í ¸ğµÎ »ì¾ÆÀÖ´Â °æ¿ì
         else
         {
+            // ë‘˜ ë‹¤ ì‚´ì•„ìˆìœ¼ë©´ ë” ê°€ê¹Œìš´ í”Œë ˆì´ì–´ë¥¼ currentTargetìœ¼ë¡œ
             if (distToP1 <= distToP2)
             {
                 currentTargetTransform = player1Transform;
-                furthestPlayerTransform = player2Transform;
+                furthestPlayerTransform = player2Transform; // ê°€ì¥ ë¨¼ í”Œë ˆì´ì–´ (Thornìš©)
             }
             else
             {
                 currentTargetTransform = player2Transform;
-                furthestPlayerTransform = player1Transform;
+                furthestPlayerTransform = player1Transform; // ê°€ì¥ ë¨¼ í”Œë ˆì´ì–´ (Thornìš©)
+            }
+        }
+
+        // currentTargetTransformì´ ë³€ê²½ë˜ì—ˆì„ ë•Œ ê³µê²© ìƒíƒœë¥¼ í™•ì‹¤íˆ ë¦¬ì…‹
+        if (prevTargetTransform != currentTargetTransform)
+        {
+            Debug.Log($"Target player changed from {prevTargetTransform?.name ?? "null"} to {currentTargetTransform?.name ?? "null"}");
+            StopAttackState(); // ê³µê²© ìƒíƒœë¥¼ í™•ì‹¤íˆ ì¢…ë£Œí•˜ëŠ” í•¨ìˆ˜ í˜¸ì¶œ
+        }
+    }
+
+    // ê³µê²© ìƒíƒœë¥¼ ë¦¬ì…‹í•˜ëŠ” ì „ìš© í•¨ìˆ˜
+    void StopAttackState()
+    {
+        if (isAttacking)
+        {
+            StopCoroutine("AttackRoutine");
+            isAttacking = false;
+            anim.SetBool(hashIsAttack, false);
+
+            if (attackCollider != null && attackCollider.enabled)
+            {
+                attackCollider.enabled = false;
+                Debug.Log("StopAttackState: Attack Collider Disabled.");
             }
         }
     }
@@ -192,9 +315,10 @@ public class BossCtrl : MonoBehaviour
     {
         if (currentTargetTransform == null)
         {
-            anim.SetBool("isWalk", false);
-            anim.SetBool("isAttack", false);
+            anim.SetBool(hashIsWalk, false);
+            anim.SetBool(hashIsAttack, false);
             rb.linearVelocity = Vector2.zero;
+            StopAttackState();
             return;
         }
 
@@ -204,16 +328,16 @@ public class BossCtrl : MonoBehaviour
         {
             if (distanceX <= attackRangeX)
             {
-                if (!anim.GetBool("isAttack"))
+                if (!isAttacking)
                 {
                     StartCoroutine(AttackRoutine());
                 }
             }
-            else
+            else // ê³µê²© ë²”ìœ„ ë°–ì— ìˆë‹¤ë©´ ì´ë™ ì‹œì‘
             {
                 MoveTowardsPlayer(currentTargetTransform);
-                anim.SetBool("isWalk", true);
-                anim.SetBool("isAttack", false);
+                anim.SetBool(hashIsWalk, true);
+                StopAttackState();
             }
         }
     }
@@ -223,44 +347,50 @@ public class BossCtrl : MonoBehaviour
         if (target == null) return;
 
         Vector2 direction = (target.position - transform.position).normalized;
-        rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y); // linearVelocity ëŒ€ì‹  velocity ì‚¬ìš©
     }
 
     void FlipSprite()
     {
-        Vector3 currentScale = transform.localScale;
+        // Fire ìŠ¤í‚¬ ì¤‘ì´ê±°ë‚˜ isExecutingSkillì´ trueì´ì§€ë§Œ Dashê°€ ì•„ë‹ ê²½ìš° (Thorn), ë°©í–¥ ì „í™˜ì„ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+        // Dashì˜ ì• ë‹ˆë©”ì´ì…˜ ìƒíƒœ ì´ë¦„ì€ "Stage4_BossDash_Combined_Single"ë¡œ ê°€ì •
+        if (isFireSkillActive || (isExecutingSkill && !anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash_Combined_Single")))
+        {
+            return;
+        }
 
-        // ÀÏ¹İ ÀÌµ¿ Áß ¹æÇâ ÀüÈ¯
+        // ì´ë™ ë°©í–¥ì— ë”°ë¥¸ ë’¤ì§‘ê¸°
         if (rb.linearVelocity.x > 0.1f)
         {
-            transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ¿À¸¥ÂÊ
+            transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
         }
         else if (rb.linearVelocity.x < -0.1f)
         {
-            transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ¿ŞÂÊ
+            transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
         }
-        // ´ë½¬ Áß¿¡´Â rb.linearVelocity°¡ 0ÀÏ ¼ö ÀÖÀ¸¹Ç·Î, Á÷Á¢ target ¹æÇâÀ» º¸°í µÚÁı´Â ·ÎÁ÷ Ãß°¡
-        // NOTE: SkillLayer ÀÎµ¦½º°¡ 1¹øÀÌ¶ó¸é GetCurrentAnimatorStateInfo(1)·Î º¯°æÇØ¾ß ÇÕ´Ï´Ù.
-        else if (isExecutingSkill && anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash") && currentTargetTransform != null)
+        // ì´ë™ ì¤‘ì´ì§€ ì•Šì„ ë•Œ, ê·¸ë¦¬ê³  ìŠ¤í‚¬ ì¤‘ì´ ì•„ë‹ ë•Œ (ê¸°ë³¸ì ìœ¼ë¡œ í”Œë ˆì´ì–´ ë°©í–¥ ë°”ë¼ë³´ê¸°)
+        else if (!isExecutingSkill && currentTargetTransform != null) // isExecutingSkill ê²€ì‚¬ëŠ” ì´ë¯¸ ìœ„ì—ì„œ í•„í„°ë§ë¨
         {
             if (currentTargetTransform.position.x < transform.position.x)
             {
-                transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ¿ŞÂÊ
+                transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
             }
             else
             {
-                transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ¿À¸¥ÂÊ
+                transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
             }
         }
+        // Dash ìŠ¤í‚¬ ì¤‘ì¼ ë•ŒëŠ” OnDashMovementStartì—ì„œ ì§ì ‘ ìŠ¤í”„ë¼ì´íŠ¸ë¥¼ ë’¤ì§‘ìœ¼ë¯€ë¡œ ì—¬ê¸°ì„œëŠ” ì¶”ê°€ ë¡œì§ì´ í•„ìš” ì—†ìŠµë‹ˆë‹¤.
     }
 
-    // --- ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ® (Animator Controller¿¡ ¿¬°á) ---
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ (Animator Controllerì— ì—°ê²°)
     public void AnimationEvent_AttackStart()
     {
         if (attackCollider != null)
         {
             attackCollider.enabled = true;
-            Debug.Log("Attack Collider Enabled");
+            Debug.Log("AnimationEvent_AttackStart: Attack Collider Enabled");
         }
     }
 
@@ -269,9 +399,10 @@ public class BossCtrl : MonoBehaviour
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
-            Debug.Log("Attack Collider Disabled");
+            Debug.Log("AnimationEvent_AttackEnd: Attack Collider Disabled");
         }
-        anim.SetBool("isAttack", false);
+        anim.SetBool(hashIsAttack, false);
+        isAttacking = false;
     }
 
     public void AnimationEvent_FireStart()
@@ -305,29 +436,31 @@ public class BossCtrl : MonoBehaviour
         StartCoroutine(SpawnThornsRoutine());
     }
 
-    public void AnimationEvent_ThornEnd()
-    {
-        // ÄÚ·çÆ¾¿¡¼­ isExecutingSkill °ü¸®
-    }
+    // ThornEnd ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ëŠ” isExecutingSkillì„ falseë¡œ ë°”ê¾¸ëŠ” ìš©ë„ë¡œ ì‚¬ìš©ë  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+    // í•˜ì§€ë§Œ ThornSkillRoutineì´ ìŠ¤ìŠ¤ë¡œ isExecutingSkillì„ falseë¡œ ë§Œë“œë¯€ë¡œ, ì´ ì´ë²¤íŠ¸ê°€ í•„ìˆ˜ëŠ” ì•„ë‹™ë‹ˆë‹¤.
+    // public void AnimationEvent_ThornEnd() { /* handled by routine */ }
 
-    public void AnimationEvent_DashReadyEnd()
-    {
-        // Animator¿¡¼­ TransitionÀ¸·Î Ã³¸®
-    }
+    // DashReadyEnd ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ëŠ” ë” ì´ìƒ ì‚¬ìš©ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¨ì¼ ì• ë‹ˆë©”ì´ì…˜ìœ¼ë¡œ í•©ì³ì¡Œê¸° ë•Œë¬¸ì…ë‹ˆë‹¤.
+    // public void AnimationEvent_DashReadyEnd() { /* Not used with combined animation */ }
 
-    public void AnimationEvent_DashEnd()
-    {
-        // DashRoutine¿¡¼­ isExecutingSkillÀ» false·Î ¼³Á¤ÇÕ´Ï´Ù.
-    }
+    // DashEnd ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ëŠ” ë” ì´ìƒ ì‚¬ìš©ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤. OnDashMovementEndì—ì„œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+    // public void AnimationEvent_DashEnd() { /* Handled by OnDashMovementEnd */ }
 
 
-    // --- °ø°İ/½ºÅ³ ÄÚ·çÆ¾ ---
+    // ê³µê²©/ìŠ¤í‚¬ ì½”ë£¨í‹´
 
     IEnumerator AttackRoutine()
     {
-        anim.SetBool("isAttack", true);
-        anim.SetBool("isWalk", false);
-        yield return null;
+        if (isAttacking) yield break;
+
+        isAttacking = true;
+        anim.SetBool(hashIsAttack, true);
+        anim.SetBool(hashIsWalk, false);
+        rb.linearVelocity = Vector2.zero;
+
+        yield return new WaitForSeconds(normalAttackAnimDuration);
+
+        StopAttackState();
     }
 
     void SetNextSkillTime()
@@ -337,7 +470,6 @@ public class BossCtrl : MonoBehaviour
 
     void CheckSkillCooldown()
     {
-        // ¸ğµç ÇÃ·¹ÀÌ¾î°¡ Á×À¸¸é ½ºÅ³ ¹ßµ¿ÇÏÁö ¾ÊÀ½
         if (currentTargetTransform == null) return;
 
         if (Time.time >= nextSkillTime && !isExecutingSkill)
@@ -349,14 +481,15 @@ public class BossCtrl : MonoBehaviour
 
     void ChooseAndExecuteSkill()
     {
-        isExecutingSkill = true; // Æ¯¼ö ½ºÅ³ ¹ßµ¿ ½ÃÀÛ ÇÃ·¡±×, ÀÌµ¿ ¹× ´Ù¸¥ ½ºÅ³ ¹æÁö
+        isExecutingSkill = true;
 
-        // ÃßÀûÇÒ ÇÃ·¹ÀÌ¾î°¡ ¾øÀ¸¸é ½ºÅ³ ¼±ÅÃÇÏÁö ¾ÊÀ½ (currentTargetTransformÀÌ nullÀÏ ¶§)
         if (currentTargetTransform == null)
         {
             isExecutingSkill = false;
             return;
         }
+
+        StopAttackState();
 
         int skillChoice = Random.Range(0, 3); // 0: Thorn, 1: Fire, 2: Dash
 
@@ -369,7 +502,7 @@ public class BossCtrl : MonoBehaviour
                 StartCoroutine(FireSkillRoutine());
                 break;
             case 2:
-                StartCoroutine(DashSkillRoutine());
+                StartCoroutine(DashSkillRoutine()); // <-- ì—¬ê¸°ê°€ ìˆ˜ì •ëœ ë¶€ë¶„ì…ë‹ˆë‹¤.
                 break;
         }
     }
@@ -377,7 +510,11 @@ public class BossCtrl : MonoBehaviour
     IEnumerator ThornSkillRoutine()
     {
         isExecutingSkill = true;
-        anim.SetTrigger("isThorn");
+        isFireSkillActive = false;
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
+        anim.SetTrigger("isThorn"); // "isThorn" íŠ¸ë¦¬ê±° ì´ë¦„ì— ë§ì¶°ì•¼ í•©ë‹ˆë‹¤.
+
         yield return new WaitForSeconds(thornAnimDuration);
         isExecutingSkill = false;
     }
@@ -390,7 +527,7 @@ public class BossCtrl : MonoBehaviour
             yield break;
         }
 
-        Vector3 targetPos = furthestPlayerTransform.position; // ÀÌ °ªÀº Coroutine ½ÃÀÛ ½ÃÁ¡¿¡ °íÁ¤µË´Ï´Ù.
+        // Vector3 targetPos = furthestPlayerTransform.position; // í˜„ì¬ ì‚¬ìš©ë˜ì§€ ì•ŠìŒ
 
         for (int i = 0; i < thornSpawners.Count; i++)
         {
@@ -406,134 +543,116 @@ public class BossCtrl : MonoBehaviour
     IEnumerator FireSkillRoutine()
     {
         isExecutingSkill = true;
+        isFireSkillActive = true;
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
+
         anim.SetTrigger("isFire");
         Debug.Log($"[FireSkill Debug] FireSkillRoutine STARTED at {Time.time}. Trigger 'isFire' set.");
+
         yield return new WaitForSeconds(fireAnimDuration);
+
+        isFireSkillActive = false;
         isExecutingSkill = false;
         Debug.Log($"[FireSkill Debug] FireSkillRoutine ENDED at {Time.time}. isExecutingSkill set to false.");
     }
 
+    // ëŒ€ì‰¬ ìŠ¤í‚¬ ì½”ë£¨í‹´ (ë‹¨ì¼ ëŒ€ì‰¬, ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ ê¸°ë°˜ìœ¼ë¡œ ì „ë©´ ìˆ˜ì •)
     IEnumerator DashSkillRoutine()
     {
+        if (isExecutingSkill) yield break;
+
         isExecutingSkill = true;
-        dashCount = 0;
+        isFireSkillActive = false;
+        // dashCountëŠ” ë‹¨ì¼ ëŒ€ì‰¬ì´ë¯€ë¡œ ë” ì´ìƒ í•„ìš” ì—†ìŠµë‹ˆë‹¤.
 
-        anim.ResetTrigger("isDashFinished");
-        yield return null; // ÇÑ ÇÁ·¹ÀÓ ´ë±âÇÏ¿© Æ®¸®°Å ¸®¼Â Àû¿ë
+        rb.linearVelocity = Vector2.zero; // ëŒ€ì‰¬ ì‹œì‘ ì „ ë³´ìŠ¤ ì´ë™ ì¤‘ë‹¨
+        anim.SetBool(hashIsWalk, false); // ê±·ê¸° ì• ë‹ˆë©”ì´ì…˜ ì¤‘ë‹¨
+        anim.ResetTrigger(hashIsDashFinished); // í˜¹ì‹œ ë‚¨ì•˜ì„ ì¢…ë£Œ íŠ¸ë¦¬ê±° ë¦¬ì…‹
 
-        while (dashCount < 2)
+        // í•©ì³ì§„ ë‹¨ì¼ ëŒ€ì‰¬ ì• ë‹ˆë©”ì´ì…˜ ì‹œì‘ íŠ¸ë¦¬ê±°
+        anim.SetTrigger(hashIsDash);
+        Debug.Log($"[DashSkill Debug] Single Dash Animation Triggered at {Time.time}");
+
+        // ì• ë‹ˆë©”ì´ì…˜ì´ ì™„ì „íˆ ëë‚  ë•Œê¹Œì§€ ê¸°ë‹¤ë¦½ë‹ˆë‹¤.
+        // ì‹¤ì œ ì›€ì§ì„ì€ ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ì—ì„œ ì œì–´ë©ë‹ˆë‹¤.
+        // ì´ ì‹œê°„ì€ 'Stage4_BossDash_Combined_Single' ì• ë‹ˆë©”ì´ì…˜ í´ë¦½ì˜ ì´ ê¸¸ì´ì™€ ì¼ì¹˜í•´ì•¼ í•©ë‹ˆë‹¤.
+        float totalAnimationDuration = dashReadyDuration + dashPerMoveDuration;
+        float waitTimer = 0f;
+        while (isExecutingSkill && waitTimer < totalAnimationDuration + 0.5f) // ì•ˆì „ì„ ìœ„í•´ ì•½ê°„ ì—¬ìœ  ì‹œê°„ ì¶”ê°€
         {
-            anim.SetTrigger("isDash");
-            Debug.Log($"[DashSkill Debug] Dash {dashCount + 1} Trigger 'isDash' set at {Time.time}");
-
-            float waitTimer = 0f;
-            float currentDashMaxWaitTime = 0.5f; // ÀÌ °ªÀ» ÁÙ¿©¼­ Å×½ºÆ®ÇØº¸¼¼¿ä.
-            while (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash") && waitTimer < currentDashMaxWaitTime)
-            {
-                waitTimer += Time.deltaTime;
-                yield return null;
-            }
-
-            if (waitTimer >= currentDashMaxWaitTime)
-            {
-                Debug.LogError($"Failed to transition to Stage4_BossDash animation state for Dash {dashCount + 1} within {currentDashMaxWaitTime}s. Check Animator transitions.");
-                isExecutingSkill = false;
-                // DashSkillRoutineÀÌ ºñÁ¤»ó Á¾·áµÇ¹Ç·Î, isDashFinished Æ®¸®°Å¸¦ ¿©±â¼­ ¹ßµ¿ÇÏÁö ¾Ê½À´Ï´Ù.
-                // (Á¤»ó Á¾·áµÉ ¶§¸¸ ¹ßµ¿µÇµµ·Ï ·ÎÁ÷ º¯°æ)
-                yield break;
-            }
-            Debug.Log($"[DashSkill Debug] Dash {dashCount + 1} entered Stage4_BossDash state at {Time.time}");
-
-            Transform target = null;
-            // ÇÃ·¹ÀÌ¾î »ç¸Á ½Ã Å¸°Ù Á¦¿Ü ·ÎÁ÷ Ãß°¡
-            bool p1Alive = (player1Component != null && !player1Component.isDead);
-            bool p2Alive = (player2Component != null && !player2Component.isDead);
-
-            if (dashCount == 0 && p1Alive)
-            {
-                target = player1Transform;
-            }
-            else if (dashCount == 1 && p2Alive)
-            {
-                target = player2Transform;
-            }
-            // ¸¸¾à Å¸°Ù ÇÃ·¹ÀÌ¾î°¡ Á×¾ú´Ù¸é, ´Ù¸¥ »ì¾ÆÀÖ´Â ÇÃ·¹ÀÌ¾î°¡ ÀÖ´ÂÁö È®ÀÎ
-            if (target == null)
-            {
-                if (dashCount == 0 && p2Alive) target = player2Transform; // 1¹øÂ° ´ë½¬ÀÎµ¥ P1ÀÌ Á×¾úÀ¸¸é P2·Î
-                else if (dashCount == 1 && p1Alive) target = player1Transform; // 2¹øÂ° ´ë½¬ÀÎµ¥ P2°¡ Á×¾úÀ¸¸é P1À¸·Î
-                // ¸¸¾à ±×·¡µµ Å¸°ÙÀÌ ¾øÀ¸¸é µÎ ÇÃ·¹ÀÌ¾î ¸ğµÎ Á×Àº »óÅÂ
-                if (target == null)
-                {
-                    Debug.LogWarning($"Both players are dead. Skipping remaining dashes.");
-                    break; // ·çÇÁ Á¾·á
-                }
-            }
-
-
-            if (target != null)
-            {
-                float targetX = target.position.x;
-                float currentX = transform.position.x;
-
-                float dashDirection = Mathf.Sign(targetX - currentX);
-                Vector2 dashTargetPos = new Vector2(currentX + dashDirection * dashDistanceX, transform.position.y);
-
-                Vector2 startPos = transform.position;
-                float timer = 0f;
-
-                while (timer < dashPerMoveDuration)
-                {
-                    rb.MovePosition(Vector2.Lerp(startPos, dashTargetPos, timer / dashPerMoveDuration));
-                    timer += Time.deltaTime;
-                    yield return null;
-                }
-                rb.MovePosition(dashTargetPos);
-
-                Debug.Log($"[DashSkill Debug] Dash {dashCount + 1} move completed at {Time.time}");
-            }
-            else
-            {
-                Debug.LogWarning($"Dash target {(dashCount == 0 ? "Player1" : "Player2")} not found or dead. Skipping dash {dashCount + 1}.");
-            }
-
-            yield return new WaitForSeconds(0.42f); // Dash ¾Ö´Ï¸ŞÀÌ¼ÇÀÇ ½ÇÁ¦ ±æÀÌ¸¸Å­ ´ë±â
-
-            dashCount++;
-
-            if (dashCount < 2)
-            {
-                yield return new WaitForSeconds(dashPauseBetweenDashes);
-            }
+            waitTimer += Time.deltaTime;
+            yield return null;
         }
 
-        // ¸ğµç ´ë½¬°¡ Á¤»óÀûÀ¸·Î ¿Ï·áµÈ °æ¿ì¿¡¸¸ ÃÖÁ¾ Á¾·á Æ®¸®°Å ¹ßµ¿
-        if (dashCount == 2) // dashCount°¡ 2°¡ µÇ¾úÀ» ¶§¸¸ ¼º°øÀûÀ¸·Î ¿Ï·áµÈ °Í
+        // ë§Œì•½ OnDashSkillFinished ì´ë²¤íŠ¸ê°€ í˜¸ì¶œë˜ì§€ ì•Šê³  ì½”ë£¨í‹´ì´ ì¢…ë£Œë  ê²½ìš° ëŒ€ë¹„
+        if (isExecutingSkill)
         {
-            anim.SetTrigger("isDashFinished");
-            Debug.Log($"[DashSkill Debug] All dashes completed at {Time.time}");
-        }
-        else
-        {
-            Debug.LogWarning($"[DashSkill Debug] DashRoutine ended prematurely (dashCount: {dashCount}). 'isDashFinished' not triggered.");
+            Debug.LogError("[DashSkill Debug] Dash skill animation did not finish cleanly. Forcing end.");
+            OnDashSkillFinished(); // ê°•ì œë¡œ ìŠ¤í‚¬ ì¢…ë£Œ ì²˜ë¦¬
         }
 
-
-        isExecutingSkill = false;
+        rb.linearVelocity = Vector2.zero; // ìµœì¢…ì ìœ¼ë¡œ ì†ë„ 0ìœ¼ë¡œ (ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ì—ì„œ ì²˜ë¦¬í•˜ì§€ë§Œ ì•ˆì „ ì¥ì¹˜)
+        Debug.Log($"[DashSkill Debug] Dash Skill Routine Finished at {Time.time}");
     }
 
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ ì½œë°± ë©”ì„œë“œ (Public í•¨ìˆ˜ë¡œ Animatorì— ì—°ê²°)
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸: ëŒ€ì‰¬ ì›€ì§ì„ ì‹œì‘ ì‹œ í˜¸ì¶œ
+    public void OnDashMovementStart()
+    {
+        if (!isExecutingSkill) return;
+
+        Debug.Log($"[DashSkill Event] OnDashMovementStart called at {Time.time}");
+
+        Transform target = currentTargetTransform;
+
+        if (target == null || (player1Component != null && player1Component.isDead && player2Component != null && player2Component.isDead))
+        {
+            Debug.LogWarning("OnDashMovementStart: No valid target player or all players dead. Stopping dash movement.");
+            rb.linearVelocity = Vector2.zero;
+            OnDashSkillFinished(); // ì¦‰ì‹œ ìŠ¤í‚¬ ì¢…ë£Œ ì²˜ë¦¬
+            return;
+        }
+
+        float dashDirection = Mathf.Sign(target.position.x - transform.position.x);
+        transform.localScale = new Vector3(dashDirection * initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ìŠ¤í”„ë¼ì´íŠ¸ ë’¤ì§‘ê¸°
+        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y); // ëŒ€ì‰¬ ì†ë„ ì„¤ì •
+        Debug.Log($"[DashSkill Event] Boss dashing towards {target.name}");
+    }
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸: ëŒ€ì‰¬ ì›€ì§ì„ ì¢…ë£Œ ì‹œ í˜¸ì¶œ
+    public void OnDashMovementEnd()
+    {
+        if (!isExecutingSkill) return;
+
+        Debug.Log($"[DashSkill Event] OnDashMovementEnd called at {Time.time}");
+        rb.linearVelocity = Vector2.zero; // ëŒ€ì‰¬ ì›€ì§ì„ ì¤‘ë‹¨
+    }
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸: ì „ì²´ ëŒ€ì‰¬ ìŠ¤í‚¬ ì• ë‹ˆë©”ì´ì…˜ì´ ì™„ì „íˆ ëë‚¬ì„ ë•Œ í˜¸ì¶œ
+    public void OnDashSkillFinished()
+    {
+        Debug.Log($"[DashSkill Event] OnDashSkillFinished called at {Time.time}. Skill Finished.");
+        isExecutingSkill = false;
+        rb.linearVelocity = Vector2.zero;
+        anim.SetTrigger(hashIsDashFinished); // Animatorì—ê²Œ ìŠ¤í‚¬ì´ ëë‚¬ìŒì„ ì•Œë¦¼ (Idle/Walk ë“±ìœ¼ë¡œ ì „í™˜)
+    }
+
+    // íŠ¸ë¦¬ê±° ì¶©ëŒ ì²˜ë¦¬ (í”Œë ˆì´ì–´ ì ‘ì´‰ ë°ë¯¸ì§€)
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
             Player player = other.GetComponent<Player>();
-            if (player != null && !player.isDead) // Á×Àº ÇÃ·¹ÀÌ¾î¿¡°Ô´Â µ¥¹ÌÁö ÁÖÁö ¾ÊÀ½
+            if (player != null && !player.isDead)
             {
                 player.TakeDamage(touchDamage);
             }
         }
     }
 
+    // ë³´ìŠ¤ ë°ë¯¸ì§€ ì²˜ë¦¬
     public void TakeDamage(float damage)
     {
         currentHp -= damage;
@@ -541,12 +660,13 @@ public class BossCtrl : MonoBehaviour
 
         if (currentHp <= phase2HpThreshold && currentHp > 0)
         {
-            // StartPhase2();
+            // StartPhase2(); // í•„ìš”í•˜ë‹¤ë©´ 2í˜ì´ì¦ˆ ì‹œì‘ ë¡œì§ ì¶”ê°€
         }
 
         if (currentHp <= 0)
         {
-            // BossDefeat();
+            // BossDefeat(); // í•„ìš”í•˜ë‹¤ë©´ ë³´ìŠ¤ ì²˜ì¹˜ ë¡œì§ ì¶”ê°€
+            Debug.Log("Boss Defeated!");
         }
     }
 }

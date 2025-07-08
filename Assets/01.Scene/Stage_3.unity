@@ -4973,20 +4973,25 @@ MonoBehaviour:
   knockbackUpForce: 3
   m_BulletPrefab: {fileID: 4604661909989111262, guid: cda2380196d91db42bfa20fe8be78093, type: 3}
   m_ShootPos: {fileID: 228943118}
-  m_Gun: {fileID: 62174248}
   m_ReloadImage: {fileID: 1571359890}
   shootForce: 10
   m_ShootCool: 0.5
+  defaultGunPrefab: {fileID: 0}
+  defaultGunUIIcon: {fileID: 0}
   defaultBulletPrefab: {fileID: 0}
   defaultGunShootForce: 10
   defaultGunShootCool: 0.5
   defaultGunBulletMaxCount: 12
   defaultGunReloadTime: 1.5
+  rocketLauncherPrefab: {fileID: 0}
+  rocketLauncherUIIcon: {fileID: 0}
   rocketPrefab: {fileID: 8501584505267752135, guid: aa69193faf4876a4ea6184fd08b2200f, type: 3}
   rocketShootForce: 15
   rocketFireRate: 2
   rocketMaxCount: 3
   rocketReloadTime: 3
+  vacuumCleanerPrefab: {fileID: 0}
+  vacuumCleanerUIIcon: {fileID: 0}
   vacuumObject: {fileID: 0}
   suckRadius: 3
   suckForce: 10
@@ -4994,16 +4999,22 @@ MonoBehaviour:
   smallMonsterLayer:
     serializedVersion: 2
     m_Bits: 0
+  sawtoothGunPrefab: {fileID: 0}
+  sawtoothGunUIIcon: {fileID: 0}
   sawtoothBulletPrefab: {fileID: 6399373076383103376, guid: 0048a58cfc663d847ba1e92da7dbdbd0, type: 3}
   sawtoothGunShootForce: 12
   sawtoothGunFireRate: 0.7
   sawtoothGunMaxCount: 5
   sawtoothGunReloadTime: 1.8
+  katanaPrefab: {fileID: 0}
+  katanaUIIcon: {fileID: 0}
   katanaAttackCooldown: 0.7
   katanaColliderActiveDuration: 0.2
   katanaAttackCollider: {fileID: 0}
   currentWeaponType: 3
+  swappableWeapons: 
   BulletCount: {fileID: 1115336899}
+  currentWeaponUIIcon: {fileID: 0}
   isDead: 0
   reviveRequired: 10
   reviveImage: {fileID: 2074653509}
@@ -6717,8 +6728,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -435.64, y: -456.36}
-  m_SizeDelta: {x: 60.0446, y: 95.606}
+  m_AnchoredPosition: {x: -435.64, y: -456.87}
+  m_SizeDelta: {x: 96.3001, y: 53.5349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1854747334
 MonoBehaviour:
@@ -6740,7 +6751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4089796923838250065, guid: 0567a64502d51064d91a00b9113b2e5f, type: 3}
+  m_Sprite: {fileID: -1035376832474678582, guid: cb20623f8ba1e7949a16b4d149a170fb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6884,20 +6895,25 @@ MonoBehaviour:
   knockbackUpForce: 3
   m_BulletPrefab: {fileID: 4604661909989111262, guid: 9a3f5b4d8f2e8f64384d2b38aed31e0b, type: 3}
   m_ShootPos: {fileID: 896908869}
-  m_Gun: {fileID: 0}
   m_ReloadImage: {fileID: 1351271649}
   shootForce: 10
   m_ShootCool: 0.5
+  defaultGunPrefab: {fileID: 0}
+  defaultGunUIIcon: {fileID: 0}
   defaultBulletPrefab: {fileID: 0}
   defaultGunShootForce: 10
   defaultGunShootCool: 0.5
   defaultGunBulletMaxCount: 12
   defaultGunReloadTime: 1.5
+  rocketLauncherPrefab: {fileID: 0}
+  rocketLauncherUIIcon: {fileID: 0}
   rocketPrefab: {fileID: 0}
   rocketShootForce: 15
   rocketFireRate: 2
   rocketMaxCount: 3
   rocketReloadTime: 3
+  vacuumCleanerPrefab: {fileID: 0}
+  vacuumCleanerUIIcon: {fileID: 0}
   vacuumObject: {fileID: 0}
   suckRadius: 3
   suckForce: 10
@@ -6905,16 +6921,22 @@ MonoBehaviour:
   smallMonsterLayer:
     serializedVersion: 2
     m_Bits: 256
+  sawtoothGunPrefab: {fileID: 0}
+  sawtoothGunUIIcon: {fileID: 0}
   sawtoothBulletPrefab: {fileID: 0}
   sawtoothGunShootForce: 12
   sawtoothGunFireRate: 0.7
   sawtoothGunMaxCount: 5
   sawtoothGunReloadTime: 1.8
+  katanaPrefab: {fileID: 0}
+  katanaUIIcon: {fileID: 0}
   katanaAttackCooldown: 0.7
   katanaColliderActiveDuration: 0.7
   katanaAttackCollider: {fileID: 1863350220}
   currentWeaponType: 4
+  swappableWeapons: 
   BulletCount: {fileID: 25522005}
+  currentWeaponUIIcon: {fileID: 0}
   isDead: 0
   reviveRequired: 10
   reviveImage: {fileID: 489585525}

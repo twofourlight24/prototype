@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fd4dde1944b363f438a9cce4f99541d4
+guid: cb20623f8ba1e7949a16b4d149a170fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6971125169963474060
-    second: "\uC7A0\uAE40\uD654\uBA74_0"
+      213: -1035376832474678582
+    second: Katana1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC7A0\uAE40\uD654\uBA74_0"
+      name: Katana1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40
-        height: 80
+        width: 18
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c8c157058696eb060800000000000000
-      internalID: 6971125169963474060
+      spriteID: aca7daba14a91a1f0800000000000000
+      internalID: -1035376832474678582
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uC7A0\uAE40\uD654\uBA74_0": 6971125169963474060
+      Katana1_0: -1035376832474678582
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
