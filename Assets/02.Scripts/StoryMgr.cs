@@ -11,6 +11,11 @@ public class StoryMgr : MonoBehaviour
     public float typingSpeed = 0.1f;
     public Image FadeImage; // 검은색 이미지(알파 1)로 캔버스에 추가 필요
     public Button skipButton; // 스킵 버튼 추가 필요   
+    public Image cutsceneImage; // 컷씬 이미지를 보여줄 UI Image
+    public Sprite[] cutsceneSprites; // 컷씬별 스프라이트 배열
+    // 대사 인덱스별로 컷씬 인덱스를 지정
+    public int[] cutsceneChangeIndices; // 예: [0, 3, 6]
+    private int currentCutscene = 0;
 
     // 화자와 대사를 함께 저장
     [System.Serializable]
@@ -34,6 +39,9 @@ public class StoryMgr : MonoBehaviour
         {
            SceneManager.LoadScene("Stage_1");
         });
+
+        if (cutsceneSprites.Length > 0 && cutsceneImage != null)
+            cutsceneImage.sprite = cutsceneSprites[0];
     }
 
     IEnumerator FadeIn()
@@ -112,6 +120,13 @@ public class StoryMgr : MonoBehaviour
     void NextLine()
     {
         index++;
+        if (currentCutscene + 1 < cutsceneChangeIndices.Length && index >= cutsceneChangeIndices[currentCutscene + 1])
+        {
+            currentCutscene++;
+            if (currentCutscene < cutsceneSprites.Length)
+                cutsceneImage.sprite = cutsceneSprites[currentCutscene];
+        }
+
         if (index < lines.Length)
         {
             StartTypingLine();

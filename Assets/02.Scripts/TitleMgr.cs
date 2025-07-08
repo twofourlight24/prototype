@@ -23,21 +23,25 @@ public class TitleMgr : MonoBehaviour
 
     private void OnClickExitBtn()
     {
+        SoundManager.Instance.PlayButtonClick();
         Application.Quit();
     }
 
     private void OnClickGuideBtn()
     {
+        SoundManager.Instance.PlayButtonClick();
         GuidePanel.SetActive(true);
     }
 
     void OnClickGuidBtn2()
     {
+        SoundManager.Instance.PlayButtonClick();
         GuidePanel.SetActive(false);
     }
 
     private void OnClickStartBtn()
     {
+        SoundManager.Instance.PlayButtonClick();
         StartCoroutine(FadeOutAndLoadScene());
     }
 
