@@ -1,0 +1,1305 @@
+fileFormatVersion: 2
+guid: ccca4d52c5211014c942090dbbe00dec
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5438876168486727070
+    second: Stage4_Boss2Phase_0
+  - first:
+      213: 1495694406647795093
+    second: Stage4_Boss2Phase_1
+  - first:
+      213: -7047114595978135569
+    second: Stage4_Boss2Phase_2
+  - first:
+      213: -7962602483679977434
+    second: Stage4_Boss2Phase_3
+  - first:
+      213: 2811502787826706408
+    second: Stage4_Boss2Phase_4
+  - first:
+      213: -4318186329792868176
+    second: Stage4_Boss2Phase_5
+  - first:
+      213: 6040092348467432408
+    second: Stage4_Boss2Phase_6
+  - first:
+      213: 1529098082483415446
+    second: Stage4_Boss2Phase_7
+  - first:
+      213: 8508738914617930290
+    second: Stage4_Boss2Phase_8
+  - first:
+      213: 2257523171737041046
+    second: Stage4_Boss2Phase_9
+  - first:
+      213: -6841377861923293112
+    second: Stage4_Boss2Phase_10
+  - first:
+      213: 8341332730659731765
+    second: Stage4_Boss2Phase_11
+  - first:
+      213: -6218501925944644779
+    second: Stage4_Boss2Phase_12
+  - first:
+      213: -751994967786567166
+    second: Stage4_Boss2Phase_13
+  - first:
+      213: -6089804197843068486
+    second: Stage4_Boss2Phase_14
+  - first:
+      213: 3610052171413742676
+    second: Stage4_Boss2Phase_15
+  - first:
+      213: 6672091233985617018
+    second: Stage4_Boss2Phase_16
+  - first:
+      213: -1347496990042786423
+    second: Stage4_Boss2Phase_17
+  - first:
+      213: -7245460928607535941
+    second: Stage4_Boss2Phase_18
+  - first:
+      213: 8691381855029550258
+    second: Stage4_Boss2Phase_19
+  - first:
+      213: 4157942998184951342
+    second: Stage4_Boss2Phase_20
+  - first:
+      213: 1376468763241585956
+    second: Stage4_Boss2Phase_21
+  - first:
+      213: 6937888498871768312
+    second: Stage4_Boss2Phase_22
+  - first:
+      213: 1267245293668395240
+    second: Stage4_Boss2Phase_23
+  - first:
+      213: 2751398362662127072
+    second: Stage4_Boss2Phase_24
+  - first:
+      213: 5721770171051650608
+    second: Stage4_Boss2Phase_25
+  - first:
+      213: 5662124270619284755
+    second: Stage4_Boss2Phase_26
+  - first:
+      213: -1337656359355478879
+    second: Stage4_Boss2Phase_27
+  - first:
+      213: 2374633828347142596
+    second: Stage4_Boss2Phase_28
+  - first:
+      213: -7836089887075533512
+    second: Stage4_Boss2Phase_29
+  - first:
+      213: -6629187118483214249
+    second: Stage4_Boss2Phase_30
+  - first:
+      213: -2192525332507276162
+    second: Stage4_Boss2Phase_31
+  - first:
+      213: 2129519484760664948
+    second: Stage4_Boss2Phase_32
+  - first:
+      213: 471257329356381248
+    second: Stage4_Boss2Phase_33
+  - first:
+      213: 2358756251428300837
+    second: Stage4_Boss2Phase_34
+  - first:
+      213: 1736405018943893129
+    second: Stage4_Boss2Phase_35
+  - first:
+      213: -7454784056927856306
+    second: Stage4_Boss2Phase_36
+  - first:
+      213: 8231170494748773396
+    second: Stage4_Boss2Phase_37
+  - first:
+      213: -3781642460005538515
+    second: Stage4_Boss2Phase_38
+  - first:
+      213: 8133750176247979025
+    second: Stage4_Boss2Phase_39
+  - first:
+      213: 8895797142589063883
+    second: Stage4_Boss2Phase_40
+  - first:
+      213: 3198957970877774708
+    second: Stage4_Boss2Phase_41
+  - first:
+      213: -4668824023015475503
+    second: Stage4_Boss2Phase_42
+  - first:
+      213: -5116681432269811324
+    second: Stage4_Boss2Phase_43
+  - first:
+      213: 2547006088980038059
+    second: Stage4_Boss2Phase_44
+  - first:
+      213: -6060153979583053557
+    second: Stage4_Boss2Phase_45
+  - first:
+      213: 3493944203127477468
+    second: Stage4_Boss2Phase_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_0
+      rect:
+        serializedVersion: 2
+        x: 3031
+        y: 147
+        width: 73
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9d2dff0f05ca7b40800000000000000
+      internalID: 5438876168486727070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_1
+      rect:
+        serializedVersion: 2
+        x: 3219
+        y: 191
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59dc7c86326c1c410800000000000000
+      internalID: 1495694406647795093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_2
+      rect:
+        serializedVersion: 2
+        x: 3362
+        y: 153
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe7b047bc9e933e90800000000000000
+      internalID: -7047114595978135569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_3
+      rect:
+        serializedVersion: 2
+        x: 2837
+        y: 120
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 620ac909a372f7190800000000000000
+      internalID: -7962602483679977434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_4
+      rect:
+        serializedVersion: 2
+        x: 2893
+        y: 72
+        width: 68
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e76e69b3e6740720800000000000000
+      internalID: 2811502787826706408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_5
+      rect:
+        serializedVersion: 2
+        x: 3126
+        y: 110
+        width: 61
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b09fba6968b214c0800000000000000
+      internalID: -4318186329792868176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_6
+      rect:
+        serializedVersion: 2
+        x: 3199
+        y: 164
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dbc4f83df7b2d350800000000000000
+      internalID: 6040092348467432408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_7
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 123
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 699a721ca92783510800000000000000
+      internalID: 1529098082483415446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_8
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 129
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 232385c26fc151670800000000000000
+      internalID: 8508738914617930290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_9
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 78
+        width: 23
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69879932d55545f10800000000000000
+      internalID: 2257523171737041046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_10
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 128
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84837dde41b8e01a0800000000000000
+      internalID: -6841377861923293112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_11
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 78
+        width: 43
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 539ff4c9ced52c370800000000000000
+      internalID: 8341332730659731765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_12
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 129
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55bacf4027173b9a0800000000000000
+      internalID: -6218501925944644779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_13
+      rect:
+        serializedVersion: 2
+        x: 1484
+        y: 128
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20a4330af806095f0800000000000000
+      internalID: -751994967786567166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_14
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 78
+        width: 61
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab991e3e85bac7ba0800000000000000
+      internalID: -6089804197843068486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_15
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 72
+        width: 90
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4546eb1b25b791230800000000000000
+      internalID: 3610052171413742676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_16
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 128
+        width: 45
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7cd5b680a7089c50800000000000000
+      internalID: 6672091233985617018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_17
+      rect:
+        serializedVersion: 2
+        x: 2067
+        y: 75
+        width: 65
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 985779c70aabc4de0800000000000000
+      internalID: -1347496990042786423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_18
+      rect:
+        serializedVersion: 2
+        x: 2273
+        y: 70
+        width: 57
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc306c6ca3f27b90800000000000000
+      internalID: -7245460928607535941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_19
+      rect:
+        serializedVersion: 2
+        x: 2477
+        y: 78
+        width: 51
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bcdf4c8fbdfd9870800000000000000
+      internalID: 8691381855029550258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_20
+      rect:
+        serializedVersion: 2
+        x: 2649
+        y: 52
+        width: 103
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2ef22b802bf3b930800000000000000
+      internalID: 4157942998184951342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_21
+      rect:
+        serializedVersion: 2
+        x: 2862
+        y: 56
+        width: 72
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42d9f6d1c033a1310800000000000000
+      internalID: 1376468763241585956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_22
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 117
+        width: 9
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f4158ac4d4584060800000000000000
+      internalID: 6937888498871768312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_23
+      rect:
+        serializedVersion: 2
+        x: 3069
+        y: 57
+        width: 53
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e8e36461e8269110800000000000000
+      internalID: 1267245293668395240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_24
+      rect:
+        serializedVersion: 2
+        x: 3090
+        y: 128
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5411abb3eee2620800000000000000
+      internalID: 2751398362662127072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_25
+      rect:
+        serializedVersion: 2
+        x: 3275
+        y: 60
+        width: 47
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03ea5f3c7afc76f40800000000000000
+      internalID: 5721770171051650608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_26
+      rect:
+        serializedVersion: 2
+        x: 3290
+        y: 131
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31551606608e39e40800000000000000
+      internalID: 5662124270619284755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_27
+      rect:
+        serializedVersion: 2
+        x: 3490
+        y: 128
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ac031dd0a0bf6de0800000000000000
+      internalID: -1337656359355478879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 111
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c1e142b2e464f020800000000000000
+      internalID: 2374633828347142596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_29
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 113
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83df4dcd3cd904390800000000000000
+      internalID: -7836089887075533512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_30
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 57
+        width: 30
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 750763d40756004a0800000000000000
+      internalID: -6629187118483214249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_31
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 116
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7ccbda93d59291e0800000000000000
+      internalID: -2192525332507276162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_32
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 64
+        width: 30
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47bae6f40b29d8d10800000000000000
+      internalID: 2129519484760664948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_33
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 76
+        width: 23
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04c16125b0e3a8600800000000000000
+      internalID: 471257329356381248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_34
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 77
+        width: 42
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 528ad1e305cfbb020800000000000000
+      internalID: 2358756251428300837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_35
+      rect:
+        serializedVersion: 2
+        x: 3475
+        y: 57
+        width: 47
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98e2b543a23f81810800000000000000
+      internalID: 1736405018943893129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_36
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 49
+        width: 34
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e49d199b5694b8890800000000000000
+      internalID: -7454784056927856306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_37
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 50
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41c4d2154fdfa3270800000000000000
+      internalID: 8231170494748773396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_38
+      rect:
+        serializedVersion: 2
+        x: 2834
+        y: 31
+        width: 111
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d25e5d7f738e48bc0800000000000000
+      internalID: -3781642460005538515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_39
+      rect:
+        serializedVersion: 2
+        x: 3013
+        y: 27
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11c180bd0b2e0e070800000000000000
+      internalID: 8133750176247979025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_40
+      rect:
+        serializedVersion: 2
+        x: 3130
+        y: 49
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc2c4f58e58347b70800000000000000
+      internalID: 8895797142589063883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_41
+      rect:
+        serializedVersion: 2
+        x: 3131
+        y: 23
+        width: 54
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47bf291635bf46c20800000000000000
+      internalID: 3198957970877774708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_42
+      rect:
+        serializedVersion: 2
+        x: 3389
+        y: 29
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d63a5d9941053fb0800000000000000
+      internalID: -4668824023015475503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_43
+      rect:
+        serializedVersion: 2
+        x: 3081
+        y: 16
+        width: 25
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48198b0c855edf8b0800000000000000
+      internalID: -5116681432269811324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_44
+      rect:
+        serializedVersion: 2
+        x: 3199
+        y: 21
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba189661b88c85320800000000000000
+      internalID: 2547006088980038059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_45
+      rect:
+        serializedVersion: 2
+        x: 3366
+        y: 4
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0148ca401206eba0800000000000000
+      internalID: -6060153979583053557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_Boss2Phase_46
+      rect:
+        serializedVersion: 2
+        x: 3216
+        y: 0
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd4d274bdbbfc7030800000000000000
+      internalID: 3493944203127477468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

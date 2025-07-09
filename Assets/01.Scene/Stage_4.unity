@@ -5971,7 +5971,7 @@ MonoBehaviour:
   m_DamageCool: 2
   m_LavaCool: 1
   m_JumpForce: 10
-  m_MoveSpeed: 2.6
+  m_MoveSpeed: 4
   groundCheck1: {fileID: 1840571321}
   groundCheck2: {fileID: 759892159}
   groundCheckDistance: 0.1
@@ -6006,7 +6006,7 @@ MonoBehaviour:
   vacuumCleanerUIIcon: {fileID: -3170110953543520844, guid: af8b192fd5c5e5f499d83bc9aa9d1343, type: 3}
   vacuumObject: {fileID: 1340208347}
   suckRadius: 3
-  suckForce: 1000
+  suckForce: 2000
   consumeDistance: 0.5
   smallMonsterLayer:
     serializedVersion: 2
@@ -8559,7 +8559,7 @@ MonoBehaviour:
   m_DamageCool: 2
   m_LavaCool: 1
   m_JumpForce: 10
-  m_MoveSpeed: 2.6
+  m_MoveSpeed: 4
   groundCheck1: {fileID: 1703714306}
   groundCheck2: {fileID: 1169522579}
   groundCheckDistance: 0.1

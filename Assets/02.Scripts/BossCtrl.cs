@@ -708,19 +708,16 @@ public class BossCtrl : MonoBehaviour
     {
         Debug.Log("[HealSkill] HealSkillRoutine STARTED.");
         isHealingSkillActive = true;
+        isExecutingSkill = true; // <--- 이 줄을 추가합니다. 힐 스킬도 '스킬 실행 중' 상태로 간주
         isInvincible = true; // 힐 스킬 시작 시 무적
         StopAttackState(); // 일반 공격 중단
         rb.linearVelocity = Vector2.zero; // 이동 중단
         anim.SetBool(hashIsWalk, false); // 걷기 애니메이션 중단
 
-        // Stage4_BossHealReady 애니메이션 호출 (Trigger로 변경)
         anim.SetTrigger(hashIsHeal); // "isHeal" Trigger를 발동시켜 Stage4_BossHealReady 시작
         Debug.Log("[HealSkill] Animator parameter 'isHeal' Trigger set (HealReady animation).");
 
-        // OnHealReadyAnimationEnd 이벤트가 호출될 때까지 기다림
-        // (실제로 이 코루틴은 다음 프레임에 OnHealReadyAnimationEnd가 호출되면 HealSlimeTimerRoutine을 시작하고,
-        // 이 루틴 자체가 모든 힐 로직을 처리하며 isHealingSkillActive와 isInvincible을 리셋할 것입니다.)
-        yield return null; // 다음 프레임까지 기다림 (이벤트가 바로 호출될 수 있도록)
+        yield return null;
     }
 
     // 애니메이션 이벤트: Stage4_BossHealReady 애니메이션이 끝났을 때 호출
@@ -731,23 +728,25 @@ public class BossCtrl : MonoBehaviour
         Debug.Log($"[HealSkill Event] OnHealReadyAnimationEnd called at {Time.time}. Spawning slimes and transitioning to Heal animation.");
 
         // 힐 슬라임 4개 소환
+        // 힐 슬라임 생성 코드 수정
         for (int i = 0; i < healSlimeCount; i++)
         {
             if (healSlimePrefab != null)
             {
-                // 보스 위치에서 약간 퍼지도록 랜덤 위치 조정
-                Vector3 spawnPos = transform.position + (Vector3)Random.insideUnitCircle * 0.5f;
-                GameObject slime = Instantiate(healSlimePrefab, spawnPos, Quaternion.identity);
-                // activeHealSlimes.Add(slime); // HealSlime 태그로 찾을 것이므로 이 리스트에 추가할 필요 없습니다.
-                Debug.Log($"[HealSkill] Spawned HealSlime {i + 1}");
+                // 보스의 위치에서 생성
+                Vector3 spawnPos = transform.position;
 
-                // 슬라임 생성 시 약간의 힘을 가하여 퍼지도록 (선택 사항)
+                GameObject slime = Instantiate(healSlimePrefab, spawnPos, Quaternion.identity);
+
                 Rigidbody2D slimeRb = slime.GetComponent<Rigidbody2D>();
                 if (slimeRb != null)
                 {
-                    Vector2 randomForce = new Vector2(Random.Range(-1f, 1f), Random.Range(0.5f, 1f)).normalized * 3f;
+                    // x, y 모두에 힘을 주되, y는 항상 양수(위쪽)로
+                    Vector2 randomForce = new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(2f, 4f)).normalized * 12f;
                     slimeRb.AddForce(randomForce, ForceMode2D.Impulse);
                 }
+
+                Debug.Log($"[HealSkill] Spawned HealSlime {i + 1}");
             }
         }
 
@@ -802,10 +801,11 @@ public class BossCtrl : MonoBehaviour
     {
         Debug.Log($"[HealSkill Event] OnHealSkillEnd called at {Time.time}. Heal skill finished.");
         isHealingSkillActive = false; // 힐 스킬 종료
-        isInvincible = false; // 무적 해제
+        isInvincible = false;       // 무적 해제
+        isExecutingSkill = false;   // <--- 이 줄을 추가합니다. 힐 스킬 종료 시 isExecutingSkill도 해제
 
-        // 보스 원래 로직으로 복귀 (Update에서 isExecutingSkill과 isHealingSkillActive가 false일 때 복귀)
         Debug.Log("[HealSkill] Boss returning to normal behavior.");
+        Debug.Log($"[HealSkill Debug] After HealSkillEnd: isHealingSkillActive={isHealingSkillActive}, isInvincible={isInvincible}, isExecutingSkill={isExecutingSkill}");
     }
 
 

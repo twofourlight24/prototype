@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage4_BossSword_0: -5355040240188542741
+      Stage4_BossSword_1: 7066815034955711589
+      Stage4_BossSword_2: -1115226118171601186
+      Stage4_BossSword_3: -642428039543219400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

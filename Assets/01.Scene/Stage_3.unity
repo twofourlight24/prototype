@@ -5064,7 +5064,7 @@ MonoBehaviour:
   smallMonsterLayer:
     serializedVersion: 2
     m_Bits: 0
-  sawtoothGunPrefab: {fileID: 0}
+  sawtoothGunPrefab: {fileID: 62174248}
   sawtoothGunUIIcon: {fileID: 0}
   sawtoothBulletPrefab: {fileID: 6399373076383103376, guid: 0048a58cfc663d847ba1e92da7dbdbd0, type: 3}
   sawtoothGunShootForce: 12

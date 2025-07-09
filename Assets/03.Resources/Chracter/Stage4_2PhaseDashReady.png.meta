@@ -735,7 +735,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage4_2PhaseDashReady_0: -5844900889545895320
+      Stage4_2PhaseDashReady_1: -484768523863377589
+      Stage4_2PhaseDashReady_10: 7589761080953020221
+      Stage4_2PhaseDashReady_11: 7349790594997054627
+      Stage4_2PhaseDashReady_12: -6175263217738228339
+      Stage4_2PhaseDashReady_13: -4861190123159515444
+      Stage4_2PhaseDashReady_14: -5612019651997069066
+      Stage4_2PhaseDashReady_15: -5372199529526491001
+      Stage4_2PhaseDashReady_16: -6102942882939278333
+      Stage4_2PhaseDashReady_17: 9569444366909324
+      Stage4_2PhaseDashReady_18: 6828671115956869613
+      Stage4_2PhaseDashReady_19: -8636724717795523289
+      Stage4_2PhaseDashReady_2: -5529300758458334382
+      Stage4_2PhaseDashReady_20: 6359594853480782723
+      Stage4_2PhaseDashReady_21: 7563157633818164060
+      Stage4_2PhaseDashReady_22: -281569639242668448
+      Stage4_2PhaseDashReady_23: -4483312574764581854
+      Stage4_2PhaseDashReady_3: -2923512613808542930
+      Stage4_2PhaseDashReady_4: 5882879098767986325
+      Stage4_2PhaseDashReady_5: 1127716477508337442
+      Stage4_2PhaseDashReady_6: -3075569414676347601
+      Stage4_2PhaseDashReady_7: 6866913427318576982
+      Stage4_2PhaseDashReady_8: -6432218887846552570
+      Stage4_2PhaseDashReady_9: 8585335117096477058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

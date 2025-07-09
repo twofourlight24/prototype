@@ -100,7 +100,7 @@ public class EnemyController : MonoBehaviour
     private void FacePlayer()
     {
         if (target == null || spriteRenderer == null) return;
-        spriteRenderer.flipX = (target.position.x < transform.position.x);
+        spriteRenderer.flipX = (target.position.x > transform.position.x);
     }
     private void MoveAndTrack()
     {
@@ -154,8 +154,19 @@ public class EnemyController : MonoBehaviour
                     rb.linearVelocity = shootDir * 8f;
                 }
                 fireCooldown = fireRate;
+
+                // 공격 애니메이션 트리거
+                if (animator != null)
+                    animator.SetBool("isAttack", true); // 애니메이션에서 이벤트로 false로 꺼줌
             }
         }
+    }
+
+    // 아래 메서드를 추가하세요 (애니메이션 이벤트에서 호출)
+    public void OnAttackAnimationEnd()
+    {
+        if (animator != null)
+            animator.SetBool("isAttack", false);
     }
 
     private void UpdateHpBar()

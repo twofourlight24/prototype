@@ -410,7 +410,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage4_BossDie_0: 4904464459654151164
+      Stage4_BossDie_1: 9136104768828540609
+      Stage4_BossDie_10: 4399412637641633462
+      Stage4_BossDie_2: 140659248901614986
+      Stage4_BossDie_3: 6240181681727062299
+      Stage4_BossDie_4: 8456357802293592708
+      Stage4_BossDie_5: -3914973540618373335
+      Stage4_BossDie_6: -9155416118734207682
+      Stage4_BossDie_7: -6450144303271008105
+      Stage4_BossDie_8: -5727416711151772379
+      Stage4_BossDie_9: -8924947097323067209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

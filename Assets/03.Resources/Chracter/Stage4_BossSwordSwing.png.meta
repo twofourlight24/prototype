@@ -1085,7 +1085,45 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage4_BossSwordSwing_0: 3818335396307984769
+      Stage4_BossSwordSwing_1: -2532163761286864991
+      Stage4_BossSwordSwing_10: 1944806492240009509
+      Stage4_BossSwordSwing_11: 1611845348498144846
+      Stage4_BossSwordSwing_12: 3283072867715732877
+      Stage4_BossSwordSwing_13: 2536843581146970976
+      Stage4_BossSwordSwing_14: 2003939753361635404
+      Stage4_BossSwordSwing_15: 5251348744930333743
+      Stage4_BossSwordSwing_16: 89378045361171740
+      Stage4_BossSwordSwing_17: -3611283772532181179
+      Stage4_BossSwordSwing_18: -8994027071985546516
+      Stage4_BossSwordSwing_19: 270367341136470637
+      Stage4_BossSwordSwing_2: 5736657610180840495
+      Stage4_BossSwordSwing_20: 4978527111320688181
+      Stage4_BossSwordSwing_21: -5103274368436671502
+      Stage4_BossSwordSwing_22: -3862151308842636317
+      Stage4_BossSwordSwing_23: -7416973270865804070
+      Stage4_BossSwordSwing_24: 1377057132474308330
+      Stage4_BossSwordSwing_25: 4712322233266719957
+      Stage4_BossSwordSwing_26: 3230449490714570517
+      Stage4_BossSwordSwing_27: 1070350289049036232
+      Stage4_BossSwordSwing_28: 4551986944493669609
+      Stage4_BossSwordSwing_29: 2762291617098105369
+      Stage4_BossSwordSwing_3: 4624936146198857583
+      Stage4_BossSwordSwing_30: 8147957157205726275
+      Stage4_BossSwordSwing_31: 6710241313448733129
+      Stage4_BossSwordSwing_32: -4147642942760022211
+      Stage4_BossSwordSwing_33: 5409511867432959842
+      Stage4_BossSwordSwing_34: -3111534054023421821
+      Stage4_BossSwordSwing_35: 7923320032300292527
+      Stage4_BossSwordSwing_36: -4296089422341943222
+      Stage4_BossSwordSwing_37: -7344721552041538323
+      Stage4_BossSwordSwing_4: 4529111565023436378
+      Stage4_BossSwordSwing_5: 5486082368692319874
+      Stage4_BossSwordSwing_6: -5282264103323803249
+      Stage4_BossSwordSwing_7: 8891533823124582758
+      Stage4_BossSwordSwing_8: -7423425286907197674
+      Stage4_BossSwordSwing_9: -8864781920712757978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
