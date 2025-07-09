@@ -247,6 +247,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1297,7 +1310,54 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage4_Boss2Phase_0: 5438876168486727070
+      Stage4_Boss2Phase_1: 1495694406647795093
+      Stage4_Boss2Phase_10: -6841377861923293112
+      Stage4_Boss2Phase_11: 8341332730659731765
+      Stage4_Boss2Phase_12: -6218501925944644779
+      Stage4_Boss2Phase_13: -751994967786567166
+      Stage4_Boss2Phase_14: -6089804197843068486
+      Stage4_Boss2Phase_15: 3610052171413742676
+      Stage4_Boss2Phase_16: 6672091233985617018
+      Stage4_Boss2Phase_17: -1347496990042786423
+      Stage4_Boss2Phase_18: -7245460928607535941
+      Stage4_Boss2Phase_19: 8691381855029550258
+      Stage4_Boss2Phase_2: -7047114595978135569
+      Stage4_Boss2Phase_20: 4157942998184951342
+      Stage4_Boss2Phase_21: 1376468763241585956
+      Stage4_Boss2Phase_22: 6937888498871768312
+      Stage4_Boss2Phase_23: 1267245293668395240
+      Stage4_Boss2Phase_24: 2751398362662127072
+      Stage4_Boss2Phase_25: 5721770171051650608
+      Stage4_Boss2Phase_26: 5662124270619284755
+      Stage4_Boss2Phase_27: -1337656359355478879
+      Stage4_Boss2Phase_28: 2374633828347142596
+      Stage4_Boss2Phase_29: -7836089887075533512
+      Stage4_Boss2Phase_3: -7962602483679977434
+      Stage4_Boss2Phase_30: -6629187118483214249
+      Stage4_Boss2Phase_31: -2192525332507276162
+      Stage4_Boss2Phase_32: 2129519484760664948
+      Stage4_Boss2Phase_33: 471257329356381248
+      Stage4_Boss2Phase_34: 2358756251428300837
+      Stage4_Boss2Phase_35: 1736405018943893129
+      Stage4_Boss2Phase_36: -7454784056927856306
+      Stage4_Boss2Phase_37: 8231170494748773396
+      Stage4_Boss2Phase_38: -3781642460005538515
+      Stage4_Boss2Phase_39: 8133750176247979025
+      Stage4_Boss2Phase_4: 2811502787826706408
+      Stage4_Boss2Phase_40: 8895797142589063883
+      Stage4_Boss2Phase_41: 3198957970877774708
+      Stage4_Boss2Phase_42: -4668824023015475503
+      Stage4_Boss2Phase_43: -5116681432269811324
+      Stage4_Boss2Phase_44: 2547006088980038059
+      Stage4_Boss2Phase_45: -6060153979583053557
+      Stage4_Boss2Phase_46: 3493944203127477468
+      Stage4_Boss2Phase_5: -4318186329792868176
+      Stage4_Boss2Phase_6: 6040092348467432408
+      Stage4_Boss2Phase_7: 1529098082483415446
+      Stage4_Boss2Phase_8: 8508738914617930290
+      Stage4_Boss2Phase_9: 2257523171737041046
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

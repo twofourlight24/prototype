@@ -148,7 +148,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -162,7 +162,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -183,7 +183,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -240,12 +240,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_0
       rect:
         serializedVersion: 2
-        x: 565
+        x: 0
         y: 0
-        width: 77
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,12 +262,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_1
       rect:
         serializedVersion: 2
-        x: 709
+        x: 140
         y: 0
-        width: 70
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -284,12 +284,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_2
       rect:
         serializedVersion: 2
-        x: 848
+        x: 279
         y: 0
-        width: 71
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -306,12 +306,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_3
       rect:
         serializedVersion: 2
-        x: 984
+        x: 420
         y: 0
-        width: 75
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -328,12 +328,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_4
       rect:
         serializedVersion: 2
-        x: 1119
+        x: 560
         y: 0
-        width: 93
+        width: 140
         height: 150
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,12 +350,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_5
       rect:
         serializedVersion: 2
-        x: 1268
+        x: 700
         y: 0
-        width: 72
-        height: 148
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_6
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 840
         y: 0
-        width: 72
-        height: 148
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -394,12 +394,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_7
       rect:
         serializedVersion: 2
-        x: 1550
+        x: 980
         y: 0
-        width: 138
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,12 +416,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_8
       rect:
         serializedVersion: 2
-        x: 1685
-        y: 142
-        width: 11
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1120
+        y: 0
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -438,12 +438,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_9
       rect:
         serializedVersion: 2
-        x: 1711
-        y: 122
-        width: 15
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1260
+        y: 0
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -460,12 +460,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_10
       rect:
         serializedVersion: 2
-        x: 1723
-        y: 99
-        width: 29
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1400
+        y: 0
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -482,12 +482,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_11
       rect:
         serializedVersion: 2
-        x: 1747
-        y: 132
-        width: 11
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1540
+        y: 0
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -504,12 +504,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_12
       rect:
         serializedVersion: 2
-        x: 1758
-        y: 127
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1680
+        y: 0
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -526,12 +526,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_13
       rect:
         serializedVersion: 2
-        x: 1764
-        y: 122
-        width: 12
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1820
+        y: 0
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -548,12 +548,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_14
       rect:
         serializedVersion: 2
-        x: 1771
-        y: 101
-        width: 14
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1960
+        y: 0
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -570,12 +570,12 @@ TextureImporter:
       name: Stage4_BossSwordSwing_15
       rect:
         serializedVersion: 2
-        x: 1776
-        y: 134
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2100
+        y: 0
+        width: 140
+        height: 150
+      alignment: 9
+      pivot: {x: 0.3, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -588,495 +588,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_16
-      rect:
-        serializedVersion: 2
-        x: 1685
-        y: 109
-        width: 12
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c1da874dbd88d3100800000000000000
-      internalID: 89378045361171740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_17
-      rect:
-        serializedVersion: 2
-        x: 1786
-        y: 90
-        width: 10
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5473613da8422edc0800000000000000
-      internalID: -3611283772532181179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_18
-      rect:
-        serializedVersion: 2
-        x: 1705
-        y: 92
-        width: 10
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cea0e0ac70cce2380800000000000000
-      internalID: -8994027071985546516
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_19
-      rect:
-        serializedVersion: 2
-        x: 1730
-        y: 88
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d626e4f0aa980c300800000000000000
-      internalID: 270367341136470637
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_20
-      rect:
-        serializedVersion: 2
-        x: 1773
-        y: 79
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 536dbe6c708471540800000000000000
-      internalID: 4978527111320688181
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_21
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 0
-        width: 44
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2fbe9fd00078d29b0800000000000000
-      internalID: -5103274368436671502
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_22
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 67
-        width: 12
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3ebef9fd8d1e66ac0800000000000000
-      internalID: -3862151308842636317
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_23
-      rect:
-        serializedVersion: 2
-        x: 158
-        y: 0
-        width: 47
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad40a716b1e911990800000000000000
-      internalID: -7416973270865804070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_24
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 67
-        width: 12
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae69c808a2a4c1310800000000000000
-      internalID: 1377057132474308330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_25
-      rect:
-        serializedVersion: 2
-        x: 286
-        y: 0
-        width: 59
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5dcc90daa18856140800000000000000
-      internalID: 4712322233266719957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_26
-      rect:
-        serializedVersion: 2
-        x: 316
-        y: 67
-        width: 12
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 51f22e632bcd4dc20800000000000000
-      internalID: 3230449490714570517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_27
-      rect:
-        serializedVersion: 2
-        x: 427
-        y: 0
-        width: 64
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8c5210cbae5aade00800000000000000
-      internalID: 1070350289049036232
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_28
-      rect:
-        serializedVersion: 2
-        x: 456
-        y: 67
-        width: 12
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ecc2c03208eb2f30800000000000000
-      internalID: 4551986944493669609
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_29
-      rect:
-        serializedVersion: 2
-        x: 1688
-        y: 0
-        width: 71
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9120c2b2791a55620800000000000000
-      internalID: 2762291617098105369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_30
-      rect:
-        serializedVersion: 2
-        x: 1689
-        y: 62
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34459506ddb531170800000000000000
-      internalID: 8147957157205726275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_31
-      rect:
-        serializedVersion: 2
-        x: 1758
-        y: 66
-        width: 6
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c923451ce09f1d50800000000000000
-      internalID: 6710241313448733129
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_32
-      rect:
-        serializedVersion: 2
-        x: 1830
-        y: 0
-        width: 70
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d3f02adf7bc9076c0800000000000000
-      internalID: -4147642942760022211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_33
-      rect:
-        serializedVersion: 2
-        x: 1970
-        y: 0
-        width: 71
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 26ff992f162721b40800000000000000
-      internalID: 5409511867432959842
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_34
-      rect:
-        serializedVersion: 2
-        x: 2110
-        y: 0
-        width: 65
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3802763734c91d4d0800000000000000
-      internalID: -3111534054023421821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_35
-      rect:
-        serializedVersion: 2
-        x: 1746
-        y: 55
-        width: 29
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fa9defef69945fd60800000000000000
-      internalID: 7923320032300292527
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_36
-      rect:
-        serializedVersion: 2
-        x: 1787
-        y: 0
-        width: 19
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a40def99e693164c0800000000000000
-      internalID: -4296089422341943222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stage4_BossSwordSwing_37
-      rect:
-        serializedVersion: 2
-        x: 1772
-        y: 38
-        width: 6
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dec886499ae421a90800000000000000
-      internalID: -7344721552041538323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 01c1facc1c8962c4a9799ca97701731f
     internalID: 0
     vertices: []
     indices: 

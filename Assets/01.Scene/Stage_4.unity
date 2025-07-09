@@ -783,6 +783,7 @@ GameObject:
   - component: {fileID: 145054986}
   - component: {fileID: 145054985}
   - component: {fileID: 145054987}
+  - component: {fileID: 145054988}
   m_Layer: 12
   m_Name: Boss
   m_TagString: Untagged
@@ -854,7 +855,7 @@ Transform:
   m_GameObject: {fileID: 145054981}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: -7.13, z: 0}
+  m_LocalPosition: {x: -0.15, y: -7.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -864,6 +865,7 @@ Transform:
   - {fileID: 1690947391}
   - {fileID: 588680610}
   - {fileID: 1113013967}
+  - {fileID: 720022297}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &145054984
@@ -878,7 +880,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2f1bd8dce64d3144abfcc2087967b6eb, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1006,6 +1008,61 @@ MonoBehaviour:
   healSlimeCount: 4
   healSlimeDuration: 10
   healAmountPerSlime: 50
+  is2PhaseActive: 0
+  isDying: 0
+  endingSceneName: Ending
+  minSkillInterval_Phase2: 5
+  maxSkillInterval_Phase2: 7
+  swordSkillPrefab: {fileID: 5830525630279422083, guid: 554c10f040f84714e88fc9758d46df7b, type: 3}
+  swordSpawnPoint: {fileID: 720022297}
+  phase1Collider: {fileID: 145054985}
+  phase2Collider: {fileID: 145054988}
+--- !u!61 &145054988
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145054981}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.110000014, y: -0.06025839}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 5}
+    newSize: {x: 0.5, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.6928272, y: 4.879483}
+  m_EdgeRadius: 0
 --- !u!1 &160433914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,6 +2947,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716406528}
   m_CullTransparentMesh: 1
+--- !u!1 &720022296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720022297}
+  m_Layer: 12
+  m_Name: SwordPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &720022297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720022296}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.63, y: 2.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 145054983}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &759892158
 GameObject:
   m_ObjectHideFlags: 0
