@@ -1,0 +1,915 @@
+fileFormatVersion: 2
+guid: f7a55c7b8045d7b459ed5a96a6d9641e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8993274370069015726
+    second: Stage4_2PhaseSkillCharge_0
+  - first:
+      213: -8587631068883423918
+    second: Stage4_2PhaseSkillCharge_1
+  - first:
+      213: 9039896305271747464
+    second: Stage4_2PhaseSkillCharge_2
+  - first:
+      213: 3212490433558865397
+    second: Stage4_2PhaseSkillCharge_3
+  - first:
+      213: 8776034139535894901
+    second: Stage4_2PhaseSkillCharge_4
+  - first:
+      213: -5846309748442049956
+    second: Stage4_2PhaseSkillCharge_5
+  - first:
+      213: 5607565910759594333
+    second: Stage4_2PhaseSkillCharge_6
+  - first:
+      213: 1742513255220384841
+    second: Stage4_2PhaseSkillCharge_7
+  - first:
+      213: -1132416109267946585
+    second: Stage4_2PhaseSkillCharge_8
+  - first:
+      213: 3477383525044225719
+    second: Stage4_2PhaseSkillCharge_9
+  - first:
+      213: -3287774968233176072
+    second: Stage4_2PhaseSkillCharge_10
+  - first:
+      213: -3487018595214413990
+    second: Stage4_2PhaseSkillCharge_11
+  - first:
+      213: 1919656593050657871
+    second: Stage4_2PhaseSkillCharge_12
+  - first:
+      213: 6430204522302493595
+    second: Stage4_2PhaseSkillCharge_13
+  - first:
+      213: 5459357205680150918
+    second: Stage4_2PhaseSkillCharge_14
+  - first:
+      213: -2930761329221167778
+    second: Stage4_2PhaseSkillCharge_15
+  - first:
+      213: 6010398280378667646
+    second: Stage4_2PhaseSkillCharge_16
+  - first:
+      213: -2157637207254773460
+    second: Stage4_2PhaseSkillCharge_17
+  - first:
+      213: 6838580412411970012
+    second: Stage4_2PhaseSkillCharge_18
+  - first:
+      213: 8994853138768662204
+    second: Stage4_2PhaseSkillCharge_19
+  - first:
+      213: 3411924287977982791
+    second: Stage4_2PhaseSkillCharge_20
+  - first:
+      213: 7412892520756552912
+    second: Stage4_2PhaseSkillCharge_21
+  - first:
+      213: 1449232629043822531
+    second: Stage4_2PhaseSkillCharge_22
+  - first:
+      213: -3899661607437924280
+    second: Stage4_2PhaseSkillCharge_23
+  - first:
+      213: -3852807148396883909
+    second: Stage4_2PhaseSkillCharge_24
+  - first:
+      213: 3225633721432018325
+    second: Stage4_2PhaseSkillCharge_25
+  - first:
+      213: 3877833803245542769
+    second: Stage4_2PhaseSkillCharge_26
+  - first:
+      213: 8276954182559154372
+    second: Stage4_2PhaseSkillCharge_27
+  - first:
+      213: -7242980181581563339
+    second: Stage4_2PhaseSkillCharge_28
+  - first:
+      213: 7035016826304192384
+    second: Stage4_2PhaseSkillCharge_29
+  - first:
+      213: -6376817239890203414
+    second: Stage4_2PhaseSkillCharge_30
+  - first:
+      213: -1931909412612376753
+    second: Stage4_2PhaseSkillCharge_31
+  - first:
+      213: 4761182564310485065
+    second: Stage4_2PhaseSkillCharge_32
+  - first:
+      213: -4948180530870044626
+    second: Stage4_2PhaseSkillCharge_33
+  - first:
+      213: 8867244015953073021
+    second: Stage4_2PhaseSkillCharge_34
+  - first:
+      213: -2954495545304940311
+    second: Stage4_2PhaseSkillCharge_35
+  - first:
+      213: 6435109929832676485
+    second: Stage4_2PhaseSkillCharge_36
+  - first:
+      213: -634271147108602845
+    second: Stage4_2PhaseSkillCharge_37
+  - first:
+      213: 6157974019837705488
+    second: Stage4_2PhaseSkillCharge_38
+  - first:
+      213: 8156758108401341022
+    second: Stage4_2PhaseSkillCharge_39
+  - first:
+      213: -3768982664488873414
+    second: Stage4_2PhaseSkillCharge_40
+  - first:
+      213: 5208341495950604232
+    second: Stage4_2PhaseSkillCharge_41
+  - first:
+      213: 7990287113594813348
+    second: Stage4_2PhaseSkillCharge_42
+  - first:
+      213: -8187980502131797655
+    second: Stage4_2PhaseSkillCharge_43
+  - first:
+      213: 1204770113227776110
+    second: Stage4_2PhaseSkillCharge_44
+  - first:
+      213: 5950789253227959795
+    second: Stage4_2PhaseSkillCharge_45
+  - first:
+      213: -7622559182785231773
+    second: Stage4_2PhaseSkillCharge_46
+  - first:
+      213: -3957538420604230252
+    second: Stage4_2PhaseSkillCharge_47
+  - first:
+      213: 1552888555195022781
+    second: Stage4_2PhaseSkillCharge_48
+  - first:
+      213: -8083910480459560683
+    second: Stage4_2PhaseSkillCharge_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 253596cdb98713380800000000000000
+      internalID: -8993274370069015726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c094beb18a7d69444aaae64c9cc540d1
+      internalID: -8587631068883423918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_2
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebcc85b1875febd4480acf3aa64e2305
+      internalID: 9039896305271747464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_3
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c549020b6f4653d46b7fb1b0ff6d7264
+      internalID: 3212490433558865397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_4
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c8e743fc2f47745aa503f14c6d23a4
+      internalID: 8776034139535894901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_5
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0095e24c5b3d304da986f61b903b412
+      internalID: -5846309748442049956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_6
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99fffc577d11b045a63d50c848f6a8e
+      internalID: 5607565910759594333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_7
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9704bc492969d34987a56fa60df87b1
+      internalID: 1742513255220384841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_8
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7acfe3357ddd544b8b144761857fd28
+      internalID: -1132416109267946585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_9
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdfc87179bb75de40ae35f14f89b0ce6
+      internalID: 3477383525044225719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_10
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d67e287d74fa614ba0aea82387e608d
+      internalID: -3287774968233176072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_11
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdab9378cd338fe4182ad6f447700adf
+      internalID: -3487018595214413990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_12
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b3b965ee49d7f4cae91261c5c90e54
+      internalID: 1919656593050657871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_13
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e411f7d448e5641b84c14d74f86390
+      internalID: 6430204522302493595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_14
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 352b868371b978340b232c5bd3a51cac
+      internalID: 5459357205680150918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_15
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 153e0b681348ecf4da36e20e52a4ec43
+      internalID: -2930761329221167778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_16
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2c3e9226d79bf24d83afbd413070c6f
+      internalID: 6010398280378667646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_17
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e6b3f2bdfd439459a7b6f42a9e172b
+      internalID: -2157637207254773460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_18
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ba12b5b6e0cca45a58f4d9a00ffe63
+      internalID: 6838580412411970012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_19
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed8ce5600f44824197067f162b0023f
+      internalID: 8994853138768662204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_20
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f10690e0b46a6c459f4d02ad2b69f1b
+      internalID: 3411924287977982791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_21
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e3196fef1828b4994640f4800ab904
+      internalID: 7412892520756552912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_22
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ac13fc8aa20f24081327df13c65581
+      internalID: 1449232629043822531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_23
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d1af9f9bce8bc149a8abddac8fd9ecc
+      internalID: -3899661607437924280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_24
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc69645dd7b303b45a850deb0bc6dc54
+      internalID: -3852807148396883909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseSkillCharge_25
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 0
+        width: 70
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22904aafb53771498b4dec7a42fda11
+      internalID: 3225633721432018325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 762553bc27a192042922e93034603028
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Stage4_2PhaseSkillCharge_0: -8993274370069015726
+      Stage4_2PhaseSkillCharge_1: -8587631068883423918
+      Stage4_2PhaseSkillCharge_10: -3287774968233176072
+      Stage4_2PhaseSkillCharge_11: -3487018595214413990
+      Stage4_2PhaseSkillCharge_12: 1919656593050657871
+      Stage4_2PhaseSkillCharge_13: 6430204522302493595
+      Stage4_2PhaseSkillCharge_14: 5459357205680150918
+      Stage4_2PhaseSkillCharge_15: -2930761329221167778
+      Stage4_2PhaseSkillCharge_16: 6010398280378667646
+      Stage4_2PhaseSkillCharge_17: -2157637207254773460
+      Stage4_2PhaseSkillCharge_18: 6838580412411970012
+      Stage4_2PhaseSkillCharge_19: 8994853138768662204
+      Stage4_2PhaseSkillCharge_2: 9039896305271747464
+      Stage4_2PhaseSkillCharge_20: 3411924287977982791
+      Stage4_2PhaseSkillCharge_21: 7412892520756552912
+      Stage4_2PhaseSkillCharge_22: 1449232629043822531
+      Stage4_2PhaseSkillCharge_23: -3899661607437924280
+      Stage4_2PhaseSkillCharge_24: -3852807148396883909
+      Stage4_2PhaseSkillCharge_25: 3225633721432018325
+      Stage4_2PhaseSkillCharge_26: 3877833803245542769
+      Stage4_2PhaseSkillCharge_27: 8276954182559154372
+      Stage4_2PhaseSkillCharge_28: -7242980181581563339
+      Stage4_2PhaseSkillCharge_29: 7035016826304192384
+      Stage4_2PhaseSkillCharge_3: 3212490433558865397
+      Stage4_2PhaseSkillCharge_30: -6376817239890203414
+      Stage4_2PhaseSkillCharge_31: -1931909412612376753
+      Stage4_2PhaseSkillCharge_32: 4761182564310485065
+      Stage4_2PhaseSkillCharge_33: -4948180530870044626
+      Stage4_2PhaseSkillCharge_34: 8867244015953073021
+      Stage4_2PhaseSkillCharge_35: -2954495545304940311
+      Stage4_2PhaseSkillCharge_36: 6435109929832676485
+      Stage4_2PhaseSkillCharge_37: -634271147108602845
+      Stage4_2PhaseSkillCharge_38: 6157974019837705488
+      Stage4_2PhaseSkillCharge_39: 8156758108401341022
+      Stage4_2PhaseSkillCharge_4: 8776034139535894901
+      Stage4_2PhaseSkillCharge_40: -3768982664488873414
+      Stage4_2PhaseSkillCharge_41: 5208341495950604232
+      Stage4_2PhaseSkillCharge_42: 7990287113594813348
+      Stage4_2PhaseSkillCharge_43: -8187980502131797655
+      Stage4_2PhaseSkillCharge_44: 1204770113227776110
+      Stage4_2PhaseSkillCharge_45: 5950789253227959795
+      Stage4_2PhaseSkillCharge_46: -7622559182785231773
+      Stage4_2PhaseSkillCharge_47: -3957538420604230252
+      Stage4_2PhaseSkillCharge_48: 1552888555195022781
+      Stage4_2PhaseSkillCharge_49: -8083910480459560683
+      Stage4_2PhaseSkillCharge_5: -5846309748442049956
+      Stage4_2PhaseSkillCharge_6: 5607565910759594333
+      Stage4_2PhaseSkillCharge_7: 1742513255220384841
+      Stage4_2PhaseSkillCharge_8: -1132416109267946585
+      Stage4_2PhaseSkillCharge_9: 3477383525044225719
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

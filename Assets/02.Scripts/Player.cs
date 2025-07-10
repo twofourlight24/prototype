@@ -512,7 +512,7 @@ public class Player : MonoBehaviour
     {
         if (isDead) return;
 
-        //if (weaponSwapTimer > 0f) return;
+        if (weaponSwapTimer > 0f) return;
 
         if (Input.GetKeyDown(swapWeaponKey) && swappableWeapons.Count > 1)
         {
@@ -853,10 +853,6 @@ public class Player : MonoBehaviour
                 gunScale.x = h > 0f ? Mathf.Abs(gunScale.x) : -Mathf.Abs(gunScale.x);
                 activeGunObject.transform.localScale = gunScale;
 
-                // **총 오브젝트의 로컬 위치 X 좌표도 반전시킵니다.**
-                // 주의: 총 오브젝트가 플레이어의 자식으로 있고, 로컬 위치가 플레이어의 중심을 기준으로 설정되어 있어야 정확하게 동작합니다.
-                // 만약 총 오브젝트의 피벗이 중앙이 아니라 총구 쪽에 있다면, 로컬 위치를 단순히 반전시키는 것보다 복잡한 계산이 필요할 수 있습니다.
-                // 여기서는 로컬 X 위치가 단순히 반전되는 것을 가정합니다.
                 Vector3 gunPosition = activeGunObject.transform.localPosition;
                 gunPosition.x = h > 0f ? Mathf.Abs(gunPosition.x) : -Mathf.Abs(gunPosition.x);
                 activeGunObject.transform.localPosition = gunPosition;

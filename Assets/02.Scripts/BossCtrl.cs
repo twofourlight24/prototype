@@ -60,6 +60,7 @@ public class BossCtrl : MonoBehaviour
     public Collider2D dashAttackCollider; // 대쉬 공격 콜라이더
     public float dashDamage = 50f; // 대쉬 공격 데미지
 
+    private bool isPhase2Dashing = false;
     private bool dashPhase2LeftToRight = true; // true: 왼→오, false: 오→왼
     [SerializeField] private Transform dashLeftEdge;  // 맵 왼쪽 끝 위치(Transform)
     [SerializeField] private Transform dashRightEdge; // 맵 오른쪽 끝 위치(Transform)
@@ -85,6 +86,12 @@ public class BossCtrl : MonoBehaviour
     [SerializeField] private float maxSkillInterval_Phase2 = 7f; // 2페이즈 최대 스킬 주기
     [SerializeField] private GameObject swordSkillPrefab; // 검기 프리팹 (인스펙터에서 연결)
     [SerializeField] private Transform swordSpawnPoint; // 검기 생성 위치 (보스 앞 등)
+
+    [Header("Blood Spike Skill")]
+    [SerializeField] private GameObject bloodSpikePrefab;
+    [SerializeField] private Transform bloodSpikePos;
+    [SerializeField] private GameObject[] safetyZone;
+    private bool isBloodSpikeSkillActive = false;
 
     // Components
     private Rigidbody2D rb;
@@ -286,7 +293,7 @@ public class BossCtrl : MonoBehaviour
         else // 특수 스킬 실행 중일 때 (힐 스킬 포함)
         {
             // 대쉬 스킬 중이 아닐 때만 이동 중단
-            if (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull"))
+            if (!isPhase2Dashing && !anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull"))
             {
                 rb.linearVelocity = Vector2.zero;
                 anim.SetBool(hashIsWalk, false);
@@ -560,15 +567,11 @@ public class BossCtrl : MonoBehaviour
                 {
                     // 2페이즈일 때 2페이즈 스킬 선택 및 실행
                     ChooseAndExecutePhase2Skill();
-                    // 다음 2페이즈 스킬 시간 설정
-                    SetNextSkillTime(minSkillInterval_Phase2, maxSkillInterval_Phase2);
                 }
                 else
                 {
                     // 1페이즈일 때 기존 스킬 선택 및 실행
                     ChooseAndExecuteSkill();
-                    // 다음 1페이즈 스킬 시간 설정
-                    SetNextSkillTime(minSkillInterval, maxSkillInterval);
                 }
             }
         }
@@ -615,10 +618,10 @@ public class BossCtrl : MonoBehaviour
         anim.SetBool(hashIsWalk, false);
 
         // 대쉬 준비 애니메이션 트리거
-        anim.SetTrigger("isDashReady"); // 준비 애니메이션 트리거(Animator에 맞게 수정)
+        anim.SetTrigger("isDashReady");
 
         // 대쉬 준비 애니메이션이 끝나면(이벤트에서 호출) 아래 함수 실행
-        yield return new WaitUntil(() => phase2DashReadyEnd); // phase2DashReadyEnd는 애니메이션 이벤트에서 true로 바꿔줌
+        yield return new WaitUntil(() => phase2DashReadyEnd);
         phase2DashReadyEnd = false;
 
         // 텔레포트: 맵 끝으로 이동
@@ -633,19 +636,69 @@ public class BossCtrl : MonoBehaviour
         // 실제 대쉬 이동
         float dashDir = dashPhase2LeftToRight ? 1f : -1f;
         transform.localScale = new Vector3(dashDir * Mathf.Abs(initialLocalScale.x), initialLocalScale.y, initialLocalScale.z);
-        rb.linearVelocity = new Vector2(dashDir * dashSpeed*10, 0);
 
-        dashAttackCollider.enabled = true; // 대쉬 공격 콜라이더 활성화
-
-        // 대쉬 지속 시간만큼 대기 (애니메이션 길이와 맞추기)
-        yield return new WaitForSeconds(0.9f);
+        // 대쉬 이동 코루틴 시작
+        yield return StartCoroutine(Phase2DashMove(dashDir));
 
         rb.linearVelocity = Vector2.zero;
-        dashAttackCollider.enabled = false; // 대쉬 공격 콜라이더 비활성화
+        dashAttackCollider.enabled = false;
         isExecutingSkill = false;
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
 
         // 방향 반전
         dashPhase2LeftToRight = !dashPhase2LeftToRight;
+    }
+
+    // 실제 대쉬 이동 처리 코루틴 추가
+    IEnumerator Phase2DashMove(float dashDir)
+    {
+        isPhase2Dashing = true;
+        float dashDuration = 1.1f;
+        float timer = 0f;
+        dashAttackCollider.enabled = true;
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(new Vector2(dashDir * 30f, 0), ForceMode2D.Impulse);
+
+        while (timer < dashDuration)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        rb.linearVelocity = Vector2.zero;
+        dashAttackCollider.enabled = false;
+        isPhase2Dashing = false;
+    }
+    IEnumerator BloodSpikeSkillRoutine()
+    {
+        isInvincible = true; // Blood Spike 스킬은 무적 상태로 시작
+        isExecutingSkill = true;
+        isBloodSpikeSkillActive = true;
+        rb.linearVelocity = Vector2.zero; // 이동 완전 정지
+
+        foreach (var zone in safetyZone)
+            if (zone != null) zone.SetActive(true);
+
+        anim.SetTrigger("isBloodSpike");
+
+        // 애니메이션 길이만큼 대기 (직접 시간 지정 권장)
+        yield return new WaitForSeconds(4.0f);
+
+        foreach (var zone in safetyZone)
+            if (zone != null) zone.SetActive(false);
+
+        isBloodSpikeSkillActive = false;
+        isExecutingSkill = false;
+        isInvincible = false; // 스킬 종료 후 무적 해제  
+
+        // 스킬 종료 후 쿨타임 초기화
+        SetNextSkillTime(minSkillInterval_Phase2, maxSkillInterval_Phase2);
+    }
+
+    // 3. 애니메이션 이벤트에서 호출될 함수
+    public void AnimationEvent_SpawnBloodSpike()
+    {
+        if (bloodSpikePrefab != null && bloodSpikePos != null)
+            Instantiate(bloodSpikePrefab, bloodSpikePos.position, Quaternion.identity);
     }
 
     // 3. 2페이즈 스킬 선택 함수에서 강화 대쉬 분기 추가
@@ -662,7 +715,7 @@ public class BossCtrl : MonoBehaviour
         StopAttackState();
 
         // 랜덤: 0=검기, 1=강화대쉬
-        int skill = Random.Range(0, 2);
+        int skill = Random.Range(0, 3);
         if (skill == 0)
         {
             // Player2가 살아있을 때만 검기 사용
@@ -679,10 +732,15 @@ public class BossCtrl : MonoBehaviour
                 StartCoroutine(Phase2DashSkillRoutine());
             }
         }
-        else
+        else if(skill == 1)
         {
             Debug.Log("[BossCtrl] Executing Phase 2: Dash Skill.");
             StartCoroutine(Phase2DashSkillRoutine());
+        }
+        else
+        {
+            Debug.Log("[BossCtrl] Executing Phase 2: Blood Spike Skill.");
+            StartCoroutine(BloodSpikeSkillRoutine());
         }
     }
 
@@ -696,10 +754,25 @@ public class BossCtrl : MonoBehaviour
     // --- 검기 스킬 실행 코루틴 (스킬 종료 처리) ---
     IEnumerator SwordSkillExecutionRoutine(float duration)
     {
+        // 1. 무적 처리
+        isInvincible = true;
+
+        // 2. 검기 발사 전 바라보는 방향 조정
+        if (player2Transform != null)
+        {
+            float dir = player2Transform.position.x - transform.position.x;
+            if (dir < 0)
+                transform.localScale = new Vector3(-Mathf.Abs(initialLocalScale.x), initialLocalScale.y, initialLocalScale.z);
+            else
+                transform.localScale = new Vector3(Mathf.Abs(initialLocalScale.x), initialLocalScale.y, initialLocalScale.z);
+        }
+
         // 여기에서 스킬 애니메이션이 진행될 동안 대기
         yield return new WaitForSeconds(duration);
 
         isExecutingSkill = false; // 스킬 실행 완료
+        isInvincible = false; // 무적 해제  
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
         Debug.Log("[BossCtrl] Sword Skill execution routine ended.");
     }
     public void SpawnSwordSkillProjectile()
@@ -738,6 +811,8 @@ public class BossCtrl : MonoBehaviour
 
         yield return new WaitForSeconds(thornAnimDuration);
         isExecutingSkill = false;
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
+
     }
 
     IEnumerator SpawnThornsRoutine()
@@ -769,11 +844,12 @@ public class BossCtrl : MonoBehaviour
 
         anim.SetTrigger("isFire");
         Debug.Log($"[FireSkill Debug] FireSkillRoutine STARTED at {Time.time}. Trigger 'isFire' set.");
-
+        rb.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(fireAnimDuration);
 
         isFireSkillActive = false;
         isExecutingSkill = false;
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
         Debug.Log($"[FireSkill Debug] FireSkillRoutine ENDED at {Time.time}. isExecutingSkill set to false.");
     }
 
@@ -804,6 +880,7 @@ public class BossCtrl : MonoBehaviour
         }
 
         rb.linearVelocity = Vector2.zero;
+
     }
 
     // 애니메이션 이벤트: 대쉬 움직임 시작 시 호출
@@ -855,8 +932,8 @@ public class BossCtrl : MonoBehaviour
         if (dashAttackCollider != null && dashAttackCollider.enabled)
         {
             dashAttackCollider.enabled = false;
-            
         }
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
     }
 
     // --- 힐 스킬 관련 코루틴 및 애니메이션 이벤트 ---
@@ -889,8 +966,8 @@ public class BossCtrl : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         anim.SetBool(hashIsWalk, false);
 
-        anim.SetTrigger(hashIsHeal); 
-  
+        anim.SetTrigger(hashIsHeal);
+
         yield return null;
     }
 
@@ -952,6 +1029,7 @@ public class BossCtrl : MonoBehaviour
         Debug.Log("[HealSkill] All HealSlimes destroyed. Triggering HealEnd animation.");
         anim.SetTrigger(hashIsHealEnd); // HealEnd 트리거 발동
 
+
         yield return null; // 다음 프레임까지 기다림 (이벤트가 바로 호출될 수 있도록)
     }
 
@@ -962,7 +1040,7 @@ public class BossCtrl : MonoBehaviour
         isHealingSkillActive = false; // 힐 스킬 종료
         isInvincible = false; // 무적 해제
         isExecutingSkill = false; // 힐 스킬 종료 시 isExecutingSkill도 해제
-
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
         Debug.Log($"[HealSkill Debug] After HealSkillEnd: isHealingSkillActive={isHealingSkillActive}, isInvincible={isInvincible}, isExecutingSkill={isExecutingSkill}");
     }
 
@@ -981,10 +1059,10 @@ public class BossCtrl : MonoBehaviour
         // 모든 현재 코루틴 중지 (일반 공격, 스킬 등)
         StopAllCoroutines();
         isAttacking = false;
-        isExecutingSkill = false;
+        isExecutingSkill = true;
         isHealingSkillActive = false;
         isFireSkillActive = false;
-        isInvincible = false; // 2페이즈 전환 애니메이션 중에는 무적 상태일 수 있지만, 일단 해제
+        isInvincible = true; // 2페이즈 전환 애니메이션 중에는 무적 상태일 수 있지만, 일단 해제
 
         rb.linearVelocity = Vector2.zero; // 이동 중단
         anim.SetBool(hashIsWalk, false);
@@ -1000,6 +1078,12 @@ public class BossCtrl : MonoBehaviour
 
         // 2페이즈 진입 후 다음 스킬 시간 재설정 (2페이즈 스킬 쿨타임으로)
         SetNextSkillTime(minSkillInterval_Phase2, maxSkillInterval_Phase2); 
+    }
+    public void OnPhase2TransitionEnd()
+    {
+        isInvincible = false;
+        isExecutingSkill = false;
+        Debug.Log("[Phase2] Transition animation ended. Boss can move and take damage again.");
     }
 
     // --- 보스 사망 로직 ---
