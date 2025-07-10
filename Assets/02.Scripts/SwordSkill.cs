@@ -23,20 +23,12 @@ public class SwordSkill : MonoBehaviour
     }
 
     // BossCtrl에서 타겟을 설정할 때 호출
-    public void SetTarget(Transform playerTarget)
+    public void SetTargetPosition(Vector3 targetPosition)
     {
-        target = playerTarget;
-        // 타겟 설정 직후 검기가 움직이도록 초기 방향 설정
-        if (target != null)
-        {
-            Vector2 direction = (target.position - transform.position).normalized;
-            rb.linearVelocity = direction * moveSpeed;
-        }
-        else
-        {
-            // 타겟이 없으면 그냥 앞으로 직진하도록 (예시: 보스의 현재 방향)
-            rb.linearVelocity = transform.right * moveSpeed;
-        }
+        // y좌표는 현재 검기 위치로 고정
+        Vector3 fixedTarget = new Vector3(targetPosition.x, transform.position.y, transform.position.z);
+        Vector2 direction = (fixedTarget - transform.position).normalized;
+        rb.linearVelocity = direction * moveSpeed;
     }
 
     void Update()

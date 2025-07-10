@@ -444,8 +444,8 @@ public class BossCtrl : MonoBehaviour
         if (isFireSkillActive ||
             isHealingSkillActive ||
             (isExecutingSkill && (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull")
-            && !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull"))) ||
-            is2PhaseActive) // 2페이즈 진입 애니메이션 중에도 플립 방지
+            && !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull")))
+           ) // 2페이즈 진입 애니메이션 중에도 플립 방지
         {
             return;
         }
@@ -613,6 +613,14 @@ public class BossCtrl : MonoBehaviour
             return;
         }
 
+        // Player2가 죽었으면 Sword 스킬 사용 금지
+        if (player2Component == null || player2Component.isDead)
+        {
+            Debug.Log("[BossCtrl] Player2 is dead. Sword Skill will not be used.");
+            isExecutingSkill = false;
+            return;
+        }
+
         StopAttackState(); // 일반 공격 중단
 
         Debug.Log("[BossCtrl] Executing Phase 2: Sword Skill.");
@@ -642,11 +650,13 @@ public class BossCtrl : MonoBehaviour
         SwordSkill swordSkill = sword.GetComponent<SwordSkill>();
         if (swordSkill != null)
         {
-            // 'Player2' 태그를 가진 플레이어 찾기
+            // Player2를 찾고, y좌표는 현재 보스 위치로 고정
             GameObject targetPlayer = GameObject.FindGameObjectWithTag("Player2");
             if (targetPlayer != null)
             {
-                swordSkill.SetTarget(targetPlayer.transform);
+                Vector3 targetPos = targetPlayer.transform.position;
+                targetPos.y = swordSpawnPoint.position.y; // y좌표를 보스(스폰 위치)와 동일하게 고정
+                swordSkill.SetTargetPosition(targetPos); // SetTargetPosition(Vector3)로 변경 필요
             }
             else
             {
@@ -920,6 +930,11 @@ public class BossCtrl : MonoBehaviour
         // 2페이즈 전환 애니메이션 트리거 발동
         anim.SetTrigger(hashIs2Phase);
 
+        anim.SetLayerWeight(anim.GetLayerIndex("BaseLayer"), 0f);
+        anim.SetLayerWeight(anim.GetLayerIndex("SkillLayer"), 0f);
+        anim.SetLayerWeight(anim.GetLayerIndex("2PhaseLayer"), 1f);
+        anim.SetLayerWeight(anim.GetLayerIndex("2PhaseSkillLayer"), 1f);
+
         // 2페이즈 진입 후 다음 스킬 시간 재설정 (2페이즈 스킬 쿨타임으로)
         SetNextSkillTime(minSkillInterval_Phase2, maxSkillInterval_Phase2); 
     }
@@ -988,6 +1003,28 @@ public class BossCtrl : MonoBehaviour
         SceneManager.LoadScene(endingSceneName);
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && attackCollider != null && attackCollider.enabled)
+        {
+            if (isInvincible) return;
+            Player player = other.GetComponent<Player>();
+            if (player != null && !player.isDead)
+            {
+                player.TakeDamage(20);
+            }
+        }
+        if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && fireTrigger != null && fireTrigger.enabled)
+        {
+            if (isInvincible) return;
+            Player player = other.GetComponent<Player>();
+            if (player != null && !player.isDead)
+            {
+                player.TakeDamage(30);
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         // 총알 충돌 처리
@@ -1002,6 +1039,7 @@ public class BossCtrl : MonoBehaviour
         {
             TakeDamage(30f);
         }
+
         // 대쉬 공격 콜라이더에 플레이어가 닿았을 때 데미지 추가
         else if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && dashAttackCollider != null && dashAttackCollider.enabled)
         {

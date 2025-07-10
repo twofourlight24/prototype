@@ -120,6 +120,10 @@ public class Player : MonoBehaviour
     [Tooltip("플레이어가 스왑할 수 있는 무기 목록. 첫 번째 무기가 시작 무기가 됩니다.")]
     public List<WeaponType> swappableWeapons = new List<WeaponType>();
     private int currentWeaponIndex = 0;
+    private float weaponSwapCooldown = 1.0f;
+    private float weaponSwapTimer = 0f;
+    private Dictionary<WeaponType, int> weaponBulletDict = new Dictionary<WeaponType, int>();
+
 
     public TextMeshProUGUI BulletCount;
     [Header("UI References")]
@@ -419,6 +423,9 @@ public class Player : MonoBehaviour
             currentShootTimer -= Time.deltaTime;
         }
 
+        if (weaponSwapTimer > 0f)
+            weaponSwapTimer -= Time.deltaTime;
+
         HandleWeaponInput();
         HandleWeaponSwapInput(); // 무기 스왑 입력 처리 추가
 
@@ -505,12 +512,23 @@ public class Player : MonoBehaviour
     {
         if (isDead) return;
 
+        if (weaponSwapTimer > 0f) return;
+
         if (Input.GetKeyDown(swapWeaponKey) && swappableWeapons.Count > 1)
         {
+            // 현재 무기 탄환 저장
+            if (currentWeaponType != WeaponType.VacuumCleaner && currentWeaponType != WeaponType.Katana)
+                weaponBulletDict[currentWeaponType] = currentBulletCount;
+
             currentWeaponIndex = (currentWeaponIndex + 1) % swappableWeapons.Count;
             ChangeWeapon(swappableWeapons[currentWeaponIndex]);
+
+            // 스왑 쿨타임 시작
+            weaponSwapTimer = weaponSwapCooldown;
         }
     }
+
+
 
     void FireDefaultGun(Vector2 direction)
     {
@@ -888,6 +906,16 @@ public class Player : MonoBehaviour
         currentWeaponType = newWeapon;
         CancelInvoke("ReloadComplete");
         InitializeWeaponStats();
+
+        // 탄환 복원 (총알 개념이 있는 무기만)
+        if (currentWeaponType != WeaponType.VacuumCleaner && currentWeaponType != WeaponType.Katana)
+        {
+            if (weaponBulletDict.TryGetValue(currentWeaponType, out int savedBullet))
+            {
+                currentBulletCount = Mathf.Clamp(savedBullet, 0, currentMaxBulletCount);
+            }
+        }
+        UpdateBulletUI();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
