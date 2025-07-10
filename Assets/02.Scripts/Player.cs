@@ -965,7 +965,7 @@ public class Player : MonoBehaviour
         {
             if (((1 << coll.gameObject.layer) & smallMonsterLayer) != 0)
             {
-                if (coll.CompareTag("SmallMonster"))
+                if (coll.CompareTag("SmallMonster")||coll.CompareTag("HealSlime"))
                 {
                     Rigidbody2D monsterRb = coll.GetComponent<Rigidbody2D>();
                     if (monsterRb != null)
