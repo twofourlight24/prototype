@@ -203,6 +203,7 @@ public class GameMgr : MonoBehaviour
     // RE 버튼 (Restart)
     public void OnClickRestart()
     {
+        SoundManager.Instance.PlayButtonClick();
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -210,6 +211,7 @@ public class GameMgr : MonoBehaviour
     // Exit 버튼 (TitleScene으로)
     public void OnClickExit()
     {
+        SoundManager.Instance.PlayButtonClick();
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("TitleScene");
     }

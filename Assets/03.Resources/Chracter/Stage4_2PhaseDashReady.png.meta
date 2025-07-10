@@ -1,0 +1,569 @@
+fileFormatVersion: 2
+guid: f1524c22546c3924f9d821428dec18ee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5844900889545895320
+    second: Stage4_2PhaseDashReady_0
+  - first:
+      213: -484768523863377589
+    second: Stage4_2PhaseDashReady_1
+  - first:
+      213: -5529300758458334382
+    second: Stage4_2PhaseDashReady_2
+  - first:
+      213: -2923512613808542930
+    second: Stage4_2PhaseDashReady_3
+  - first:
+      213: 5882879098767986325
+    second: Stage4_2PhaseDashReady_4
+  - first:
+      213: 1127716477508337442
+    second: Stage4_2PhaseDashReady_5
+  - first:
+      213: -3075569414676347601
+    second: Stage4_2PhaseDashReady_6
+  - first:
+      213: 6866913427318576982
+    second: Stage4_2PhaseDashReady_7
+  - first:
+      213: -6432218887846552570
+    second: Stage4_2PhaseDashReady_8
+  - first:
+      213: 8585335117096477058
+    second: Stage4_2PhaseDashReady_9
+  - first:
+      213: 7589761080953020221
+    second: Stage4_2PhaseDashReady_10
+  - first:
+      213: 7349790594997054627
+    second: Stage4_2PhaseDashReady_11
+  - first:
+      213: -6175263217738228339
+    second: Stage4_2PhaseDashReady_12
+  - first:
+      213: -4861190123159515444
+    second: Stage4_2PhaseDashReady_13
+  - first:
+      213: -5612019651997069066
+    second: Stage4_2PhaseDashReady_14
+  - first:
+      213: -5372199529526491001
+    second: Stage4_2PhaseDashReady_15
+  - first:
+      213: -6102942882939278333
+    second: Stage4_2PhaseDashReady_16
+  - first:
+      213: 9569444366909324
+    second: Stage4_2PhaseDashReady_17
+  - first:
+      213: 6828671115956869613
+    second: Stage4_2PhaseDashReady_18
+  - first:
+      213: -8636724717795523289
+    second: Stage4_2PhaseDashReady_19
+  - first:
+      213: 6359594853480782723
+    second: Stage4_2PhaseDashReady_20
+  - first:
+      213: 7563157633818164060
+    second: Stage4_2PhaseDashReady_21
+  - first:
+      213: -281569639242668448
+    second: Stage4_2PhaseDashReady_22
+  - first:
+      213: -4483312574764581854
+    second: Stage4_2PhaseDashReady_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 862904bcb9db2eea0800000000000000
+      internalID: -5844900889545895320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4935d09891c549f0800000000000000
+      internalID: -484768523863377589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2530bc3714af343b0800000000000000
+      internalID: -5529300758458334382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2b619564c89d67d0800000000000000
+      internalID: -2923512613808542930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59ec2aa1f5f24a150800000000000000
+      internalID: 5882879098767986325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_5
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22f3d31592476af00800000000000000
+      internalID: 1127716477508337442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25092499e16155d0800000000000000
+      internalID: -3075569414676347601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_7
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6571fa2316d2c4f50800000000000000
+      internalID: 6866913427318576982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_8
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60c1958300b2cb6a0800000000000000
+      internalID: -6432218887846552570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_9
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 281e83c4dcc352770800000000000000
+      internalID: 8585335117096477058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_10
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f1a48ad7f345960800000000000000
+      internalID: 7589761080953020221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_11
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ac6e44fa93bff560800000000000000
+      internalID: 7349790594997054627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_12
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d5d2842de0d4aa0800000000000000
+      internalID: -6175263217738228339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_13
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cce8073b655998cb0800000000000000
+      internalID: -4861190123159515444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseDashReady_14
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f0143a3cd91e12b0800000000000000
+      internalID: -5612019651997069066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fa2748e91d48aa045a87c4c174aaf08f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Stage4_2PhaseDashReady_0: -5844900889545895320
+      Stage4_2PhaseDashReady_1: -484768523863377589
+      Stage4_2PhaseDashReady_10: 7589761080953020221
+      Stage4_2PhaseDashReady_11: 7349790594997054627
+      Stage4_2PhaseDashReady_12: -6175263217738228339
+      Stage4_2PhaseDashReady_13: -4861190123159515444
+      Stage4_2PhaseDashReady_14: -5612019651997069066
+      Stage4_2PhaseDashReady_15: -5372199529526491001
+      Stage4_2PhaseDashReady_16: -6102942882939278333
+      Stage4_2PhaseDashReady_17: 9569444366909324
+      Stage4_2PhaseDashReady_18: 6828671115956869613
+      Stage4_2PhaseDashReady_19: -8636724717795523289
+      Stage4_2PhaseDashReady_2: -5529300758458334382
+      Stage4_2PhaseDashReady_20: 6359594853480782723
+      Stage4_2PhaseDashReady_21: 7563157633818164060
+      Stage4_2PhaseDashReady_22: -281569639242668448
+      Stage4_2PhaseDashReady_23: -4483312574764581854
+      Stage4_2PhaseDashReady_3: -2923512613808542930
+      Stage4_2PhaseDashReady_4: 5882879098767986325
+      Stage4_2PhaseDashReady_5: 1127716477508337442
+      Stage4_2PhaseDashReady_6: -3075569414676347601
+      Stage4_2PhaseDashReady_7: 6866913427318576982
+      Stage4_2PhaseDashReady_8: -6432218887846552570
+      Stage4_2PhaseDashReady_9: 8585335117096477058
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

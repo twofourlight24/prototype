@@ -1,180 +1,382 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement; // ì”¬ ì „í™˜ì„ ìœ„í•´ ì¶”ê°€
+using UnityEngine.UI;
 
 public class BossCtrl : MonoBehaviour
 {
+    // ë³´ìŠ¤ í•µì‹¬ ìŠ¤íƒ¯
     [Header("Boss Core Stats")]
     public float maxHp = 500f;
     public float currentHp;
-    public float phase2HpThreshold = 200f; // 2ÆäÀÌÁî ÀüÈ¯ Ã¼·Â
+    public float phase2HpThreshold = 200f; // 2í˜ì´ì¦ˆ ì „í™˜ ì²´ë ¥ (ê¸°ì¡´ ì‚¬ìš©)
     public float moveSpeed = 3f;
-    public float touchDamage = 30f; // ÇÃ·¹ÀÌ¾î¿Í ´ê¾ÒÀ» ¶§ ÁÖ´Â µ¥¹ÌÁö
+    public float touchDamage = 30f; // í”Œë ˆì´ì–´ì™€ ë‹¿ì•˜ì„ ë•Œ ì£¼ëŠ” ë°ë¯¸ì§€ (ì£¼ ì½œë¼ì´ë”ìš©)
+    public Image bossHpBar;
 
+    // í”Œë ˆì´ì–´ ê°ì§€
     [Header("Player Detection")]
-    public Transform player1Transform; // ÇÃ·¹ÀÌ¾î 1 Æ®·£½ºÆû (ÀÎ½ºÆåÅÍ¿¡¼­ ÇÒ´ç ±ÇÀå)
-    public Transform player2Transform; // ÇÃ·¹ÀÌ¾î 2 Æ®·£½ºÆû (ÀÎ½ºÆåÅÍ¿¡¼­ ÇÒ´ç ±ÇÀå)
-    private Transform currentTargetTransform; // ÇöÀç ÃßÀû ´ë»ó ÇÃ·¹ÀÌ¾îÀÇ Transform
-    private Transform furthestPlayerTransform; // °¡Àå ¸Õ ÇÃ·¹ÀÌ¾îÀÇ Transform (Thorn ½ºÅ³¿ë)
+    public Transform player1Transform;  
+    public Transform player2Transform;  
+    private Transform currentTargetTransform;  // í˜„ì¬ ì¶”ì  ëŒ€ìƒ í”Œë ˆì´ì–´ì˜ Transform
+    private Transform furthestPlayerTransform;  // ê°€ì¥ ë¨¼ í”Œë ˆì´ì–´ì˜ Transform
 
-    // Player ÄÄÆ÷³ÍÆ®¸¦ Ä³½ÌÇÏ¿© isDead »óÅÂ¸¦ È®ÀÎÇÒ ¼ö ÀÖµµ·Ï Ãß°¡
+    // Player ì»´í¬ë„ŒíŠ¸ ìºì‹±
     private Player player1Component;
     private Player player2Component;
 
+    // ê³µê²© ì„¤ì •
     [Header("Attack Settings")]
-    public float attackRangeX = 2f; // XÁÂÇ¥ ±âÁØ °ø°İ ¹üÀ§
-    public Collider2D attackCollider; // °ø°İ ½Ã È°¼ºÈ­µÉ Äİ¶óÀÌ´õ (¿¹: ±ÙÁ¢ °ø°İ ÆÇÁ¤)
+    public float attackRangeX = 2f;  // Xì¢Œí‘œ ê¸°ì¤€ ê³µê²© ë²”ìœ„
+    public Collider2D attackCollider; // ê³µê²© ì‹œ í™œì„±í™”ë  ì½œë¼ì´ë” (ì˜ˆ: ê·¼ì ‘ ê³µê²© íŒì •)
+    public float normalAttackAnimDuration = 1.0f;  // ì¼ë°˜ ê³µê²© ì• ë‹ˆë©”ì´ì…˜ ì§€ì† ì‹œê°„ (ì¶”ì •ì¹˜, Animatorì—ì„œ í™•ì¸ í•„ìš”)
 
+    // ìŠ¤í‚¬ ì„¤ì •
     [Header("Skill Settings")]
-    public float minSkillInterval = 7f; // ÃÖ¼Ò ½ºÅ³ ¹ßµ¿ ÁÖ±â
-    public float maxSkillInterval = 10f; // ÃÖ´ë ½ºÅ³ ¹ßµ¿ ÁÖ±â
+    public float minSkillInterval = 7f;  // ìµœì†Œ ìŠ¤í‚¬ ë°œë™ ì£¼ê¸° 
+    public float maxSkillInterval = 10f; // ìµœëŒ€ ìŠ¤í‚¬ ë°œë™ ì£¼ê¸°
     private float nextSkillTime;
-    private bool isExecutingSkill = false; // º¸½º ÀÌµ¿À» ¸ØÃß´Â Æ¯¼ö ½ºÅ³(°¡½Ã, ºÒ, ´ë½¬)ÀÌ ¹ßµ¿ ÁßÀÎÁö ¿©ºÎ
+    public bool isExecutingSkill = false; // ë³´ìŠ¤ ì´ë™ì„ ë©ˆì¶”ëŠ” ìŠ¤í‚¬ì´ ë°œë™ ì¤‘ì¸ì§€ ì—¬ë¶€
 
+    // Thorn ìŠ¤í‚¬
     [Header("Thorn Skill")]
     public GameObject thornPrefab;
-    public List<Transform> thornSpawners = new List<Transform>(); // 3°³ÀÇ Thorn Spawner
-    public float thornSpawnDelay = 0.1f; // °¢ Thorn ½ºÆ÷³Ê °£ÀÇ µô·¹ÀÌ
-    public float thornAnimDuration = 2.0f; // Thorn ¾Ö´Ï¸ŞÀÌ¼Ç ¿¹»ó Áö¼Ó ½Ã°£ (Animator¿¡¼­ Á¤È®ÇÑ ±æÀÌ È®ÀÎ ÈÄ ¼³Á¤)
+    public List<Transform> thornSpawners = new List<Transform>(); // 3ê°œì˜ Thorn Spawner
+    public float thornSpawnDelay = 0.1f; // ê° Thorn ìŠ¤í¬ë„ˆ ê°„ì˜ ë”œë ˆì´
+    public float thornAnimDuration = 2.0f; 
 
+    // Fire ìŠ¤í‚¬
     [Header("Fire Skill")]
-    public Collider2D fireTrigger; // Fire ½ºÅ³ ½Ã È°¼ºÈ­µÉ Æ®¸®°Å
-    public float fireAnimDuration = 1.5f; // Fire ¾Ö´Ï¸ŞÀÌ¼Ç ¿¹»ó Áö¼Ó ½Ã°£
+    public Collider2D fireTrigger; // Fire ìŠ¤í‚¬ ì‹œ í™œì„±í™”ë  íŠ¸ë¦¬ê±°
+    public float fireAnimDuration = 1.5f; // Fire ì• ë‹ˆë©”ì´ì…˜ ì˜ˆìƒ ì§€ì† ì‹œê°„
+    private bool isFireSkillActive = false; // Fire ìŠ¤í‚¬ì´ í˜„ì¬ í™œì„±í™”ë˜ì—ˆëŠ”ì§€ ì¶”ì í•˜ëŠ” ì „ìš© í”Œë˜ê·¸
 
+    // Dash ìŠ¤í‚¬
     [Header("Dash Skill")]
-    public float dashDistanceX = 10f; // ´ë½¬ ÀÌµ¿ °Å¸® (XÃà ±âÁØ)
-    public float dashPerMoveDuration = 0.5f; // °¢ ´ë½¬ ¿òÁ÷ÀÓÀÇ Áö¼Ó ½Ã°£ (Dash ¾Ö´Ï¸ŞÀÌ¼Ç°ú ¸ÂÃç¾ß ÇÔ)
-    private int dashCount = 0; // ´ë½¬ ½ºÅ³ Áß ¸î ¹ø ´ë½¬Çß´ÂÁö (Player1 -> Player2)
-    public float dashReadyAnimDuration = 1.0f; // DashReady ¾Ö´Ï¸ŞÀÌ¼Ç ¿¹»ó Áö¼Ó ½Ã°£
-    public float dashPauseBetweenDashes = 0.5f; // °¢ ´ë½¬ »çÀÌÀÇ ÂªÀº µô·¹ÀÌ
+    public float dashSpeed = 15f; // ëŒ€ì‰¬ ì‹œ ë³´ìŠ¤ì˜ ìˆœê°„ ì†ë„
+    public float dashReadyDuration = 0.608f; // ëŒ€ì‰¬ ì¤€ë¹„ ì• ë‹ˆë©”ì´ì…˜ ì‹œê°„ (ì°¸ê³ ìš©)
+    public float dashPerMoveDuration = 0.480f; // ì‹¤ì œ ëŒ€ì‰¬ ì´ë™ ì• ë‹ˆë©”ì´ì…˜ ì‹œê°„ (ì°¸ê³ ìš©)
+    public Collider2D dashAttackCollider; // ëŒ€ì‰¬ ê³µê²© ì½œë¼ì´ë”
+    public float dashDamage = 50f; // ëŒ€ì‰¬ ê³µê²© ë°ë¯¸ì§€
+
+    private bool isPhase2Dashing = false;
+    private bool dashPhase2LeftToRight = true; // true: ì™¼â†’ì˜¤, false: ì˜¤â†’ì™¼
+    [SerializeField] private Transform dashLeftEdge;  // ë§µ ì™¼ìª½ ë ìœ„ì¹˜(Transform)
+    [SerializeField] private Transform dashRightEdge; // ë§µ ì˜¤ë¥¸ìª½ ë ìœ„ì¹˜(Transform)
+
+    // Heal ìŠ¤í‚¬ 
+    [Header("Heal Skill")]
+    public float healSkillHpThreshold = 333.33f; // ë³´ìŠ¤ ì²´ë ¥ì˜ 2/3
+    public GameObject healSlimePrefab; // í ìŠ¬ë¼ì„ í”„ë¦¬íŒ¹
+    public int healSlimeCount = 4;
+    public float healSlimeDuration = 10f; // í ìŠ¬ë¼ì„ ì†Œí™˜ í›„ ì²´ë ¥ íšŒë³µê¹Œì§€ì˜ ì‹œê°„
+    public float healAmountPerSlime = 50f; // ìŠ¬ë¼ì„ í•˜ë‚˜ë‹¹ íšŒë³µë˜ëŠ” ì²´ë ¥
+    private bool isHealingSkillActive = false; // í ìŠ¤í‚¬ì´ í˜„ì¬ ì§„í–‰ ì¤‘ì¸ì§€ ì—¬ë¶€
+    private bool hasUsedHealSkill = false; // í ìŠ¤í‚¬ì„ ì´ë¯¸ ì‚¬ìš©í–ˆëŠ”ì§€ ì—¬ë¶€ (í•œ ë²ˆë§Œ ë°œë™)
+
+    // 2í˜ì´ì¦ˆ ë° ì‚¬ë§ ê´€ë ¨
+    [Header("Phase 2 & Death")]
+    public bool is2PhaseActive = false; // ë³´ìŠ¤ê°€ 2í˜ì´ì¦ˆ ìƒíƒœì¸ì§€ ì—¬ë¶€
+    public bool isDying = false; // ë³´ìŠ¤ê°€ ì‚¬ë§ ì• ë‹ˆë©”ì´ì…˜ ì¤‘ì¸ì§€ ì—¬ë¶€
+    public string endingSceneName = "EndingScene"; 
+
+    // --- 2í˜ì´ì¦ˆ ìŠ¤í‚¬ (ê²€ê¸°) ê´€ë ¨ ë³€ìˆ˜ ì¶”ê°€ ---
+    [SerializeField] private float minSkillInterval_Phase2 = 5f; // 2í˜ì´ì¦ˆ ìµœì†Œ ìŠ¤í‚¬ ì£¼ê¸°
+    [SerializeField] private float maxSkillInterval_Phase2 = 7f; // 2í˜ì´ì¦ˆ ìµœëŒ€ ìŠ¤í‚¬ ì£¼ê¸°
+    [SerializeField] private GameObject swordSkillPrefab; // ê²€ê¸° í”„ë¦¬íŒ¹ (ì¸ìŠ¤í™í„°ì—ì„œ ì—°ê²°)
+    [SerializeField] private Transform swordSpawnPoint; // ê²€ê¸° ìƒì„± ìœ„ì¹˜ (ë³´ìŠ¤ ì• ë“±)
+
+    [Header("Blood Spike Skill")]
+    [SerializeField] private GameObject bloodSpikePrefab;
+    [SerializeField] private Transform bloodSpikePos;
+    [SerializeField] private GameObject[] safetyZone;
+    private bool isBloodSpikeSkillActive = false;
 
     // Components
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer spriteRenderer;
-    private BoxCollider2D mainCollider; // º¸½ºÀÇ ÁÖ Äİ¶óÀÌ´õ (ÇÃ·¹ÀÌ¾î Á¢ÃË µ¥¹ÌÁö¿ë)
+    [SerializeField] private Collider2D phase1Collider; // 1í˜ì´ì¦ˆ ì½œë¼ì´ë” (ì‘ì€ í¬ê¸°)
+    [SerializeField] private Collider2D phase2Collider; // 2í˜ì´ì¦ˆ ì½œë¼ì´ë” (í° í¬ê¸°)
 
-    private Vector3 initialLocalScale; // º¸½ºÀÇ ÃÊ±â ·ÎÄÃ ½ºÄÉÀÏ ÀúÀå
+    private Vector3 initialLocalScale; // ë³´ìŠ¤ì˜ ì´ˆê¸° ë¡œì»¬ ìŠ¤ì¼€ì¼ ì €ì¥
+
+    // í˜„ì¬ ê³µê²© ì¤‘ì¸ì§€ í™•ì¸í•˜ëŠ” í”Œë˜ê·¸ (ì½”ë£¨í‹´ ì¤‘ë³µ ì‹¤í–‰ ë°©ì§€ ë° ìƒíƒœ ê´€ë¦¬)
+    private bool isAttacking = false;
+    private bool isInvincible = false; 
+
+    // ì• ë‹ˆë©”ì´í„° íŒŒë¼ë¯¸í„° í•´ì‹œ (ì„±ëŠ¥ ìµœì í™”)
+    private int hashIsAttack;
+    private int hashIsDash;
+    private int hashIsDashFinished;
+    private int hashIsWalk;
+    private int hashIsHeal; 
+    private int hashIsHealEnd; 
+    private int hashIs2Phase; 
+    private int hashIsDie; 
+    private int hashIsSword; 
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        mainCollider = GetComponent<BoxCollider2D>();
+
+        // --- ì½œë¼ì´ë” ì´ˆê¸° ì„¤ì • ---
+        // ê²Œì„ ì‹œì‘ ì‹œ (ë˜ëŠ” 1í˜ì´ì¦ˆ ì‹œì‘ ì‹œ) 1í˜ì´ì¦ˆ ì½œë¼ì´ë”ë§Œ í™œì„±í™”
+        if (phase1Collider != null)
+        {
+            phase1Collider.enabled = true;
+        }
+        if (phase2Collider != null)
+        {
+            phase2Collider.enabled = false;
+        }
 
         if (attackCollider != null) attackCollider.enabled = false;
         if (fireTrigger != null) fireTrigger.enabled = false;
+        if (dashAttackCollider != null) dashAttackCollider.enabled = false;
 
-        // ÀÎ½ºÆåÅÍ¿¡¼­ ÇÒ´çµÇÁö ¾Ê¾Ò´Ù¸é ÅÂ±×·Î Ã£°í Player ÄÄÆ÷³ÍÆ®µµ Ä³½Ì
-        if (player1Transform == null)
+        if (healSlimePrefab == null)
         {
-            GameObject p1Obj = GameObject.FindWithTag("Player1");
-            if (p1Obj != null)
-            {
-                player1Transform = p1Obj.transform;
-                player1Component = p1Obj.GetComponent<Player>();
-            }
+            Debug.LogWarning("HealSlimePrefab is not assigned in BossCtrl. Heal skill may not work!");
+        }
+        // ì—”ë”© ì”¬ ì´ë¦„ì´ ì„¤ì •ë˜ì§€ ì•Šì•˜ë‹¤ë©´ ê²½ê³ 
+        if (string.IsNullOrEmpty(endingSceneName))
+        {
+            Debug.LogWarning("EndingSceneName is not set in BossCtrl. Boss defeat may not work correctly!");
+        }
+
+        // í”Œë ˆì´ì–´ ë¶€í™œ ì´ë²¤íŠ¸ êµ¬ë…
+        Player.OnPlayerRevived += HandlePlayerRevived;
+
+        // ì´ˆê¸° í”Œë ˆì´ì–´ ì°¾ê¸° (Awakeì—ì„œ FindWithTag ì‚¬ìš©)
+        GameObject p1Obj = GameObject.FindWithTag("Player1");
+        if (p1Obj != null)
+        {
+            player1Transform = p1Obj.transform;
+            player1Component = p1Obj.GetComponent<Player>();
         }
         else
         {
-            player1Component = player1Transform.GetComponent<Player>();
+            Debug.LogWarning("Player1 object with tag 'Player1' not found in scene!");
         }
 
-        if (player2Transform == null)
+        GameObject p2Obj = GameObject.FindWithTag("Player2");
+        if (p2Obj != null)
         {
-            GameObject p2Obj = GameObject.FindWithTag("Player2");
-            if (p2Obj != null)
-            {
-                player2Transform = p2Obj.transform;
-                player2Component = p2Obj.GetComponent<Player>();
-            }
+            player2Transform = p2Obj.transform;
+            player2Component = p2Obj.GetComponent<Player>();
         }
         else
         {
-            player2Component = player2Transform.GetComponent<Player>();
+            Debug.LogWarning("Player2 object with tag 'Player2' not found in scene!");
         }
 
-        initialLocalScale = transform.localScale; // ÃÊ±â ·ÎÄÃ ½ºÄÉÀÏ ÀúÀå
+        initialLocalScale = transform.localScale; // ì´ˆê¸° ë¡œì»¬ ìŠ¤ì¼€ì¼ ì €ì¥
+
+        // Animator íŒŒë¼ë¯¸í„° í•´ì‹œ ê°’ ë¯¸ë¦¬ ê³„ì‚°
+        hashIsAttack = Animator.StringToHash("isAttack");
+        hashIsDash = Animator.StringToHash("isDash");
+        hashIsDashFinished = Animator.StringToHash("isDashFinished");
+        hashIsWalk = Animator.StringToHash("isWalk");
+        hashIsHeal = Animator.StringToHash("isHeal"); 
+        hashIsHealEnd = Animator.StringToHash("isHealEnd"); 
+        hashIs2Phase = Animator.StringToHash("is2Phase"); 
+        hashIsDie = Animator.StringToHash("isDie"); 
+        hashIsSword = Animator.StringToHash("isSword"); 
+    }
+    // ì˜¤ë¸Œì íŠ¸ íŒŒê´´ ì‹œ ì´ë²¤íŠ¸ êµ¬ë… í•´ì œ (ë©”ëª¨ë¦¬ ëˆ„ìˆ˜ ë°©ì§€)
+    void OnDestroy()
+    {
+        Player.OnPlayerRevived -= HandlePlayerRevived;
     }
 
     void Start()
     {
         currentHp = maxHp;
-        SetNextSkillTime();
+        // SetNextSkillTime() í˜¸ì¶œ ì‹œ ì¸ìë¥¼ ë„˜ê²¨ 1í˜ì´ì¦ˆ ì¿¨íƒ€ì„ìœ¼ë¡œ ì´ˆê¸°í™”
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
 
-        if (player1Transform == null || player2Transform == null)
+        if (player1Transform == null && player2Transform == null)
         {
-            Debug.LogWarning("Player 1 ¶Ç´Â Player 2 Æ®·£½ºÆûÀÌ ÇÒ´çµÇÁö ¾Ê¾Ò½À´Ï´Ù! ÇÃ·¹ÀÌ¾î ÃßÀûÀÌ Á¦´ë·Î ÀÛµ¿ÇÏÁö ¾ÊÀ» ¼ö ÀÖ½À´Ï´Ù.", this);
         }
+        // í ìŠ¤í‚¬ ì„ê³„ê°’ ê³„ì‚°
+        healSkillHpThreshold = maxHp * (2f / 3f);
     }
 
     void Update()
     {
-        UpdateTargetPlayer(); // ÇöÀç ÃßÀû ´ë»ó ÇÃ·¹ÀÌ¾î ¾÷µ¥ÀÌÆ®
+        if (bossHpBar != null)
+        {
+            bossHpBar.fillAmount = currentHp / maxHp;
+        }
 
-        // Á×¾úÀ» ¶§´Â ¾Æ¹«°Íµµ ÇÏÁö ¾ÊÀ½ (ÃßÈÄ ±¸Çö)
-        // if (currentHp <= 0) return; // ÁÖ¼® ÇØÁ¦ÇÏ¿© º¸½º Á×À½ ·ÎÁ÷ Ãß°¡ °¡´É
+        if (isDying)
+            return;
 
-        if (!isExecutingSkill) // Æ¯¼ö ½ºÅ³(°¡½Ã, ºÒ, ´ë½¬) ÁßÀÌ ¾Æ´Ò ¶§¸¸ ÀÏ¹İ ÀÌµ¿ ¹× ½ºÅ³ ÄğÅ¸ÀÓ Ã¼Å©
+        // ì‚¬ë§ ì¡°ê±´ ì²´í¬
+        if (currentHp <= 0 && !isDying)
+        {
+            Debug.Log("[Boss] HP reached 0. Initiating Boss Defeat sequence.");
+            BossDefeat();
+            return; // ì‚¬ë§ ë¡œì§ ì‹œì‘ í›„ Update ë£¨í”„ ì¢…ë£Œ
+        }
+
+        UpdateTargetPlayerState();
+        // ëª¨ë“  í”Œë ˆì´ì–´ê°€ ì£½ì—ˆì„ ê²½ìš°, ë³´ìŠ¤ëŠ” ì•„ë¬´ê²ƒë„ í•˜ì§€ ì•ŠìŒ (ì´ë™ ë° ìŠ¤í‚¬ ì¤‘ë‹¨)
+        if (player1Transform == null && player2Transform == null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            anim.SetBool(hashIsWalk, false);
+            anim.SetBool(hashIsAttack, false);
+            isExecutingSkill = false;
+            isFireSkillActive = false;
+            isHealingSkillActive = false; 
+            is2PhaseActive = false; 
+
+            StopAllCoroutines();
+            isAttacking = false;
+            isInvincible = false; 
+
+            if (attackCollider != null && attackCollider.enabled)
+            {
+                attackCollider.enabled = false;
+                Debug.Log("All players dead, Boss Attack Collider Disabled.");
+            }
+            if (fireTrigger != null && fireTrigger.enabled)
+            {
+                fireTrigger.enabled = false;
+                Debug.Log("All players dead, Boss Fire Trigger Disabled.");
+            }
+            if (dashAttackCollider != null && dashAttackCollider.enabled)
+            {
+                dashAttackCollider.enabled = false;
+                Debug.Log("All players dead, Boss Dash Attack Collider Disabled.");
+            }
+            // í ìŠ¬ë¼ì„ë“¤ë„ ì •ë¦¬
+            GameObject[] remainingSlimes = GameObject.FindGameObjectsWithTag("HealSlime");
+            foreach (GameObject slime in remainingSlimes)
+            {
+                if (slime != null) Destroy(slime);
+            }
+
+            return;
+        }
+
+        // 2í˜ì´ì¦ˆ ì „í™˜ ì¡°ê±´ ì²´í¬ (ì‚¬ë§ ë¡œì§ë³´ë‹¤ ë¨¼ì € ì²´í¬)
+        if (!is2PhaseActive && currentHp <= phase2HpThreshold)
+        {
+            Debug.Log($"[Phase2] HP dropped below {phase2HpThreshold}. Initiating Phase 2 transition.");
+            EnterPhase2();
+            // 2í˜ì´ì¦ˆ ì „í™˜ ì• ë‹ˆë©”ì´ì…˜ì´ ì§„í–‰ë˜ëŠ” ë™ì•ˆì€ ë‹¤ë¥¸ í–‰ë™ì„ í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ return
+            return;
+        }
+
+        // í ìŠ¤í‚¬ ë°œë™ ì¡°ê±´ ì²´í¬ (í•œ ë²ˆë§Œ ë°œë™)
+        if (!hasUsedHealSkill && currentHp <= healSkillHpThreshold && !isHealingSkillActive)
+        {
+            Debug.Log($"[HealSkill] HP dropped below {healSkillHpThreshold}. Initiating heal skill sequence.");
+            hasUsedHealSkill = true; // ìŠ¤í‚¬ ë°œë™ í”Œë˜ê·¸ ì„¤ì •
+            StartCoroutine(HealSkillDelayAndStart());
+        }
+
+        // í”Œë ˆì´ì–´ê°€ í•œ ëª…ì´ë¼ë„ ì‚´ì•„ìˆë‹¤ë©´
+        // íŠ¹ìˆ˜ ìŠ¤í‚¬(ê°€ì‹œ, ë¶ˆ, ëŒ€ì‰¬, í, ê²€ê¸°) ì¤‘ì´ ì•„ë‹ ë•Œë§Œ ì¼ë°˜ ì´ë™ ë° ìŠ¤í‚¬ ì¿¨íƒ€ì„ ì²´í¬
+        if (!isExecutingSkill && !isHealingSkillActive)
         {
             HandleMovementAndAttackDecision();
-            CheckSkillCooldown(); // ½ºÅ³ ÄğÅ¸ÀÓ Ã¼Å©
+            CheckSkillCooldown(); // ìŠ¤í‚¬ ì¿¨íƒ€ì„ ì²´í¬
         }
-        else // Æ¯¼ö ½ºÅ³ ½ÇÇà ÁßÀÏ ¶§
+        else // íŠ¹ìˆ˜ ìŠ¤í‚¬ ì‹¤í–‰ ì¤‘ì¼ ë•Œ (í ìŠ¤í‚¬ í¬í•¨)
         {
-            // Dash ¾Ö´Ï¸ŞÀÌ¼Ç »óÅÂÀÏ ¶§¸¸ ÀÌµ¿À» Çã¿ë (DashRoutine¿¡¼­ Á¦¾î)
-            // ±× ¿ÜÀÇ ½ºÅ³ (Attack, Thorn, Fire, DashReady) Áß¿¡´Â ÀÌµ¿À» ¸ØÃã
-            // NOTE: SkillLayer ÀÎµ¦½º°¡ 1¹øÀÌ¶ó¸é GetCurrentAnimatorStateInfo(1)·Î º¯°æÇØ¾ß ÇÕ´Ï´Ù.
-            // (ÀÌÀü ´ëÈ­¿¡¼­ 1¹øÀ¸·Î º¯°æÇÏ¿© ÇØ°áµÇ¼Ì´Ù°í ÇÏ¼ÌÀ¸¹Ç·Î 1·Î º¯°æ)
-            if (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash"))
+            // ëŒ€ì‰¬ ìŠ¤í‚¬ ì¤‘ì´ ì•„ë‹ ë•Œë§Œ ì´ë™ ì¤‘ë‹¨
+            if (!isPhase2Dashing && !anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull"))
             {
-                rb.linearVelocity = Vector2.zero; // ÀÌµ¿ Áß´Ü
-                anim.SetBool("isWalk", false);
+                rb.linearVelocity = Vector2.zero;
+                anim.SetBool(hashIsWalk, false);
+            }
+            if (isAttacking)
+            {
+                StopAttackState();
+            }
+        }
+        // Attack Collider ìë™ ë¹„í™œì„±í™” ë¡œì§ (ì¼ë°˜ ê³µê²©ìš©)
+        if (attackCollider != null && attackCollider.enabled)
+        {
+            if (!anim.GetBool(hashIsAttack) || !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossAttack"))
+            {
+                attackCollider.enabled = false;
             }
         }
 
-        FlipSprite();
+        if (!isFireSkillActive && !isHealingSkillActive)
+        {
+            // isExecutingSkillì´ falseì´ê±°ë‚˜ ëŒ€ì‰¬ ì¤‘ì¼ ë•Œë§Œ FlipSprite í˜¸ì¶œ
+            if (!isExecutingSkill || anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull") || anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull"))
+            {
+                FlipSprite();
+            }
+        }
+
     }
 
-    void UpdateTargetPlayer()
+
+    // í”Œë ˆì´ì–´ê°€ ë¶€í™œí–ˆì„ ë•Œ í˜¸ì¶œë  ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
+    private void HandlePlayerRevived(Transform revivedPlayerTransform, Player revivedPlayerComponent)
     {
-        // Á×Àº ÇÃ·¹ÀÌ¾î´Â null·Î Ã³¸®ÇÏ¿© ÃßÀû ´ë»ó¿¡¼­ Á¦¿Ü
+        if (revivedPlayerComponent.playerType == Player.PlayerType.Player1)
+        {
+            player1Transform = revivedPlayerTransform;
+            player1Component = revivedPlayerComponent;
+        }
+        else if (revivedPlayerComponent.playerType == Player.PlayerType.Player2)
+        {
+            player2Transform = revivedPlayerTransform;
+            player2Component = revivedPlayerComponent;
+        }
+    }
+
+    // UpdateTargetPlayer í•¨ìˆ˜ë¥¼ í”Œë ˆì´ì–´ì˜ ì‚¬ë§ ì—¬ë¶€ë§Œ ì²´í¬í•˜ë„ë¡ ë³€ê²½
+    void UpdateTargetPlayerState()
+    {
+        Transform prevTargetTransform = currentTargetTransform;
         if (player1Component != null && player1Component.isDead)
         {
             player1Transform = null;
             player1Component = null;
         }
+
         if (player2Component != null && player2Component.isDead)
         {
             player2Transform = null;
             player2Component = null;
         }
 
+        float distToP1 = (player1Transform != null) ?
+       Vector2.Distance(transform.position, player1Transform.position) : float.MaxValue;
+        float distToP2 = (player2Transform != null) ? Vector2.Distance(transform.position, player2Transform.position) : float.MaxValue;
+
         if (player1Transform == null && player2Transform == null)
         {
             currentTargetTransform = null;
             furthestPlayerTransform = null;
-            return; // ÃßÀûÇÒ ÇÃ·¹ÀÌ¾î°¡ ¾øÀ¸¸é Á¾·á
         }
-
-        float distToP1 = (player1Transform != null) ? Vector2.Distance(transform.position, player1Transform.position) : float.MaxValue;
-        float distToP2 = (player2Transform != null) ? Vector2.Distance(transform.position, player2Transform.position) : float.MaxValue;
-
-        // ÇÃ·¹ÀÌ¾î°¡ ÇÑ ¸í¸¸ ³²¾ÒÀ» °æ¿ì
-        if (player1Transform == null)
+        else if (player1Transform == null)
         {
             currentTargetTransform = player2Transform;
-            furthestPlayerTransform = player2Transform; // ³²Àº ÇÑ ¸íÀ» °¡Àå ¸Õ ÇÃ·¹ÀÌ¾î·Îµµ ¼³Á¤
+            furthestPlayerTransform = player2Transform;
         }
         else if (player2Transform == null)
         {
             currentTargetTransform = player1Transform;
-            furthestPlayerTransform = player1Transform; // ³²Àº ÇÑ ¸íÀ» °¡Àå ¸Õ ÇÃ·¹ÀÌ¾î·Îµµ ¼³Á¤
+            furthestPlayerTransform = player1Transform;
         }
-        // ÇÃ·¹ÀÌ¾î°¡ µÎ ¸í ¸ğµÎ »ì¾ÆÀÖ´Â °æ¿ì
         else
         {
+            // ë‘˜ ë‹¤ ì‚´ì•„ìˆìœ¼ë©´ ë” ê°€ê¹Œìš´ í”Œë ˆì´ì–´ë¥¼ currentTargetìœ¼ë¡œ
             if (distToP1 <= distToP2)
             {
                 currentTargetTransform = player1Transform;
@@ -186,34 +388,56 @@ public class BossCtrl : MonoBehaviour
                 furthestPlayerTransform = player1Transform;
             }
         }
+
+        if (prevTargetTransform != currentTargetTransform)
+        {
+            StopAttackState(); // ê³µê²© ìƒíƒœë¥¼ í™•ì‹¤íˆ ì¢…ë£Œí•˜ëŠ” í•¨ìˆ˜ í˜¸ì¶œ
+        }
+    }
+
+    // ê³µê²© ìƒíƒœë¥¼ ë¦¬ì…‹í•˜ëŠ” ì „ìš© í•¨ìˆ˜
+    void StopAttackState()
+    {
+        if (isAttacking)
+        {
+            StopCoroutine("AttackRoutine");
+            isAttacking = false;
+            anim.SetBool(hashIsAttack, false);
+
+            if (attackCollider != null && attackCollider.enabled)
+            {
+                attackCollider.enabled = false;
+                Debug.Log("StopAttackState: Attack Collider Disabled.");
+            }
+        }
     }
 
     void HandleMovementAndAttackDecision()
     {
         if (currentTargetTransform == null)
         {
-            anim.SetBool("isWalk", false);
-            anim.SetBool("isAttack", false);
+            anim.SetBool(hashIsWalk, false);
+            anim.SetBool(hashIsAttack, false);
             rb.linearVelocity = Vector2.zero;
+            StopAttackState();
             return;
         }
 
         float distanceX = Mathf.Abs(transform.position.x - currentTargetTransform.position.x);
-
-        if (!isExecutingSkill)
+        if (!isExecutingSkill && !isHealingSkillActive) // í ìŠ¤í‚¬ ì¤‘ì—ë„ ì´ë™ ë° ê³µê²© ì¤‘ë‹¨
         {
             if (distanceX <= attackRangeX)
             {
-                if (!anim.GetBool("isAttack"))
+                if (!isAttacking)
                 {
                     StartCoroutine(AttackRoutine());
                 }
             }
-            else
+            else // ê³µê²© ë²”ìœ„ ë°–ì— ìˆë‹¤ë©´ ì´ë™ ì‹œì‘
             {
                 MoveTowardsPlayer(currentTargetTransform);
-                anim.SetBool("isWalk", true);
-                anim.SetBool("isAttack", false);
+                anim.SetBool(hashIsWalk, true);
+                StopAttackState();
             }
         }
     }
@@ -221,46 +445,51 @@ public class BossCtrl : MonoBehaviour
     void MoveTowardsPlayer(Transform target)
     {
         if (target == null) return;
-
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
     }
 
     void FlipSprite()
     {
-        Vector3 currentScale = transform.localScale;
+        // 2í˜ì´ì¦ˆ ì „í™˜ ì• ë‹ˆë©”ì´ì…˜ ì¤‘ì—ëŠ” Flipì„ í•˜ì§€ ì•Šë„ë¡ is2PhaseActive ì¡°ê±´ ì¶”ê°€
+        if (isFireSkillActive ||
+            isHealingSkillActive ||
+            (isExecutingSkill && (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDashFull")
+            && !anim.GetCurrentAnimatorStateInfo(0).IsName("Stage4_BossDashFull")))
+           ) // 2í˜ì´ì¦ˆ ì§„ì… ì• ë‹ˆë©”ì´ì…˜ ì¤‘ì—ë„ í”Œë¦½ ë°©ì§€
+        {
+            return;
+        }
 
-        // ÀÏ¹İ ÀÌµ¿ Áß ¹æÇâ ÀüÈ¯
+        // ì´ë™ ë°©í–¥ì— ë”°ë¥¸ ë’¤ì§‘ê¸°
         if (rb.linearVelocity.x > 0.1f)
         {
-            transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ¿À¸¥ÂÊ
+            transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
         }
         else if (rb.linearVelocity.x < -0.1f)
         {
-            transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ¿ŞÂÊ
+            transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
         }
-        // ´ë½¬ Áß¿¡´Â rb.linearVelocity°¡ 0ÀÏ ¼ö ÀÖÀ¸¹Ç·Î, Á÷Á¢ target ¹æÇâÀ» º¸°í µÚÁı´Â ·ÎÁ÷ Ãß°¡
-        // NOTE: SkillLayer ÀÎµ¦½º°¡ 1¹øÀÌ¶ó¸é GetCurrentAnimatorStateInfo(1)·Î º¯°æÇØ¾ß ÇÕ´Ï´Ù.
-        else if (isExecutingSkill && anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash") && currentTargetTransform != null)
+        // ì´ë™ ì¤‘ì´ì§€ ì•Šì„ ë•Œ, ê·¸ë¦¬ê³  ìŠ¤í‚¬ ì¤‘ì´ ì•„ë‹ ë•Œ (ê¸°ë³¸ì ìœ¼ë¡œ í”Œë ˆì´ì–´ ë°©í–¥ ë°”ë¼ë³´ê¸°)
+        else if (!isExecutingSkill && currentTargetTransform != null)
         {
             if (currentTargetTransform.position.x < transform.position.x)
             {
-                transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ¿ŞÂÊ
+                transform.localScale = new Vector3(-initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
             }
             else
             {
-                transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z); // ¿À¸¥ÂÊ
+                transform.localScale = new Vector3(initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
             }
         }
     }
 
-    // --- ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ® (Animator Controller¿¡ ¿¬°á) ---
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ (Animator Controllerì— ì—°ê²°)
     public void AnimationEvent_AttackStart()
     {
         if (attackCollider != null)
         {
             attackCollider.enabled = true;
-            Debug.Log("Attack Collider Enabled");
         }
     }
 
@@ -269,9 +498,9 @@ public class BossCtrl : MonoBehaviour
         if (attackCollider != null)
         {
             attackCollider.enabled = false;
-            Debug.Log("Attack Collider Disabled");
         }
-        anim.SetBool("isAttack", false);
+        anim.SetBool(hashIsAttack, false);
+        isAttacking = false;
     }
 
     public void AnimationEvent_FireStart()
@@ -279,7 +508,6 @@ public class BossCtrl : MonoBehaviour
         if (fireTrigger != null)
         {
             fireTrigger.enabled = true;
-            Debug.Log($"[FireSkill Debug] FireTrigger ENABLED by AnimationEvent_FireStart at {Time.time}");
         }
         else
         {
@@ -292,7 +520,6 @@ public class BossCtrl : MonoBehaviour
         if (fireTrigger != null)
         {
             fireTrigger.enabled = false;
-            Debug.Log($"[FireSkill Debug] Fire Trigger DISABLED by AnimationEvent_FireEnd at {Time.time}");
         }
         else
         {
@@ -305,81 +532,287 @@ public class BossCtrl : MonoBehaviour
         StartCoroutine(SpawnThornsRoutine());
     }
 
-    public void AnimationEvent_ThornEnd()
-    {
-        // ÄÚ·çÆ¾¿¡¼­ isExecutingSkill °ü¸®
-    }
-
-    public void AnimationEvent_DashReadyEnd()
-    {
-        // Animator¿¡¼­ TransitionÀ¸·Î Ã³¸®
-    }
-
-    public void AnimationEvent_DashEnd()
-    {
-        // DashRoutine¿¡¼­ isExecutingSkillÀ» false·Î ¼³Á¤ÇÕ´Ï´Ù.
-    }
-
-
-    // --- °ø°İ/½ºÅ³ ÄÚ·çÆ¾ ---
+    // ê³µê²©/ìŠ¤í‚¬ ì½”ë£¨í‹´
 
     IEnumerator AttackRoutine()
     {
-        anim.SetBool("isAttack", true);
-        anim.SetBool("isWalk", false);
-        yield return null;
+        if (isAttacking) yield break;
+        isAttacking = true;
+        anim.SetBool(hashIsAttack, true);
+        anim.SetBool(hashIsWalk, false);
+        rb.linearVelocity = Vector2.zero;
+
+        yield return new WaitForSeconds(normalAttackAnimDuration);
+
+        StopAttackState();
     }
 
-    void SetNextSkillTime()
+    // --- ìŠ¤í‚¬ ì£¼ê¸° ì„¤ì • í•¨ìˆ˜ (í˜ì´ì¦ˆì— ë”°ë¼ ì¿¨íƒ€ì„ ë²”ìœ„ ë°›ë„ë¡ ìˆ˜ì •) ---
+    void SetNextSkillTime(float minInterval, float maxInterval)
     {
-        nextSkillTime = Time.time + Random.Range(minSkillInterval, maxSkillInterval);
+        nextSkillTime = Time.time + Random.Range(minInterval, maxInterval);
+        Debug.Log($"[BossCtrl] Next skill will be at: {nextSkillTime:F2} seconds.");
     }
 
+    // --- ìŠ¤í‚¬ ì¿¨íƒ€ì„ ì²´í¬ í•¨ìˆ˜ (2í˜ì´ì¦ˆ ìŠ¤í‚¬ ë¶„ê¸° ë¡œì§ ì¶”ê°€) ---
     void CheckSkillCooldown()
     {
-        // ¸ğµç ÇÃ·¹ÀÌ¾î°¡ Á×À¸¸é ½ºÅ³ ¹ßµ¿ÇÏÁö ¾ÊÀ½
         if (currentTargetTransform == null) return;
 
-        if (Time.time >= nextSkillTime && !isExecutingSkill)
+        if (!isExecutingSkill && !isHealingSkillActive) // í ìŠ¤í‚¬ ì¤‘ì—ëŠ” ë‹¤ë¥¸ ìŠ¤í‚¬ ë°œë™ ì•ˆ í•¨ 
         {
-            ChooseAndExecuteSkill();
-            SetNextSkillTime();
+            if (Time.time >= nextSkillTime)
+            {
+                if (is2PhaseActive)
+                {
+                    // 2í˜ì´ì¦ˆì¼ ë•Œ 2í˜ì´ì¦ˆ ìŠ¤í‚¬ ì„ íƒ ë° ì‹¤í–‰
+                    ChooseAndExecutePhase2Skill();
+                }
+                else
+                {
+                    // 1í˜ì´ì¦ˆì¼ ë•Œ ê¸°ì¡´ ìŠ¤í‚¬ ì„ íƒ ë° ì‹¤í–‰
+                    ChooseAndExecuteSkill();
+                }
+            }
         }
     }
 
+    // --- 1í˜ì´ì¦ˆ ìŠ¤í‚¬ ì„ íƒ ë° ì‹¤í–‰ í•¨ìˆ˜ ---
     void ChooseAndExecuteSkill()
     {
-        isExecutingSkill = true; // Æ¯¼ö ½ºÅ³ ¹ßµ¿ ½ÃÀÛ ÇÃ·¡±×, ÀÌµ¿ ¹× ´Ù¸¥ ½ºÅ³ ¹æÁö
-
-        // ÃßÀûÇÒ ÇÃ·¹ÀÌ¾î°¡ ¾øÀ¸¸é ½ºÅ³ ¼±ÅÃÇÏÁö ¾ÊÀ½ (currentTargetTransformÀÌ nullÀÏ ¶§)
+        isExecutingSkill = true;
         if (currentTargetTransform == null)
         {
             isExecutingSkill = false;
             return;
         }
 
-        int skillChoice = Random.Range(0, 3); // 0: Thorn, 1: Fire, 2: Dash
+        StopAttackState(); // ì¼ë°˜ ê³µê²© ì¤‘ë‹¨
 
-        switch (skillChoice)
+        // 2í˜ì´ì¦ˆê°€ ì•„ë‹ ë•Œë§Œ ê¸°ì¡´ ìŠ¤í‚¬ ì„ íƒ
+        if (!is2PhaseActive)
         {
-            case 0:
-                StartCoroutine(ThornSkillRoutine());
-                break;
-            case 1:
-                StartCoroutine(FireSkillRoutine());
-                break;
-            case 2:
-                StartCoroutine(DashSkillRoutine());
-                break;
+            int skillChoice = Random.Range(0, 3); // 0: Thorn, 1: Fire, 2: Dash
+
+            switch (skillChoice)
+            {
+                case 0:
+                    StartCoroutine(ThornSkillRoutine());
+                    break;
+                case 1:
+                    StartCoroutine(FireSkillRoutine());
+                    break;
+                case 2:
+                    StartCoroutine(DashSkillRoutine());
+                    break;
+            }
         }
     }
 
+    IEnumerator Phase2DashSkillRoutine()
+    {
+        isExecutingSkill = true;
+        isFireSkillActive = false;
+        isInvincible = false;
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
+
+        // ëŒ€ì‰¬ ì¤€ë¹„ ì• ë‹ˆë©”ì´ì…˜ íŠ¸ë¦¬ê±°
+        anim.SetTrigger("isDashReady");
+
+        // ëŒ€ì‰¬ ì¤€ë¹„ ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚˜ë©´(ì´ë²¤íŠ¸ì—ì„œ í˜¸ì¶œ) ì•„ë˜ í•¨ìˆ˜ ì‹¤í–‰
+        yield return new WaitUntil(() => phase2DashReadyEnd);
+        phase2DashReadyEnd = false;
+
+        // í…”ë ˆí¬íŠ¸: ë§µ ëìœ¼ë¡œ ì´ë™
+        if (dashPhase2LeftToRight)
+            transform.position = dashLeftEdge.position;
+        else
+            transform.position = dashRightEdge.position;
+
+        // ëŒ€ì‰¬ ì• ë‹ˆë©”ì´ì…˜ íŠ¸ë¦¬ê±°
+        anim.SetTrigger("isPhase2Dash");
+
+        // ì‹¤ì œ ëŒ€ì‰¬ ì´ë™
+        float dashDir = dashPhase2LeftToRight ? 1f : -1f;
+        transform.localScale = new Vector3(dashDir * Mathf.Abs(initialLocalScale.x), initialLocalScale.y, initialLocalScale.z);
+
+        // ëŒ€ì‰¬ ì´ë™ ì½”ë£¨í‹´ ì‹œì‘
+        yield return StartCoroutine(Phase2DashMove(dashDir));
+
+        rb.linearVelocity = Vector2.zero;
+        dashAttackCollider.enabled = false;
+        isExecutingSkill = false;
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
+
+        // ë°©í–¥ ë°˜ì „
+        dashPhase2LeftToRight = !dashPhase2LeftToRight;
+    }
+
+    // ì‹¤ì œ ëŒ€ì‰¬ ì´ë™ ì²˜ë¦¬ ì½”ë£¨í‹´ ì¶”ê°€
+    IEnumerator Phase2DashMove(float dashDir)
+    {
+        isPhase2Dashing = true;
+        float dashDuration = 1.1f;
+        float timer = 0f;
+        dashAttackCollider.enabled = true;
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(new Vector2(dashDir * 30f, 0), ForceMode2D.Impulse);
+
+        while (timer < dashDuration)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        rb.linearVelocity = Vector2.zero;
+        dashAttackCollider.enabled = false;
+        isPhase2Dashing = false;
+    }
+    IEnumerator BloodSpikeSkillRoutine()
+    {
+        isInvincible = true; // Blood Spike ìŠ¤í‚¬ì€ ë¬´ì  ìƒíƒœë¡œ ì‹œì‘
+        isExecutingSkill = true;
+        isBloodSpikeSkillActive = true;
+        rb.linearVelocity = Vector2.zero; // ì´ë™ ì™„ì „ ì •ì§€
+
+        foreach (var zone in safetyZone)
+            if (zone != null) zone.SetActive(true);
+
+        anim.SetTrigger("isBloodSpike");
+
+        // ì• ë‹ˆë©”ì´ì…˜ ê¸¸ì´ë§Œí¼ ëŒ€ê¸° (ì§ì ‘ ì‹œê°„ ì§€ì • ê¶Œì¥)
+        yield return new WaitForSeconds(4.0f);
+
+        foreach (var zone in safetyZone)
+            if (zone != null) zone.SetActive(false);
+
+        isBloodSpikeSkillActive = false;
+        isExecutingSkill = false;
+        isInvincible = false; // ìŠ¤í‚¬ ì¢…ë£Œ í›„ ë¬´ì  í•´ì œ  
+
+        // ìŠ¤í‚¬ ì¢…ë£Œ í›„ ì¿¨íƒ€ì„ ì´ˆê¸°í™”
+        SetNextSkillTime(minSkillInterval_Phase2, maxSkillInterval_Phase2);
+    }
+
+    // 3. ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ì—ì„œ í˜¸ì¶œë  í•¨ìˆ˜
+    public void AnimationEvent_SpawnBloodSpike()
+    {
+        if (bloodSpikePrefab != null && bloodSpikePos != null)
+            Instantiate(bloodSpikePrefab, bloodSpikePos.position, Quaternion.identity);
+    }
+
+    // 3. 2í˜ì´ì¦ˆ ìŠ¤í‚¬ ì„ íƒ í•¨ìˆ˜ì—ì„œ ê°•í™” ëŒ€ì‰¬ ë¶„ê¸° ì¶”ê°€
+    void ChooseAndExecutePhase2Skill()
+    {
+        isExecutingSkill = true;
+
+        if (currentTargetTransform == null)
+        {
+            isExecutingSkill = false;
+            return;
+        }
+
+        StopAttackState();
+
+        // ëœë¤: 0=ê²€ê¸°, 1=ê°•í™”ëŒ€ì‰¬
+        int skill = Random.Range(0, 3);
+        if (skill == 0)
+        {
+            // Player2ê°€ ì‚´ì•„ìˆì„ ë•Œë§Œ ê²€ê¸° ì‚¬ìš©
+            if (player2Component != null && !player2Component.isDead)
+            {
+                Debug.Log("[BossCtrl] Executing Phase 2: Sword Skill.");
+                anim.SetTrigger(hashIsSword);
+                StartCoroutine(SwordSkillExecutionRoutine(1.5f));
+            }
+            else
+            {
+                // Player2ê°€ ì£½ì—ˆìœ¼ë©´ ê²€ê¸° ëŒ€ì‹  ëŒ€ì‰¬ ì‚¬ìš©
+                Debug.Log("[BossCtrl] Player2 is dead. Using Dash Skill instead of Sword Skill.");
+                StartCoroutine(Phase2DashSkillRoutine());
+            }
+        }
+        else if(skill == 1)
+        {
+            Debug.Log("[BossCtrl] Executing Phase 2: Dash Skill.");
+            StartCoroutine(Phase2DashSkillRoutine());
+        }
+        else
+        {
+            Debug.Log("[BossCtrl] Executing Phase 2: Blood Spike Skill.");
+            StartCoroutine(BloodSpikeSkillRoutine());
+        }
+    }
+
+    // 4. ëŒ€ì‰¬ ì¤€ë¹„ ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ì—ì„œ í˜¸ì¶œë  í•¨ìˆ˜ ì¶”ê°€
+    private bool phase2DashReadyEnd = false;
+    public void OnPhase2DashReadyEnd()
+    {
+        phase2DashReadyEnd = true;
+    }
+
+    // --- ê²€ê¸° ìŠ¤í‚¬ ì‹¤í–‰ ì½”ë£¨í‹´ (ìŠ¤í‚¬ ì¢…ë£Œ ì²˜ë¦¬) ---
+    IEnumerator SwordSkillExecutionRoutine(float duration)
+    {
+        // 1. ë¬´ì  ì²˜ë¦¬
+        isInvincible = true;
+
+        // 2. ê²€ê¸° ë°œì‚¬ ì „ ë°”ë¼ë³´ëŠ” ë°©í–¥ ì¡°ì •
+        if (player2Transform != null)
+        {
+            float dir = player2Transform.position.x - transform.position.x;
+            if (dir < 0)
+                transform.localScale = new Vector3(-Mathf.Abs(initialLocalScale.x), initialLocalScale.y, initialLocalScale.z);
+            else
+                transform.localScale = new Vector3(Mathf.Abs(initialLocalScale.x), initialLocalScale.y, initialLocalScale.z);
+        }
+
+        // ì—¬ê¸°ì—ì„œ ìŠ¤í‚¬ ì• ë‹ˆë©”ì´ì…˜ì´ ì§„í–‰ë  ë™ì•ˆ ëŒ€ê¸°
+        yield return new WaitForSeconds(duration);
+
+        isExecutingSkill = false; // ìŠ¤í‚¬ ì‹¤í–‰ ì™„ë£Œ
+        isInvincible = false; // ë¬´ì  í•´ì œ  
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
+        Debug.Log("[BossCtrl] Sword Skill execution routine ended.");
+    }
+    public void SpawnSwordSkillProjectile()
+    {
+        if (swordSkillPrefab == null || swordSpawnPoint == null)
+        {
+            return;
+        }
+
+        GameObject sword = Instantiate(swordSkillPrefab, swordSpawnPoint.position, Quaternion.identity);
+        SwordSkill swordSkill = sword.GetComponent<SwordSkill>();
+        if (swordSkill != null)
+        {
+            // Player2ë¥¼ ì°¾ê³ , yì¢Œí‘œëŠ” í˜„ì¬ ë³´ìŠ¤ ìœ„ì¹˜ë¡œ ê³ ì •
+            GameObject targetPlayer = GameObject.FindGameObjectWithTag("Player2");
+            if (targetPlayer != null)
+            {
+                Vector3 targetPos = targetPlayer.transform.position;
+                targetPos.y = swordSpawnPoint.position.y; // yì¢Œí‘œë¥¼ ë³´ìŠ¤(ìŠ¤í° ìœ„ì¹˜)ì™€ ë™ì¼í•˜ê²Œ ê³ ì •
+                swordSkill.SetTargetPosition(targetPos); // SetTargetPosition(Vector3)ë¡œ ë³€ê²½ í•„ìš”
+            }
+            else
+            {
+                Debug.LogWarning("Player2 not found for Sword Skill targeting! Sword will fly straight.");
+            }
+        }
+    }
     IEnumerator ThornSkillRoutine()
     {
         isExecutingSkill = true;
+        isFireSkillActive = false;
+        isInvincible = false; // Thorn ìŠ¤í‚¬ì€ ë¬´ì ì´ ì•„ë‹˜
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
         anim.SetTrigger("isThorn");
+
         yield return new WaitForSeconds(thornAnimDuration);
         isExecutingSkill = false;
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
+
     }
 
     IEnumerator SpawnThornsRoutine()
@@ -389,8 +822,6 @@ public class BossCtrl : MonoBehaviour
             Debug.LogWarning("ThornSkill: Furthest player not found or dead!");
             yield break;
         }
-
-        Vector3 targetPos = furthestPlayerTransform.position; // ÀÌ °ªÀº Coroutine ½ÃÀÛ ½ÃÁ¡¿¡ °íÁ¤µË´Ï´Ù.
 
         for (int i = 0; i < thornSpawners.Count; i++)
         {
@@ -406,147 +837,389 @@ public class BossCtrl : MonoBehaviour
     IEnumerator FireSkillRoutine()
     {
         isExecutingSkill = true;
+        isFireSkillActive = true;
+        isInvincible = false; // Fire ìŠ¤í‚¬ì€ ë¬´ì ì´ ì•„ë‹˜
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
+
         anim.SetTrigger("isFire");
         Debug.Log($"[FireSkill Debug] FireSkillRoutine STARTED at {Time.time}. Trigger 'isFire' set.");
+        rb.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(fireAnimDuration);
+
+        isFireSkillActive = false;
         isExecutingSkill = false;
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
         Debug.Log($"[FireSkill Debug] FireSkillRoutine ENDED at {Time.time}. isExecutingSkill set to false.");
     }
 
+    // ëŒ€ì‰¬ ìŠ¤í‚¬ ì½”ë£¨í‹´
     IEnumerator DashSkillRoutine()
     {
-        isExecutingSkill = true;
-        dashCount = 0;
+        Debug.Log($"[DashSkill Debug] DashSkillRoutine STARTED at {Time.time}");
+        isFireSkillActive = false;
+        isInvincible = false; // Dash ìŠ¤í‚¬ì€ ë¬´ì ì´ ì•„ë‹˜
 
-        anim.ResetTrigger("isDashFinished");
-        yield return null; // ÇÑ ÇÁ·¹ÀÓ ´ë±âÇÏ¿© Æ®¸®°Å ¸®¼Â Àû¿ë
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
+        anim.ResetTrigger(hashIsDashFinished);
 
-        while (dashCount < 2)
+        anim.SetTrigger(hashIsDash);
+
+        float totalAnimationDuration = dashReadyDuration + dashPerMoveDuration;
+        float waitTimer = 0f;
+        while (isExecutingSkill && waitTimer < totalAnimationDuration + 0.5f) // isExecutingSkill ì¡°ê±´ ì¶”ê°€
         {
-            anim.SetTrigger("isDash");
-            Debug.Log($"[DashSkill Debug] Dash {dashCount + 1} Trigger 'isDash' set at {Time.time}");
+            waitTimer += Time.deltaTime;
+            yield return null;
+        }
 
-            float waitTimer = 0f;
-            float currentDashMaxWaitTime = 0.5f; // ÀÌ °ªÀ» ÁÙ¿©¼­ Å×½ºÆ®ÇØº¸¼¼¿ä.
-            while (!anim.GetCurrentAnimatorStateInfo(1).IsName("Stage4_BossDash") && waitTimer < currentDashMaxWaitTime)
+        if (isExecutingSkill) // ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚¬ìŒì—ë„ isExecutingSkillì´ trueë¼ë©´ ê°•ì œ ì¢…ë£Œ
+        {
+            OnDashSkillFinished();
+        }
+
+        rb.linearVelocity = Vector2.zero;
+
+    }
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸: ëŒ€ì‰¬ ì›€ì§ì„ ì‹œì‘ ì‹œ í˜¸ì¶œ
+    public void OnDashMovementStart()
+    {
+        if (!isExecutingSkill) return;
+
+        Transform target = currentTargetTransform;
+        if (target == null || (player1Component != null && player1Component.isDead && player2Component != null && player2Component.isDead))
+        {
+            rb.linearVelocity = Vector2.zero;
+            OnDashSkillFinished();
+            return;
+        }
+
+        float dashDirection = Mathf.Sign(target.position.x - transform.position.x);
+        transform.localScale = new Vector3(dashDirection * initialLocalScale.x, initialLocalScale.y, initialLocalScale.z);
+        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y);
+        if (dashAttackCollider != null)
+        {
+            dashAttackCollider.enabled = true;
+            Debug.Log($"[DashSkill Event] Dash Attack Collider ENABLED at {Time.time}");
+        }
+        Debug.Log($"[DashSkill Event] Boss dashing towards {target.name}");
+    }
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸: ëŒ€ì‰¬ ì›€ì§ì„ ì¢…ë£Œ ì‹œ í˜¸ì¶œ
+    public void OnDashMovementEnd()
+    {
+        if (!isExecutingSkill) return;
+        Debug.Log($"[DashSkill Event] OnDashMovementEnd called at {Time.time}");
+        rb.linearVelocity = Vector2.zero;
+
+        if (dashAttackCollider != null)
+        {
+            dashAttackCollider.enabled = false;
+            Debug.Log($"[DashSkill Event] Dash Attack Collider DISABLED at {Time.time}");
+        }
+    }
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸: ì „ì²´ ëŒ€ì‰¬ ìŠ¤í‚¬ ì• ë‹ˆë©”ì´ì…˜ì´ ì™„ì „íˆ ëë‚¬ì„ ë•Œ í˜¸ì¶œ
+    public void OnDashSkillFinished()
+    {
+        Debug.Log($"[DashSkill Event] OnDashSkillFinished called at {Time.time}. Skill Finished.");
+        isExecutingSkill = false;
+        rb.linearVelocity = Vector2.zero;
+        anim.SetTrigger(hashIsDashFinished);
+
+        if (dashAttackCollider != null && dashAttackCollider.enabled)
+        {
+            dashAttackCollider.enabled = false;
+        }
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
+    }
+
+    // --- í ìŠ¤í‚¬ ê´€ë ¨ ì½”ë£¨í‹´ ë° ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ ---
+
+    // í ìŠ¤í‚¬ ë°œë™ ì „ ì§€ì—° ë° ì¤€ë¹„
+    IEnumerator HealSkillDelayAndStart()
+    {
+        Debug.Log("[HealSkill] Checking for active skills before healing...");
+        if (isExecutingSkill)
+        {
+            // ë‹¤ë¥¸ ìŠ¤í‚¬ì´ ì‚¬ìš© ì¤‘ì´ë¼ë©´ í•´ë‹¹ ìŠ¤í‚¬ì´ ëë‚  ë•Œê¹Œì§€ ê¸°ë‹¤ë¦¼
+            while (isExecutingSkill)
             {
-                waitTimer += Time.deltaTime;
                 yield return null;
             }
-
-            if (waitTimer >= currentDashMaxWaitTime)
-            {
-                Debug.LogError($"Failed to transition to Stage4_BossDash animation state for Dash {dashCount + 1} within {currentDashMaxWaitTime}s. Check Animator transitions.");
-                isExecutingSkill = false;
-                // DashSkillRoutineÀÌ ºñÁ¤»ó Á¾·áµÇ¹Ç·Î, isDashFinished Æ®¸®°Å¸¦ ¿©±â¼­ ¹ßµ¿ÇÏÁö ¾Ê½À´Ï´Ù.
-                // (Á¤»ó Á¾·áµÉ ¶§¸¸ ¹ßµ¿µÇµµ·Ï ·ÎÁ÷ º¯°æ)
-                yield break;
-            }
-            Debug.Log($"[DashSkill Debug] Dash {dashCount + 1} entered Stage4_BossDash state at {Time.time}");
-
-            Transform target = null;
-            // ÇÃ·¹ÀÌ¾î »ç¸Á ½Ã Å¸°Ù Á¦¿Ü ·ÎÁ÷ Ãß°¡
-            bool p1Alive = (player1Component != null && !player1Component.isDead);
-            bool p2Alive = (player2Component != null && !player2Component.isDead);
-
-            if (dashCount == 0 && p1Alive)
-            {
-                target = player1Transform;
-            }
-            else if (dashCount == 1 && p2Alive)
-            {
-                target = player2Transform;
-            }
-            // ¸¸¾à Å¸°Ù ÇÃ·¹ÀÌ¾î°¡ Á×¾ú´Ù¸é, ´Ù¸¥ »ì¾ÆÀÖ´Â ÇÃ·¹ÀÌ¾î°¡ ÀÖ´ÂÁö È®ÀÎ
-            if (target == null)
-            {
-                if (dashCount == 0 && p2Alive) target = player2Transform; // 1¹øÂ° ´ë½¬ÀÎµ¥ P1ÀÌ Á×¾úÀ¸¸é P2·Î
-                else if (dashCount == 1 && p1Alive) target = player1Transform; // 2¹øÂ° ´ë½¬ÀÎµ¥ P2°¡ Á×¾úÀ¸¸é P1À¸·Î
-                // ¸¸¾à ±×·¡µµ Å¸°ÙÀÌ ¾øÀ¸¸é µÎ ÇÃ·¹ÀÌ¾î ¸ğµÎ Á×Àº »óÅÂ
-                if (target == null)
-                {
-                    Debug.LogWarning($"Both players are dead. Skipping remaining dashes.");
-                    break; // ·çÇÁ Á¾·á
-                }
-            }
-
-
-            if (target != null)
-            {
-                float targetX = target.position.x;
-                float currentX = transform.position.x;
-
-                float dashDirection = Mathf.Sign(targetX - currentX);
-                Vector2 dashTargetPos = new Vector2(currentX + dashDirection * dashDistanceX, transform.position.y);
-
-                Vector2 startPos = transform.position;
-                float timer = 0f;
-
-                while (timer < dashPerMoveDuration)
-                {
-                    rb.MovePosition(Vector2.Lerp(startPos, dashTargetPos, timer / dashPerMoveDuration));
-                    timer += Time.deltaTime;
-                    yield return null;
-                }
-                rb.MovePosition(dashTargetPos);
-
-                Debug.Log($"[DashSkill Debug] Dash {dashCount + 1} move completed at {Time.time}");
-            }
-            else
-            {
-                Debug.LogWarning($"Dash target {(dashCount == 0 ? "Player1" : "Player2")} not found or dead. Skipping dash {dashCount + 1}.");
-            }
-
-            yield return new WaitForSeconds(0.42f); // Dash ¾Ö´Ï¸ŞÀÌ¼ÇÀÇ ½ÇÁ¦ ±æÀÌ¸¸Å­ ´ë±â
-
-            dashCount++;
-
-            if (dashCount < 2)
-            {
-                yield return new WaitForSeconds(dashPauseBetweenDashes);
-            }
+            Debug.Log("[HealSkill] Other skills finished. Waiting 2 seconds before healing.");
+            yield return new WaitForSeconds(2f); // 2ì´ˆ ëŒ€ê¸°
         }
-
-        // ¸ğµç ´ë½¬°¡ Á¤»óÀûÀ¸·Î ¿Ï·áµÈ °æ¿ì¿¡¸¸ ÃÖÁ¾ Á¾·á Æ®¸®°Å ¹ßµ¿
-        if (dashCount == 2) // dashCount°¡ 2°¡ µÇ¾úÀ» ¶§¸¸ ¼º°øÀûÀ¸·Î ¿Ï·áµÈ °Í
-        {
-            anim.SetTrigger("isDashFinished");
-            Debug.Log($"[DashSkill Debug] All dashes completed at {Time.time}");
-        }
-        else
-        {
-            Debug.LogWarning($"[DashSkill Debug] DashRoutine ended prematurely (dashCount: {dashCount}). 'isDashFinished' not triggered.");
-        }
-
-
-        isExecutingSkill = false;
+        // ìŠ¤í‚¬ì´ ì§„í–‰ ì¤‘ì´ ì•„ë‹ˆë©´ ë°”ë¡œ í ìŠ¤í‚¬ ì‹œì‘
+        StartCoroutine(HealSkillRoutine());
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    IEnumerator HealSkillRoutine()
     {
-        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        Debug.Log("[HealSkill] HealSkillRoutine STARTED.");
+        isHealingSkillActive = true;
+        isExecutingSkill = true;
+        isInvincible = true; 
+        StopAttackState(); 
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
+
+        anim.SetTrigger(hashIsHeal);
+
+        yield return null;
+    }
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸: Stage4_BossHealReady ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚¬ì„ ë•Œ í˜¸ì¶œ
+    public void OnHealReadyAnimationEnd()
+    {
+        if (!isHealingSkillActive) return;
+        Debug.Log($"[HealSkill Event] OnHealReadyAnimationEnd called at {Time.time}. Spawning slimes and transitioning to Heal animation.");
+        // í ìŠ¬ë¼ì„ 4ê°œ ì†Œí™˜
+        for (int i = 0; i < healSlimeCount; i++)
         {
-            Player player = other.GetComponent<Player>();
-            if (player != null && !player.isDead) // Á×Àº ÇÃ·¹ÀÌ¾î¿¡°Ô´Â µ¥¹ÌÁö ÁÖÁö ¾ÊÀ½
+            if (healSlimePrefab != null)
             {
-                player.TakeDamage(touchDamage);
+                // ë³´ìŠ¤ì˜ ìœ„ì¹˜ì—ì„œ ìƒì„±
+                Vector3 spawnPos = transform.position;
+                GameObject slime = Instantiate(healSlimePrefab, spawnPos, Quaternion.identity);
+
+                Rigidbody2D slimeRb = slime.GetComponent<Rigidbody2D>();
+                if (slimeRb != null)
+                {
+                    // x, y ëª¨ë‘ì— í˜ì„ ì£¼ë˜, yëŠ” í•­ìƒ ì–‘ìˆ˜(ìœ„ìª½)ë¡œ
+                    Vector2 randomForce = new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(2f, 4f)).normalized * 12f;
+                    slimeRb.AddForce(randomForce, ForceMode2D.Impulse);
+                }
+
+                Debug.Log($"[HealSkill] Spawned HealSlime {i + 1}");
+            }
+        }
+
+        // í ìŠ¬ë¼ì„ íƒ€ì´ë¨¸ ì‹œì‘
+        StartCoroutine(HealSlimeTimerRoutine());
+    }
+
+    // í ìŠ¬ë¼ì„ íƒ€ì´ë¨¸ ë° ì²´ë ¥ íšŒë³µ ë¡œì§
+    IEnumerator HealSlimeTimerRoutine()
+    {
+        Debug.Log($"[HealSkill] HealSlimeTimerRoutine STARTED. Waiting {healSlimeDuration} seconds.");
+        yield return new WaitForSeconds(healSlimeDuration); // 10ì´ˆ ëŒ€ê¸°
+
+        Debug.Log("[HealSkill] HealSlimeTimer finished. Calculating healing...");
+        // ë‚¨ì•„ìˆëŠ” í ìŠ¬ë¼ì„ ê°œìˆ˜ í™•ì¸ (íƒœê·¸ë¡œ ì°¾ê¸°)
+        GameObject[] remainingSlimes = GameObject.FindGameObjectsWithTag("HealSlime");
+        int currentSlimeCount = remainingSlimes.Length;
+        float totalHealAmount = currentSlimeCount * healAmountPerSlime;
+
+        Debug.Log($"[HealSkill] Found {currentSlimeCount} remaining HealSlimes. Healing for {totalHealAmount} HP.");
+        // ì²´ë ¥ íšŒë³µ
+        TakeDamage(-totalHealAmount); // ìŒìˆ˜ ë°ë¯¸ì§€ëŠ” ì²´ë ¥ íšŒë³µì„ ì˜ë¯¸
+
+        // ë‚¨ì•„ìˆëŠ” ìŠ¬ë¼ì„ ëª¨ë‘ ì œê±°
+        foreach (GameObject slime in remainingSlimes)
+        {
+            if (slime != null)
+            {
+                Destroy(slime);
+            }
+        }
+
+        Debug.Log("[HealSkill] All HealSlimes destroyed. Triggering HealEnd animation.");
+        anim.SetTrigger(hashIsHealEnd); // HealEnd íŠ¸ë¦¬ê±° ë°œë™
+
+
+        yield return null; // ë‹¤ìŒ í”„ë ˆì„ê¹Œì§€ ê¸°ë‹¤ë¦¼ (ì´ë²¤íŠ¸ê°€ ë°”ë¡œ í˜¸ì¶œë  ìˆ˜ ìˆë„ë¡)
+    }
+
+    // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸: Stage4_BossHealEnd ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚¬ì„ ë•Œ í˜¸ì¶œ
+    public void OnHealSkillEnd()
+    {
+        Debug.Log($"[HealSkill Event] OnHealSkillEnd called at {Time.time}. Heal skill finished.");
+        isHealingSkillActive = false; // í ìŠ¤í‚¬ ì¢…ë£Œ
+        isInvincible = false; // ë¬´ì  í•´ì œ
+        isExecutingSkill = false; // í ìŠ¤í‚¬ ì¢…ë£Œ ì‹œ isExecutingSkillë„ í•´ì œ
+        SetNextSkillTime(minSkillInterval, maxSkillInterval);
+        Debug.Log($"[HealSkill Debug] After HealSkillEnd: isHealingSkillActive={isHealingSkillActive}, isInvincible={isInvincible}, isExecutingSkill={isExecutingSkill}");
+    }
+
+    // --- 2í˜ì´ì¦ˆ ì „í™˜ ë¡œì§ ---
+    void EnterPhase2()
+    {
+        if (is2PhaseActive) return; // ì´ë¯¸ 2í˜ì´ì¦ˆë¼ë©´ ì¤‘ë³µ ì‹¤í–‰ ë°©ì§€
+
+        is2PhaseActive = true;
+        Debug.Log("[Phase2] Boss entering Phase 2!");
+
+        // ì½œë¼ì´ë” ì „í™˜
+        if (phase1Collider != null) phase1Collider.enabled = false;
+        if (phase2Collider != null) phase2Collider.enabled = true;
+
+        // ëª¨ë“  í˜„ì¬ ì½”ë£¨í‹´ ì¤‘ì§€ (ì¼ë°˜ ê³µê²©, ìŠ¤í‚¬ ë“±)
+        StopAllCoroutines();
+        isAttacking = false;
+        isExecutingSkill = true;
+        isHealingSkillActive = false;
+        isFireSkillActive = false;
+        isInvincible = true; // 2í˜ì´ì¦ˆ ì „í™˜ ì• ë‹ˆë©”ì´ì…˜ ì¤‘ì—ëŠ” ë¬´ì  ìƒíƒœì¼ ìˆ˜ ìˆì§€ë§Œ, ì¼ë‹¨ í•´ì œ
+
+        rb.linearVelocity = Vector2.zero; // ì´ë™ ì¤‘ë‹¨
+        anim.SetBool(hashIsWalk, false);
+        anim.SetBool(hashIsAttack, false);
+
+        // 2í˜ì´ì¦ˆ ì „í™˜ ì• ë‹ˆë©”ì´ì…˜ íŠ¸ë¦¬ê±° ë°œë™
+        anim.SetTrigger(hashIs2Phase);
+
+        anim.SetLayerWeight(anim.GetLayerIndex("BaseLayer"), 0f);
+        anim.SetLayerWeight(anim.GetLayerIndex("SkillLayer"), 0f);
+        anim.SetLayerWeight(anim.GetLayerIndex("2PhaseLayer"), 1f);
+        anim.SetLayerWeight(anim.GetLayerIndex("2PhaseSkillLayer"), 1f);
+
+        // 2í˜ì´ì¦ˆ ì§„ì… í›„ ë‹¤ìŒ ìŠ¤í‚¬ ì‹œê°„ ì¬ì„¤ì • (2í˜ì´ì¦ˆ ìŠ¤í‚¬ ì¿¨íƒ€ì„ìœ¼ë¡œ)
+        SetNextSkillTime(minSkillInterval_Phase2, maxSkillInterval_Phase2); 
+    }
+    public void OnPhase2TransitionEnd()
+    {
+        isInvincible = false;
+        isExecutingSkill = false;
+        Debug.Log("[Phase2] Transition animation ended. Boss can move and take damage again.");
+    }
+
+    // --- ë³´ìŠ¤ ì‚¬ë§ ë¡œì§ ---
+    void BossDefeat()
+    {
+        if (isDying) return; // ì´ë¯¸ ì£½ëŠ” ì¤‘ì´ë¼ë©´ ì¤‘ë³µ ì‹¤í–‰ ë°©ì§€
+
+        isDying = true;
+        Debug.Log("[Boss] Boss is defeated! Initiating death sequence.");
+
+        // ëª¨ë“  í–‰ë™ ì¤‘ì§€
+        StopAllCoroutines();
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
+        anim.SetBool(hashIsAttack, false);
+        isAttacking = false;
+        isExecutingSkill = false;
+        isHealingSkillActive = false;
+        isFireSkillActive = false;
+        isInvincible = true; // ì‚¬ë§ ì• ë‹ˆë©”ì´ì…˜ ì¤‘ì—ëŠ” ë¬´ì  ìƒíƒœ ìœ ì§€
+
+        // ëª¨ë“  ì½œë¼ì´ë” ë¹„í™œì„±í™” (í”Œë ˆì´ì–´ ì¶©ëŒ ë°©ì§€)
+        if (phase1Collider != null) phase1Collider.enabled = false;
+        if (phase2Collider != null) phase2Collider.enabled = false;
+        if (attackCollider != null) attackCollider.enabled = false;
+        if (fireTrigger != null) fireTrigger.enabled = false;
+        if (dashAttackCollider != null) dashAttackCollider.enabled = false;
+
+        // í ìŠ¬ë¼ì„ í¬í•¨ ëª¨ë“  ì”ì—¬ ì˜¤ë¸Œì íŠ¸ ì •ë¦¬
+        GameObject[] remainingSlimes = GameObject.FindGameObjectsWithTag("HealSlime");
+        foreach (GameObject slime in remainingSlimes)
+        {
+            if (slime != null) Destroy(slime);
+        }
+
+        if (anim != null)
+        {
+            anim.updateMode = AnimatorUpdateMode.UnscaledTime; 
+            anim.speed = 1f;
+            Debug.Log("[BossCtrl] Boss Animator Update Mode changed to UnscaledTime for death animation.");
+        }
+
+        // ì‚¬ë§ ì• ë‹ˆë©”ì´ì…˜ íŠ¸ë¦¬ê±° ë°œë™
+        anim.SetTrigger(hashIsDie);
+
+        // ê²Œì„ ì‹œê°„ ì •ì§€ 
+        Time.timeScale = 0f;
+        Debug.Log("[Boss] Game time stopped.");
+
+        StartCoroutine(LoadEndingSceneAfterDelay(3f)); // ì‚¬ë§ ì• ë‹ˆë©”ì´ì…˜ ì˜ˆìƒ ì‹œê°„ + ì—¬ìœ 
+    }
+
+    IEnumerator LoadEndingSceneAfterDelay(float delay)
+    {
+        Debug.Log($"[Boss] Waiting {delay} seconds to load ending scene.");
+        float timer = 0f;
+        while (timer < delay)
+        {
+            timer += Time.unscaledDeltaTime; 
+            yield return null;
+        }
+
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(endingSceneName);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && attackCollider != null && attackCollider.enabled)
+        {
+            if (isInvincible) return;
+            Player player = other.GetComponent<Player>();
+            if (player != null && !player.isDead)
+            {
+                player.TakeDamage(20);
+            }
+        }
+        if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && fireTrigger != null && fireTrigger.enabled)
+        {
+            if (isInvincible) return;
+            Player player = other.GetComponent<Player>();
+            if (player != null && !player.isDead)
+            {
+                player.TakeDamage(30);
             }
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // ì´ì•Œ ì¶©ëŒ ì²˜ë¦¬
+        if (other.CompareTag("AllyBullet"))
+        {
+            TakeDamage(10f);
+            Destroy(other.gameObject); // ì´ì•Œ ì œê±°
+        }
+
+        // ì¹´íƒ€ë‚˜ ì¶©ëŒ ì²˜ë¦¬ (1í˜ì´ì¦ˆ ê²€ ë°ë¯¸ì§€)
+        else if (other.CompareTag("Katana"))
+        {
+            TakeDamage(30f);
+        }
+
+        // ëŒ€ì‰¬ ê³µê²© ì½œë¼ì´ë”ì— í”Œë ˆì´ì–´ê°€ ë‹¿ì•˜ì„ ë•Œ ë°ë¯¸ì§€ ì¶”ê°€
+        else if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && dashAttackCollider != null && dashAttackCollider.enabled)
+        {
+            // í ìŠ¤í‚¬ ì¤‘ì—ëŠ” ë¬´ì  ìƒíƒœì´ë¯€ë¡œ ëŒ€ì‰¬ ë°ë¯¸ì§€ë„ ì£¼ì§€ ì•ŠìŒ
+            if (isInvincible) return;
+            Player player = other.GetComponent<Player>();
+            if (player != null && !player.isDead)
+            {
+                player.TakeDamage(dashDamage);
+                Debug.Log($"[DashSkill] Player took {dashDamage} damage from Dash Attack!");
+            }
+        }
+    }
+
+    // ë³´ìŠ¤ ë°ë¯¸ì§€ ì²˜ë¦¬
     public void TakeDamage(float damage)
     {
-        currentHp -= damage;
-        Debug.Log($"Boss took {damage} damage. Current HP: {currentHp}");
-
-        if (currentHp <= phase2HpThreshold && currentHp > 0)
+        // ë¬´ì  ìƒíƒœì´ê³ , ë°›ëŠ” ë°ë¯¸ì§€ê°€ ì–‘ìˆ˜ì¼ ê²½ìš° (ì¦‰, ê³µê²©ë°›ëŠ” ê²½ìš°) ë°ë¯¸ì§€ ë¬´ì‹œ
+        if (isInvincible && damage > 0)
         {
-            // StartPhase2();
+            return;
+        }
+        // ë³´ìŠ¤ê°€ ì£½ëŠ” ì¤‘ì´ë¼ë©´ ë” ì´ìƒ ë°ë¯¸ì§€ë¥¼ ë°›ì§€ ì•ŠìŒ
+        if (isDying && damage > 0)
+        {
+            return;
         }
 
-        if (currentHp <= 0)
+        currentHp -= damage;
+        Debug.Log($"Boss took {damage} damage. Current HP: {currentHp}");
+        if (bossHpBar != null)
         {
-            // BossDefeat();
+            bossHpBar.fillAmount = currentHp / maxHp;
         }
     }
 }

@@ -1,0 +1,797 @@
+fileFormatVersion: 2
+guid: 82160ff68e2b4804db96fb23ef3315cf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4004372523329723239
+    second: Stage4_2PhaseBloodSpike_0
+  - first:
+      213: -6844078244619251205
+    second: Stage4_2PhaseBloodSpike_1
+  - first:
+      213: 2438768743337630827
+    second: Stage4_2PhaseBloodSpike_2
+  - first:
+      213: -1506390876027501182
+    second: Stage4_2PhaseBloodSpike_3
+  - first:
+      213: 3751137075579253163
+    second: Stage4_2PhaseBloodSpike_4
+  - first:
+      213: 7858608129646653110
+    second: Stage4_2PhaseBloodSpike_5
+  - first:
+      213: -1873095137645512096
+    second: Stage4_2PhaseBloodSpike_6
+  - first:
+      213: -3562284538303615273
+    second: Stage4_2PhaseBloodSpike_7
+  - first:
+      213: -2995573991408630123
+    second: Stage4_2PhaseBloodSpike_8
+  - first:
+      213: 7380004686677619369
+    second: Stage4_2PhaseBloodSpike_9
+  - first:
+      213: -7965185518560225217
+    second: Stage4_2PhaseBloodSpike_10
+  - first:
+      213: -8284924430603528583
+    second: Stage4_2PhaseBloodSpike_11
+  - first:
+      213: 5371667719786806129
+    second: Stage4_2PhaseBloodSpike_12
+  - first:
+      213: 6464648909578257434
+    second: Stage4_2PhaseBloodSpike_13
+  - first:
+      213: -3907080250669771403
+    second: Stage4_2PhaseBloodSpike_14
+  - first:
+      213: -917570636855511355
+    second: Stage4_2PhaseBloodSpike_15
+  - first:
+      213: 5524697356299360531
+    second: Stage4_2PhaseBloodSpike_16
+  - first:
+      213: 8877394296369957125
+    second: Stage4_2PhaseBloodSpike_17
+  - first:
+      213: -1192604405375008953
+    second: Stage4_2PhaseBloodSpike_18
+  - first:
+      213: 4901092503769495540
+    second: Stage4_2PhaseBloodSpike_19
+  - first:
+      213: 5319075165305307849
+    second: Stage4_2PhaseBloodSpike_20
+  - first:
+      213: -6642012754339442758
+    second: Stage4_2PhaseBloodSpike_21
+  - first:
+      213: -1722877697884372137
+    second: Stage4_2PhaseBloodSpike_22
+  - first:
+      213: 5031644245082741116
+    second: Stage4_2PhaseBloodSpike_23
+  - first:
+      213: -253899985148491019
+    second: Stage4_2PhaseBloodSpike_24
+  - first:
+      213: 1997978326776228586
+    second: Stage4_2PhaseBloodSpike_25
+  - first:
+      213: -1048833307338494758
+    second: Stage4_2PhaseBloodSpike_26
+  - first:
+      213: 6499286871315439441
+    second: Stage4_2PhaseBloodSpike_27
+  - first:
+      213: 3337250592316728596
+    second: Stage4_2PhaseBloodSpike_28
+  - first:
+      213: -4575454801795548310
+    second: Stage4_2PhaseBloodSpike_29
+  - first:
+      213: 688914505127327682
+    second: Stage4_2PhaseBloodSpike_30
+  - first:
+      213: -1206582055392375990
+    second: Stage4_2PhaseBloodSpike_31
+  - first:
+      213: -147131472030806932
+    second: Stage4_2PhaseBloodSpike_32
+  - first:
+      213: -5051030386863907521
+    second: Stage4_2PhaseBloodSpike_33
+  - first:
+      213: 1753897102633993048
+    second: Stage4_2PhaseBloodSpike_34
+  - first:
+      213: -3132539727240417207
+    second: Stage4_2PhaseBloodSpike_35
+  - first:
+      213: -6948010612059933473
+    second: Stage4_2PhaseBloodSpike_36
+  - first:
+      213: -2255075143165965659
+    second: Stage4_2PhaseBloodSpike_37
+  - first:
+      213: -5747288551635686206
+    second: Stage4_2PhaseBloodSpike_38
+  - first:
+      213: -2248898113484598470
+    second: Stage4_2PhaseBloodSpike_39
+  - first:
+      213: -3147252390959057550
+    second: Stage4_2PhaseBloodSpike_40
+  - first:
+      213: 3149342772909832139
+    second: Stage4_2PhaseBloodSpike_41
+  - first:
+      213: 7882766985921945147
+    second: Stage4_2PhaseBloodSpike_42
+  - first:
+      213: -3187046894285212710
+    second: Stage4_2PhaseBloodSpike_43
+  - first:
+      213: -3160277238708481589
+    second: Stage4_2PhaseBloodSpike_44
+  - first:
+      213: 4283045581205154664
+    second: Stage4_2PhaseBloodSpike_45
+  - first:
+      213: 7133776542393697945
+    second: Stage4_2PhaseBloodSpike_46
+  - first:
+      213: 4552861602746513806
+    second: Stage4_2PhaseBloodSpike_47
+  - first:
+      213: -8652425921220572633
+    second: Stage4_2PhaseBloodSpike_48
+  - first:
+      213: -5235233002431567734
+    second: Stage4_2PhaseBloodSpike_49
+  - first:
+      213: -6016113072846050355
+    second: Stage4_2PhaseBloodSpike_50
+  - first:
+      213: 6984318107236538225
+    second: Stage4_2PhaseBloodSpike_51
+  - first:
+      213: 6746288032954644928
+    second: Stage4_2PhaseBloodSpike_52
+  - first:
+      213: -2297980480772917876
+    second: Stage4_2PhaseBloodSpike_53
+  - first:
+      213: 4968899857163959814
+    second: Stage4_2PhaseBloodSpike_54
+  - first:
+      213: -8705447722556279939
+    second: Stage4_2PhaseBloodSpike_55
+  - first:
+      213: 2539938268475424221
+    second: Stage4_2PhaseBloodSpike_56
+  - first:
+      213: -544073021714062587
+    second: Stage4_2PhaseBloodSpike_57
+  - first:
+      213: -8732129506284800630
+    second: Stage4_2PhaseBloodSpike_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 994e896f76c9d68c0800000000000000
+      internalID: -4004372523329723239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4126ba08e14af649863e1dfde2a60f7
+      internalID: -6844078244619251205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc45fc5e6ca9eca40b29d38e61dc2bc9
+      internalID: 2438768743337630827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7830cfeb837e2984fb83285a45c6a1b8
+      internalID: -1506390876027501182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f1e383d70e1c6a4cbeea4a008b96a2c
+      internalID: 3751137075579253163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 832c7b080b91f36479e177ae0e7d84e6
+      internalID: 7858608129646653110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375af95bdce6bb1428067fa2896e221c
+      internalID: -1873095137645512096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_7
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 485b824cbb5800b4cbc3172e8b2a8cb6
+      internalID: -3562284538303615273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_8
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd39f38aa0623f94e9582cd1978282df
+      internalID: -2995573991408630123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_9
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c15303105ac5c46a2a4579a3715eed
+      internalID: 7380004686677619369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_10
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f07afa54e90bd49a8dac61723a78ad
+      internalID: -7965185518560225217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_11
+      rect:
+        serializedVersion: 2
+        x: 5500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7fffd8dba3b9e14299e5d88eff66043
+      internalID: -8284924430603528583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_12
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df56c6649ef7e0647b9662e7e444a476
+      internalID: 5371667719786806129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_13
+      rect:
+        serializedVersion: 2
+        x: 6500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9571eee4f26154044a6fe65852e53419
+      internalID: 6464648909578257434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_14
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e94a704a2dfa92468e3a8ec423f9330
+      internalID: -3907080250669771403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_15
+      rect:
+        serializedVersion: 2
+        x: 7500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d678f707cfaff40b8f1763d7b0b3ff
+      internalID: -917570636855511355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_16
+      rect:
+        serializedVersion: 2
+        x: 8000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc92e3ad6b2f814998ac24d21fa7d23
+      internalID: 5524697356299360531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_17
+      rect:
+        serializedVersion: 2
+        x: 8500
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5174ee2325f728a429dcbd5ad794345e
+      internalID: 8877394296369957125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBloodSpike_18
+      rect:
+        serializedVersion: 2
+        x: 9000
+        y: 0
+        width: 500
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5caa68271d2844890f49ca9f69f383
+      internalID: -1192604405375008953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 56d320a867c3ccf4097cc9cdb07fdb63
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Stage4_2PhaseBloodSpike_0: -4004372523329723239
+      Stage4_2PhaseBloodSpike_1: -6844078244619251205
+      Stage4_2PhaseBloodSpike_10: -7965185518560225217
+      Stage4_2PhaseBloodSpike_11: -8284924430603528583
+      Stage4_2PhaseBloodSpike_12: 5371667719786806129
+      Stage4_2PhaseBloodSpike_13: 6464648909578257434
+      Stage4_2PhaseBloodSpike_14: -3907080250669771403
+      Stage4_2PhaseBloodSpike_15: -917570636855511355
+      Stage4_2PhaseBloodSpike_16: 5524697356299360531
+      Stage4_2PhaseBloodSpike_17: 8877394296369957125
+      Stage4_2PhaseBloodSpike_18: -1192604405375008953
+      Stage4_2PhaseBloodSpike_19: 4901092503769495540
+      Stage4_2PhaseBloodSpike_2: 2438768743337630827
+      Stage4_2PhaseBloodSpike_20: 5319075165305307849
+      Stage4_2PhaseBloodSpike_21: -6642012754339442758
+      Stage4_2PhaseBloodSpike_22: -1722877697884372137
+      Stage4_2PhaseBloodSpike_23: 5031644245082741116
+      Stage4_2PhaseBloodSpike_24: -253899985148491019
+      Stage4_2PhaseBloodSpike_25: 1997978326776228586
+      Stage4_2PhaseBloodSpike_26: -1048833307338494758
+      Stage4_2PhaseBloodSpike_27: 6499286871315439441
+      Stage4_2PhaseBloodSpike_28: 3337250592316728596
+      Stage4_2PhaseBloodSpike_29: -4575454801795548310
+      Stage4_2PhaseBloodSpike_3: -1506390876027501182
+      Stage4_2PhaseBloodSpike_30: 688914505127327682
+      Stage4_2PhaseBloodSpike_31: -1206582055392375990
+      Stage4_2PhaseBloodSpike_32: -147131472030806932
+      Stage4_2PhaseBloodSpike_33: -5051030386863907521
+      Stage4_2PhaseBloodSpike_34: 1753897102633993048
+      Stage4_2PhaseBloodSpike_35: -3132539727240417207
+      Stage4_2PhaseBloodSpike_36: -6948010612059933473
+      Stage4_2PhaseBloodSpike_37: -2255075143165965659
+      Stage4_2PhaseBloodSpike_38: -5747288551635686206
+      Stage4_2PhaseBloodSpike_39: -2248898113484598470
+      Stage4_2PhaseBloodSpike_4: 3751137075579253163
+      Stage4_2PhaseBloodSpike_40: -3147252390959057550
+      Stage4_2PhaseBloodSpike_41: 3149342772909832139
+      Stage4_2PhaseBloodSpike_42: 7882766985921945147
+      Stage4_2PhaseBloodSpike_43: -3187046894285212710
+      Stage4_2PhaseBloodSpike_44: -3160277238708481589
+      Stage4_2PhaseBloodSpike_45: 4283045581205154664
+      Stage4_2PhaseBloodSpike_46: 7133776542393697945
+      Stage4_2PhaseBloodSpike_47: 4552861602746513806
+      Stage4_2PhaseBloodSpike_48: -8652425921220572633
+      Stage4_2PhaseBloodSpike_49: -5235233002431567734
+      Stage4_2PhaseBloodSpike_5: 7858608129646653110
+      Stage4_2PhaseBloodSpike_50: -6016113072846050355
+      Stage4_2PhaseBloodSpike_51: 6984318107236538225
+      Stage4_2PhaseBloodSpike_52: 6746288032954644928
+      Stage4_2PhaseBloodSpike_53: -2297980480772917876
+      Stage4_2PhaseBloodSpike_54: 4968899857163959814
+      Stage4_2PhaseBloodSpike_55: -8705447722556279939
+      Stage4_2PhaseBloodSpike_56: 2539938268475424221
+      Stage4_2PhaseBloodSpike_57: -544073021714062587
+      Stage4_2PhaseBloodSpike_58: -8732129506284800630
+      Stage4_2PhaseBloodSpike_6: -1873095137645512096
+      Stage4_2PhaseBloodSpike_7: -3562284538303615273
+      Stage4_2PhaseBloodSpike_8: -2995573991408630123
+      Stage4_2PhaseBloodSpike_9: 7380004686677619369
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
