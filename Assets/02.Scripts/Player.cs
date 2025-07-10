@@ -512,7 +512,7 @@ public class Player : MonoBehaviour
     {
         if (isDead) return;
 
-        if (weaponSwapTimer > 0f) return;
+        //if (weaponSwapTimer > 0f) return;
 
         if (Input.GetKeyDown(swapWeaponKey) && swappableWeapons.Count > 1)
         {

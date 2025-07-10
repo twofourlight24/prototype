@@ -60,6 +60,10 @@ public class BossCtrl : MonoBehaviour
     public Collider2D dashAttackCollider; // 대쉬 공격 콜라이더
     public float dashDamage = 50f; // 대쉬 공격 데미지
 
+    private bool dashPhase2LeftToRight = true; // true: 왼→오, false: 오→왼
+    [SerializeField] private Transform dashLeftEdge;  // 맵 왼쪽 끝 위치(Transform)
+    [SerializeField] private Transform dashRightEdge; // 맵 오른쪽 끝 위치(Transform)
+
     // Heal 스킬 
     [Header("Heal Skill")]
     public float healSkillHpThreshold = 333.33f; // 보스 체력의 2/3
@@ -602,10 +606,52 @@ public class BossCtrl : MonoBehaviour
         }
     }
 
-    // --- 2페이즈 스킬 선택 및 실행 함수 ---
+    IEnumerator Phase2DashSkillRoutine()
+    {
+        isExecutingSkill = true;
+        isFireSkillActive = false;
+        isInvincible = false;
+        rb.linearVelocity = Vector2.zero;
+        anim.SetBool(hashIsWalk, false);
+
+        // 대쉬 준비 애니메이션 트리거
+        anim.SetTrigger("isDashReady"); // 준비 애니메이션 트리거(Animator에 맞게 수정)
+
+        // 대쉬 준비 애니메이션이 끝나면(이벤트에서 호출) 아래 함수 실행
+        yield return new WaitUntil(() => phase2DashReadyEnd); // phase2DashReadyEnd는 애니메이션 이벤트에서 true로 바꿔줌
+        phase2DashReadyEnd = false;
+
+        // 텔레포트: 맵 끝으로 이동
+        if (dashPhase2LeftToRight)
+            transform.position = dashLeftEdge.position;
+        else
+            transform.position = dashRightEdge.position;
+
+        // 대쉬 애니메이션 트리거
+        anim.SetTrigger("isPhase2Dash");
+
+        // 실제 대쉬 이동
+        float dashDir = dashPhase2LeftToRight ? 1f : -1f;
+        transform.localScale = new Vector3(dashDir * Mathf.Abs(initialLocalScale.x), initialLocalScale.y, initialLocalScale.z);
+        rb.linearVelocity = new Vector2(dashDir * dashSpeed*10, 0);
+
+        dashAttackCollider.enabled = true; // 대쉬 공격 콜라이더 활성화
+
+        // 대쉬 지속 시간만큼 대기 (애니메이션 길이와 맞추기)
+        yield return new WaitForSeconds(0.9f);
+
+        rb.linearVelocity = Vector2.zero;
+        dashAttackCollider.enabled = false; // 대쉬 공격 콜라이더 비활성화
+        isExecutingSkill = false;
+
+        // 방향 반전
+        dashPhase2LeftToRight = !dashPhase2LeftToRight;
+    }
+
+    // 3. 2페이즈 스킬 선택 함수에서 강화 대쉬 분기 추가
     void ChooseAndExecutePhase2Skill()
     {
-        isExecutingSkill = true; // 스킬 실행 시작
+        isExecutingSkill = true;
 
         if (currentTargetTransform == null)
         {
@@ -613,21 +659,38 @@ public class BossCtrl : MonoBehaviour
             return;
         }
 
-        // Player2가 죽었으면 Sword 스킬 사용 금지
-        if (player2Component == null || player2Component.isDead)
+        StopAttackState();
+
+        // 랜덤: 0=검기, 1=강화대쉬
+        int skill = Random.Range(0, 2);
+        if (skill == 0)
         {
-            Debug.Log("[BossCtrl] Player2 is dead. Sword Skill will not be used.");
-            isExecutingSkill = false;
-            return;
+            // Player2가 살아있을 때만 검기 사용
+            if (player2Component != null && !player2Component.isDead)
+            {
+                Debug.Log("[BossCtrl] Executing Phase 2: Sword Skill.");
+                anim.SetTrigger(hashIsSword);
+                StartCoroutine(SwordSkillExecutionRoutine(1.5f));
+            }
+            else
+            {
+                // Player2가 죽었으면 검기 대신 대쉬 사용
+                Debug.Log("[BossCtrl] Player2 is dead. Using Dash Skill instead of Sword Skill.");
+                StartCoroutine(Phase2DashSkillRoutine());
+            }
         }
+        else
+        {
+            Debug.Log("[BossCtrl] Executing Phase 2: Dash Skill.");
+            StartCoroutine(Phase2DashSkillRoutine());
+        }
+    }
 
-        StopAttackState(); // 일반 공격 중단
-
-        Debug.Log("[BossCtrl] Executing Phase 2: Sword Skill.");
-        anim.SetTrigger(hashIsSword); // 검기 스킬 애니메이션 트리거 호출
-
-        // 애니메이션 길이에 맞춰 시간 조절 
-        StartCoroutine(SwordSkillExecutionRoutine(1.5f));
+    // 4. 대쉬 준비 애니메이션 이벤트에서 호출될 함수 추가
+    private bool phase2DashReadyEnd = false;
+    public void OnPhase2DashReadyEnd()
+    {
+        phase2DashReadyEnd = true;
     }
 
     // --- 검기 스킬 실행 코루틴 (스킬 종료 처리) ---

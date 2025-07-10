@@ -1,0 +1,370 @@
+fileFormatVersion: 2
+guid: 1f8111828fe30ba4e9d7e5b8e8448f65
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 747732127742977962
+    second: Stage4_2PhaseBossWalk_0
+  - first:
+      213: 1353846219064570438
+    second: Stage4_2PhaseBossWalk_1
+  - first:
+      213: -8241611208986158956
+    second: Stage4_2PhaseBossWalk_2
+  - first:
+      213: 2274916202670190562
+    second: Stage4_2PhaseBossWalk_3
+  - first:
+      213: 7988742942073667628
+    second: Stage4_2PhaseBossWalk_4
+  - first:
+      213: -1291874366864962213
+    second: Stage4_2PhaseBossWalk_5
+  - first:
+      213: -5347292119257495510
+    second: Stage4_2PhaseBossWalk_6
+  - first:
+      213: 888851107974854620
+    second: Stage4_2PhaseBossWalk_7
+  - first:
+      213: 7713655115548282587
+    second: Stage4_2PhaseBossWalk_8
+  - first:
+      213: -6184298211128180545
+    second: Stage4_2PhaseBossWalk_9
+  - first:
+      213: -1398468304409616555
+    second: Stage4_2PhaseBossWalk_10
+  - first:
+      213: -1616963489985487868
+    second: Stage4_2PhaseBossWalk_11
+  - first:
+      213: 1296596846765418495
+    second: Stage4_2PhaseBossWalk_12
+  - first:
+      213: 4802027398652554125
+    second: Stage4_2PhaseBossWalk_13
+  - first:
+      213: 3934685386393199582
+    second: Stage4_2PhaseBossWalk_14
+  - first:
+      213: 9132466323826898098
+    second: Stage4_2PhaseBossWalk_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stage4_2PhaseBossWalk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa76445986a706a00800000000000000
+      internalID: 747732127742977962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBossWalk_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64279d796f3d9c210800000000000000
+      internalID: 1353846219064570438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBossWalk_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4989087754aef9d80800000000000000
+      internalID: -8241611208986158956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBossWalk_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2efefe9bb30229f10800000000000000
+      internalID: 2274916202670190562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBossWalk_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c20c5303167bdde60800000000000000
+      internalID: 7988742942073667628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBossWalk_5
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5dc494ab17521ee0800000000000000
+      internalID: -1291874366864962213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBossWalk_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a284961162a9ac5b0800000000000000
+      internalID: -5347292119257495510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage4_2PhaseBossWalk_7
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 50
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd7bd059f55d55c00800000000000000
+      internalID: 888851107974854620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3d56a9ee93aeae949b09dca1119475c9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Stage4_2PhaseBossWalk_0: 747732127742977962
+      Stage4_2PhaseBossWalk_1: 1353846219064570438
+      Stage4_2PhaseBossWalk_10: -1398468304409616555
+      Stage4_2PhaseBossWalk_11: -1616963489985487868
+      Stage4_2PhaseBossWalk_12: 1296596846765418495
+      Stage4_2PhaseBossWalk_13: 4802027398652554125
+      Stage4_2PhaseBossWalk_14: 3934685386393199582
+      Stage4_2PhaseBossWalk_15: 9132466323826898098
+      Stage4_2PhaseBossWalk_2: -8241611208986158956
+      Stage4_2PhaseBossWalk_3: 2274916202670190562
+      Stage4_2PhaseBossWalk_4: 7988742942073667628
+      Stage4_2PhaseBossWalk_5: -1291874366864962213
+      Stage4_2PhaseBossWalk_6: -5347292119257495510
+      Stage4_2PhaseBossWalk_7: 888851107974854620
+      Stage4_2PhaseBossWalk_8: 7713655115548282587
+      Stage4_2PhaseBossWalk_9: -6184298211128180545
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
