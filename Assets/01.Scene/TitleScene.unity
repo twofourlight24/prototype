@@ -971,7 +971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.111625016, y: 0.14532934}
   m_AnchorMax: {x: 0.89068747, y: 0.8242549}
-  m_AnchoredPosition: {x: 0.30999756, y: -2.3680115}
+  m_AnchoredPosition: {x: 0.3100586, y: -2.368042}
   m_SizeDelta: {x: -0.61999893, y: -9.089996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &704124509
@@ -1046,8 +1046,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 176, y: -99}
-  m_SizeDelta: {x: 205, y: 100}
+  m_AnchoredPosition: {x: 176, y: -119.5}
+  m_SizeDelta: {x: 205, y: 141}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &738414118
 MonoBehaviour:
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1688246543750630091, guid: 724431c586cc1584f8296e478e5396dc, type: 3}
+  m_Sprite: {fileID: 2739924386547054574, guid: 724431c586cc1584f8296e478e5396dc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1695,7 +1695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 176, y: -206}
+  m_AnchoredPosition: {x: 176, y: -240}
   m_SizeDelta: {x: 205, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1104559388
@@ -2733,7 +2733,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7228398865272592101, guid: 49eaee2bb1781fc4d980618ae189b563, type: 3}
+  m_Sprite: {fileID: 2227008256842636545, guid: 289e9ea384168a148a3221d035eb5733, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2753,8 +2753,8 @@ Transform:
   m_GameObject: {fileID: 1799774561}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.7334306, y: 2.7334306, z: 2.7334306}
+  m_LocalPosition: {x: -0.0443, y: 0.0222, z: 0}
+  m_LocalScale: {x: 2.9849668, y: 2.522538, z: 2.7334306}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3041,7 +3041,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "shift : \uACF5\uACA9\nctrl : \uC7AC\uC7A5\uC804"
+  m_text: "enter : \uACF5\uACA9\nctrl : \uC7AC\uC7A5\uC804"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
   m_sharedMaterial: {fileID: -8438787553114591672, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
