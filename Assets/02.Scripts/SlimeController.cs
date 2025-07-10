@@ -153,6 +153,7 @@ public class SlimeController : MonoBehaviour
         // 지면에 닿아 있고, 점프 타이머가 0 이하일 때만 점프
         if (isGrounded && jumpTimer <= 0f)
         {
+            SoundManager.Instance.PlaySlimeJump();
             Vector2 diff = target.position - transform.position;
             int dir = diff.x > 0 ? 1 : -1; // 타겟 방향 결정 (양수면 오른쪽, 음수면 왼쪽)
 

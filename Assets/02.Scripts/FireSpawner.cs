@@ -15,6 +15,7 @@ public class FireSpawner : MonoBehaviour
     {
         while (true)
         {
+            SoundManager.Instance.PlayFireTrap();
             SpawnFire();
             yield return new WaitForSeconds(spawnInterval);
         }
@@ -22,7 +23,6 @@ public class FireSpawner : MonoBehaviour
 
     void SpawnFire()
     {
-        SoundManager.Instance.PlayFireTrap();
         Instantiate(firePrefab, transform.position, Quaternion.identity);
     }
 }

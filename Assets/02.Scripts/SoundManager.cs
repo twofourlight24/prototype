@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip buttonClickClip;
     public AudioClip fireTrapClip;
     public AudioClip slimeJumpClip;
+    public AudioClip damageClip;
+    public AudioClip jumpClip;
     // 필요한 효과음 클립을 추가 선언
 
     private void Awake()
@@ -33,4 +35,7 @@ public class SoundManager : MonoBehaviour
     public void PlayButtonClick() => PlaySFX(buttonClickClip);
     public void PlayFireTrap() => PlaySFX(fireTrapClip);
     public void PlaySlimeJump() => PlaySFX(slimeJumpClip);
+    public void PlayPlayerDamage() => PlaySFX(damageClip);
+    public void PlayPlayerJump() => PlaySFX(jumpClip);
+
 }

@@ -798,6 +798,7 @@ public class Player : MonoBehaviour
         {
             if (isGrounded)
             {
+                SoundManager.Instance.PlayPlayerJump();
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, m_JumpForce);
                 isDoubleJumpAvailable = true;
             }
@@ -873,6 +874,7 @@ public class Player : MonoBehaviour
         if (m_CurHp <= 0.0f || m_DamageCool > 0f)
             return;
 
+        SoundManager.Instance.PlayPlayerDamage();
         m_CurHp -= a_Value;
         if (m_CurHp < 0.0f)
             m_CurHp = 0.0f;

@@ -899,9 +899,9 @@ MonoBehaviour:
   skipButton: {fileID: 601065735}
   cutsceneImage: {fileID: 723397654}
   cutsceneSprites:
-  - {fileID: 7624880878084269611, guid: 2cc5cc2036cf7074296ba108ba87fb0a, type: 3}
-  - {fileID: 9154448709329237222, guid: fe6e3e31fd47e67469ea9c308dd7cbbd, type: 3}
-  - {fileID: -518169011970468496, guid: ac25f5b0d715c2541a1a9cc7729109b9, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cutsceneChangeIndices: 000000000200000006000000
   lines:
   - speaker: son
