@@ -8,6 +8,7 @@ public class StoryMgr : MonoBehaviour
 {
     public TextMeshProUGUI fatherText;
     public TextMeshProUGUI sonText;
+    public TextMeshProUGUI endingText;
     public float typingSpeed = 0.1f;
     public Image FadeImage; // 검은색 이미지(알파 1)로 캔버스에 추가 필요
     public Button skipButton; // 스킵 버튼 추가 필요   
@@ -35,10 +36,22 @@ public class StoryMgr : MonoBehaviour
     void Start()
     {
         StartCoroutine(FadeIn());
-        skipButton.onClick.AddListener(() => 
+
+        // Ending씬에서는 skipButton 비활성화 및 리스너 연결 X
+        if (skipButton != null)
         {
-           SceneManager.LoadScene("Stage_1");
-        });
+            if (SceneManager.GetActiveScene().name == "Ending")
+            {
+                skipButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                skipButton.onClick.AddListener(() =>
+                {
+                    SceneManager.LoadScene("Stage_1");
+                });
+            }
+        }
 
         if (cutsceneSprites.Length > 0 && cutsceneImage != null)
             cutsceneImage.sprite = cutsceneSprites[0];
@@ -64,6 +77,8 @@ public class StoryMgr : MonoBehaviour
 
         StartTypingLine();
     }
+
+
 
     void Update()
     {
@@ -94,6 +109,7 @@ public class StoryMgr : MonoBehaviour
         // 텍스트 비우기
         fatherText.text = "";
         sonText.text = "";
+        endingText.text = "";
 
         TextMeshProUGUI targetText = GetTargetText(line.speaker);
 
@@ -152,11 +168,23 @@ public class StoryMgr : MonoBehaviour
             FadeImage.color = color;
             yield return null;
         }
-        SceneManager.LoadScene("Stage_1");
+
+        // 엔딩씬이면 TitleScene, 아니면 Stage_1로
+        if (SceneManager.GetActiveScene().name == "Ending")
+            SceneManager.LoadScene("TitleScene");
+        else
+            SceneManager.LoadScene("Stage_1");
     }
 
     TextMeshProUGUI GetTargetText(string speaker)
     {
-        return speaker.ToLower() == "father" ? fatherText : sonText;
+        if (speaker.ToLower() == "father")
+            return fatherText;
+        else if (speaker.ToLower() == "son")
+            return sonText;
+        else if (speaker.ToLower() == "ending")
+            return endingText;
+        else
+            return fatherText; // 기본값
     }
 }
