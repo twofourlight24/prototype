@@ -132,10 +132,10 @@ TextureImporter:
       name: fire_column_medium_7_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 9
-        width: 19
-        height: 54
+        x: 13
+        y: 10
+        width: 17
+        height: 53
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

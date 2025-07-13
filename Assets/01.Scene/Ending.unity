@@ -250,8 +250,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278205439
-  m_fontColor: {r: 1, g: 0.2304776, b: 0, a: 1}
+    rgba: 4294927872
+  m_fontColor: {r: 0, g: 0.40163708, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -916,10 +916,9 @@ MonoBehaviour:
   skipButton: {fileID: 0}
   cutsceneImage: {fileID: 723397654}
   cutsceneSprites:
+  - {fileID: -5859436265612616037, guid: dc63c0dca8a4bc6469743ed4c32a25d9, type: 3}
   - {fileID: -6568637135562972455, guid: a1db1230031e7f64583a55ae303a94f8, type: 3}
-  - {fileID: -6568637135562972455, guid: a1db1230031e7f64583a55ae303a94f8, type: 3}
-  - {fileID: -6568637135562972455, guid: a1db1230031e7f64583a55ae303a94f8, type: 3}
-  cutsceneChangeIndices: 000000000200000006000000
+  cutsceneChangeIndices: 0000000005000000
   lines:
   - speaker: father
     text: "\uADF8\uB798\uC11C \uB9D0\uC774\uC57C, \uADF8 \uBC31\uD608\uAD6C\uB4E4\uC740

@@ -42,7 +42,7 @@ public class BloodSpike : MonoBehaviour
             Player player = other.GetComponent<Player>();
             if (player != null)
             {
-                player.TakeDamage(70f);
+                player.TakeDamage(100f);
             }
         }
     }

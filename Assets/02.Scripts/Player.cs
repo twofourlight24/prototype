@@ -980,6 +980,11 @@ public class Player : MonoBehaviour
             TakeDamage(10);
             m_LavaCool = 0.25f;
         }
+        else if(coll.CompareTag("Boss"))
+        {
+            TakeDamage(20);
+            isDoubleJumpAvailable = true;
+        }
         else if (coll.CompareTag("MiddleBoss"))
         {
             TakeDamage(50);
@@ -991,7 +996,7 @@ public class Player : MonoBehaviour
         {
             if (((1 << coll.gameObject.layer) & smallMonsterLayer) != 0)
             {
-                if (coll.CompareTag("SmallMonster")||coll.CompareTag("HealSlime"))
+                if (coll.CompareTag("SmallMonster") || coll.CompareTag("HealSlime"))
                 {
                     Rigidbody2D monsterRb = coll.GetComponent<Rigidbody2D>();
                     if (monsterRb != null)

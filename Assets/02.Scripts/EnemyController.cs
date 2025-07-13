@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
     public GameObject bulletPrefab;
     public float fireRate = 2f;
     private float fireCooldown = 0f;
+    public Collider2D damageCollider;
 
     [Header("Mark")]
     private bool isMarked = false;
@@ -54,6 +55,8 @@ public class EnemyController : MonoBehaviour
 
         if (animator != null)
             animator.enabled = true; // 기본 상태에서 애니메이션 활성화
+
+        UpdateDamageColliderTag();
     }
 
     private void Update()
@@ -64,6 +67,7 @@ public class EnemyController : MonoBehaviour
         MoveAndTrack();
         HandleShooting();
         UpdateHpBar();
+        UpdateDamageColliderTag();
     }
 
     private void UpdateTarget()
@@ -138,7 +142,7 @@ public class EnemyController : MonoBehaviour
     private void HandleShooting()
     {
         if (target == null) return;
-        if (isMarked) return; // 마크 상태면 총알을 쏘지 않음
+        if (isMarked) return;
 
         float dx = Mathf.Abs(target.position.x - transform.position.x);
         if (dx <= attackRange)
@@ -160,6 +164,14 @@ public class EnemyController : MonoBehaviour
                     animator.SetBool("isAttack", true); // 애니메이션에서 이벤트로 false로 꺼줌
             }
         }
+    }
+    private void UpdateDamageColliderTag()
+    {
+        if (damageCollider == null) return;
+        if (isMarked)
+            damageCollider.tag = "Untagged";
+        else
+            damageCollider.tag = "Boss";
     }
 
     // 아래 메서드를 추가하세요 (애니메이션 이벤트에서 호출)

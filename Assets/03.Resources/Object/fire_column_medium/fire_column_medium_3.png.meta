@@ -129,9 +129,9 @@ TextureImporter:
       name: fire_column_medium_3_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 15
         y: 9
-        width: 17
+        width: 15
         height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
