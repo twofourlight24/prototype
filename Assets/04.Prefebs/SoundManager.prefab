@@ -51,6 +51,8 @@ MonoBehaviour:
   slimeJumpClip: {fileID: 8300000, guid: 48a38cc5f35fe6242afa3e6af298faa3, type: 3}
   damageClip: {fileID: 8300000, guid: e87414ce3353ffc4e952c7e6c765520d, type: 3}
   jumpClip: {fileID: 8300000, guid: 508283d4f4d7f0945a040c9bca94a7a8, type: 3}
+  unlockClip: {fileID: 0}
+  deniedClip: {fileID: 0}
 --- !u!82 &4677536145772608683
 AudioSource:
   m_ObjectHideFlags: 0
@@ -64,7 +66,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.583
   m_Pitch: 1
   Loop: 0
   Mute: 0

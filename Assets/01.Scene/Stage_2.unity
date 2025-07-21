@@ -542,7 +542,7 @@ Transform:
   m_GameObject: {fileID: 62174248}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24, y: 0.016, z: 0}
+  m_LocalPosition: {x: 0.321, y: 0.016, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1508,7 +1508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45, y: 69}
+  m_AnchoredPosition: {x: 69, y: 69}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361955072
@@ -1535,8 +1535,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
-  m_sharedMaterial: {fileID: -8438787553114591672, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
+  m_sharedMaterial: {fileID: 1043774855270220583, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1601,7 +1601,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &361955073
@@ -2526,10 +2526,16 @@ MonoBehaviour:
   gateObject: {fileID: 1830184077}
   gameOverPanel: {fileID: 1973817241}
   gamePausePanel: {fileID: 1187319141}
-  tipPanel: {fileID: 1635376663}
-  guidePanels:
+  stage1TipPanel: {fileID: 0}
+  stage1GuidePanels: []
+  stage2TipPanel: {fileID: 1635376663}
+  stage2GuidePanels:
   - {fileID: 1683021655}
   - {fileID: 145210782}
+  stage3TipPanel: {fileID: 0}
+  stage3GuidePanels: []
+  stage4TipPanel: {fileID: 0}
+  stage4GuidePanels: []
   currentStage: 2
   restartButton: {fileID: 85375092}
   exitButton: {fileID: 837552388}
@@ -2891,7 +2897,7 @@ MonoBehaviour:
     \uD1B5\uC9F8\uB85C \uD761\uC785\uD574 \uBC84\uB838\uB2E8\uB2E4. \uADF8\uB807\uAC8C
     \uB610 \uD558\uB098\uC758 \uAE38\uC774, \uADF8\uB4E4 \uC55E\uC5D0 \uC5F4\uB838\uC9C0."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
   m_sharedMaterial: {fileID: -8438787553114591672, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2957,7 +2963,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &527434078
@@ -8772,7 +8778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45, y: -90}
+  m_AnchoredPosition: {x: 69, y: -90}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947914861
@@ -8799,8 +8805,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
-  m_sharedMaterial: {fileID: -8438787553114591672, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
+  m_sharedMaterial: {fileID: 1043774855270220583, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8865,7 +8871,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &947914862
@@ -9893,7 +9899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: 167}
+  m_AnchoredPosition: {x: 24, y: 167}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159712823
@@ -9920,8 +9926,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
-  m_sharedMaterial: {fileID: -8438787553114591672, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
+  m_sharedMaterial: {fileID: 1043774855270220583, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9986,7 +9992,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1159712824
@@ -10774,7 +10780,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -794020073691791767, guid: aa463d681c0533048b88a20e5678cedb, type: 3}
+  m_Sprite: {fileID: -284605167843239258, guid: 78bb3ebf06da09d4c9d8dcfb051534c6, type: 3}
   m_Color: {r: 1, g: 0.2688679, b: 0.2688679, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11385,7 +11391,7 @@ Transform:
   m_GameObject: {fileID: 1468626919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 0}
+  m_LocalPosition: {x: 0.335, y: 0.043, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13441,7 +13447,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -794020073691791767, guid: 79220fdca3471a84d9bbadeeb40a5345, type: 3}
+  m_Sprite: {fileID: -284605167843239258, guid: 78bb3ebf06da09d4c9d8dcfb051534c6, type: 3}
   m_Color: {r: 0.1745283, g: 0.81442875, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

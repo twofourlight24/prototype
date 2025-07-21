@@ -147,6 +147,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: 3Stage_Backgroundlong_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 566
+        width: 512
+        height: 1984
+      alignment: 9
+      pivot: {x: 0.5, y: 0.04}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a288ace970c068248b3bd74ed76d9af7
+      internalID: -1241500680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -162,6 +184,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       3Stage_Backgroundlong_0: -3424972357503744126
+      3Stage_Backgroundlong_1: -1241500680
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -48,7 +48,7 @@ public class StoryMgr : MonoBehaviour
             {
                 skipButton.onClick.AddListener(() =>
                 {
-                    SceneManager.LoadScene("Stage_1");
+                    SceneManager.LoadScene("Stage_Menu");
                 });
             }
         }
@@ -173,7 +173,7 @@ public class StoryMgr : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Ending")
             SceneManager.LoadScene("TitleScene");
         else
-            SceneManager.LoadScene("Stage_1");
+            SceneManager.LoadScene("Stage_Menu");
     }
 
     TextMeshProUGUI GetTargetText(string speaker)

@@ -173,6 +173,8 @@ public class MiddleBossCtrl : MonoBehaviour
     }
     void Clear()
     {
-        SceneManager.LoadScene("Stage_4"); // ClearScene으로 이동
+        PlayerPrefs.SetInt("LastClearedStageIndex", 3);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("Stage_Menu");
     }
 }

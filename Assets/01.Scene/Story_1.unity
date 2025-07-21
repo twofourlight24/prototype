@@ -243,8 +243,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ' '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
-  m_sharedMaterial: {fileID: -8438787553114591672, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
+  m_sharedMaterial: {fileID: 1043774855270220583, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -784,10 +784,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '  '
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
-  m_sharedMaterial: {fileID: -8438787553114591672, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
+  m_sharedMaterial: {fileID: 1043774855270220583, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -911,18 +911,22 @@ MonoBehaviour:
     text: "\uC544\uB4E4, \uAD1C\uCC2E\uC744\uAC70\uC57C... \uC57D \uBA39\uC5C8\uC73C\uB2C8\uAE4C
       \uACE7 \uAD1C\uCC2E\uC544 \uC9C8\uAC70\uC57C"
   - speaker: son
-    text: "\uB124.. \uC544\uBE60"
-  - speaker: son
-    text: "\uC544\uBE60... \uD639\uC2DC \uBD80\uD0C1 \uD558\uB098\uB9CC \uB4E4\uC5B4\uC8FC\uC2DC\uBA74
-      \uC548\uB418\uC694?"
+    text: "\uC544\uBE60, \uB098 \uACB0\uD575\uC774\uB77C\uBA70.. \uC774\uB7EC\uB2E4\uAC00
+      \uB098 \uC8FD\uB294\uAC70 \uC544\uB2C8\uC57C?"
   - speaker: father
-    text: "\uADF8\uB7FC~ \uC544\uB4E4\uC774 \uC6D0\uD558\uB294\uAC70 \uB2E4 \uB4E4\uC5B4\uC904\uAC8C
-      \uC544\uBE60\uAC00"
+    text: "\uC544\uB2C8\uC57C, \uACB0\uD575\uC740 \uCD08\uAE30\uC5D0 \uBC1C\uACAC\uD574\uC11C
+      \uB300\uCC98\uD558\uBA74 \uC8FD\uC744 \uAC00\uB2A5\uC131\uC774 \uAC70\uC758
+      \uC5C6\uB2E8\uB2E4."
   - speaker: son
-    text: "\uC624\uB298\uB3C4 \uC7AC\uBC0C\uB294 \uC598\uAE30 \uD574\uC8FC\uC138\uC694"
+    text: "\uADF8\uB798..? \uADF8\uB798\uB3C4 \uBD88\uC548\uD55C\uB370..."
   - speaker: father
-    text: "\uADF8\uB798, \uC544\uBE60\uAC00 \uC624\uB298\uB3C4 \uC7AC\uBC0C\uB294
-      \uC598\uAE30 \uD574\uC904\uAC8C"
+    text: "\uADF8\uB7FC \uC544\uBE60\uAC00 \uACB0\uD575\uC5D0 \uAD00\uD55C \uC7AC\uBC0C\uB294
+      \uC774\uC57C\uAE30\uB97C \uB4E4\uB824\uC904\uAC8C."
+  - speaker: father
+    text: "\uB108\uB3C4 \uC774 \uC774\uC57C\uAE30\uB97C \uB4E4\uC73C\uBA74 \uACB0\uD575\uC774
+      \uBB34\uC11C\uC6CC\uC9C0\uC9C0 \uC54A\uC744 \uAC70\uC57C."
+  - speaker: son
+    text: "\uADF8\uB798? \uC7AC\uBC0C\uACA0\uB2E4!"
   - speaker: father
     text: "...\uB450 \uBA85\uC758 \uC601\uC6C5\uC774 \uC788\uC5C8\uC5B4\uC694."
   - speaker: father
@@ -1188,8 +1192,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
-  m_sharedMaterial: {fileID: -8438787553114591672, guid: a37160a9dcaa9af46a65b4310736f2ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
+  m_sharedMaterial: {fileID: 1043774855270220583, guid: 3e3ce6131f2daed499d6e3e395b5a3f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -134,7 +134,7 @@ TextureImporter:
         width: 480
         height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -147,11 +147,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Stage4_Background 1_1
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 0
+        width: 146
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dce95fd0997e96468ecfbb6e845e2fd
+      internalID: 1153463360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f25ebce7e6c7d0b46b3e11b26a662e63
     internalID: 0
     vertices: []
     indices: 
@@ -162,6 +184,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Stage4_Background 1_0: -4727954380362084269
+      Stage4_Background 1_1: 1153463360
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

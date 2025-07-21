@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip slimeJumpClip;
     public AudioClip damageClip;
     public AudioClip jumpClip;
+    public AudioClip unlockClip;
+    public AudioClip deniedClip;
     // 필요한 효과음 클립을 추가 선언
 
     private void Awake()
@@ -17,7 +19,6 @@ public class SoundManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {

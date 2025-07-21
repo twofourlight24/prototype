@@ -8,9 +8,15 @@ public class GameMgr : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gamePausePanel;
 
-    // --- 팁/가이드 패널 통합 ---
-    public GameObject tipPanel;
-    public GameObject[] guidePanels;
+    // --- 스테이지별 팁/가이드 패널 ---
+    public GameObject stage1TipPanel;
+    public GameObject[] stage1GuidePanels;
+    public GameObject stage2TipPanel;
+    public GameObject[] stage2GuidePanels;
+    public GameObject stage3TipPanel;
+    public GameObject[] stage3GuidePanels;
+    public GameObject stage4TipPanel;
+    public GameObject[] stage4GuidePanels;
 
     private bool isTipActive = false;
     private bool isGuideActive = false;
@@ -29,12 +35,14 @@ public class GameMgr : MonoBehaviour
     public Button restartButton;
     public Button exitButton;
 
-    // --- 볼륨 슬라이더 관련 ---
     [Header("Audio Control")]
     public Slider bgmSlider;
     public Slider soundSlider;
-    public AudioSource bgmSource;    // BGMPlayer의 AudioSource
-    public AudioSource soundSource;  // SoundPlayer의 AudioSource
+    public AudioSource bgmSource;
+    public AudioSource soundSource;
+
+    private GameObject currentTipPanel;
+    private GameObject[] currentGuidePanels;
 
     private void Awake()
     {
@@ -50,7 +58,6 @@ public class GameMgr : MonoBehaviour
         if (exitButton != null)
             exitButton.onClick.AddListener(OnClickExit);
 
-        // 볼륨 슬라이더 초기화 및 이벤트 연결
         if (bgmSlider != null && bgmSource != null)
         {
             bgmSlider.value = bgmSource.volume;
@@ -62,15 +69,36 @@ public class GameMgr : MonoBehaviour
             soundSlider.onValueChanged.AddListener(SetSoundVolume);
         }
 
+        // 스테이지별 패널 할당
+        switch (currentStage)
+        {
+            case 1:
+                currentTipPanel = stage1TipPanel;
+                currentGuidePanels = stage1GuidePanels;
+                break;
+            case 2:
+                currentTipPanel = stage2TipPanel;
+                currentGuidePanels = stage2GuidePanels;
+                break;
+            case 3:
+                currentTipPanel = stage3TipPanel;
+                currentGuidePanels = stage3GuidePanels;
+                break;
+            case 4:
+                currentTipPanel = stage4TipPanel;
+                currentGuidePanels = stage4GuidePanels;
+                break;
+        }
+
         if (isFirstLoad)
         {
-            if (tipPanel != null)
+            if (currentTipPanel != null)
             {
-                tipPanel.SetActive(true);
+                currentTipPanel.SetActive(true);
                 Time.timeScale = 0.0f;
                 isTipActive = true;
             }
-            else if (guidePanels != null && guidePanels.Length > 0)
+            else if (currentGuidePanels != null && currentGuidePanels.Length > 0)
             {
                 ShowGuidePanels();
             }
@@ -80,28 +108,28 @@ public class GameMgr : MonoBehaviour
 
     void Update()
     {
-        // --- 팁 패널: 어떤 키든 입력 시 닫힘 ---
-        if (isTipActive && tipPanel != null && tipPanel.activeSelf)
+        // 팁 패널: 어떤 키든 입력 시 닫힘
+        if (isTipActive && currentTipPanel != null && currentTipPanel.activeSelf)
         {
             if (Input.anyKeyDown)
             {
-                tipPanel.SetActive(false);
+                currentTipPanel.SetActive(false);
                 isTipActive = false;
                 ShowGuidePanels();
             }
             return;
         }
 
-        // --- 가이드 패널: 스페이스바로만 넘김 ---
-        if (isGuideActive && guidePanels != null && guidePanels.Length > 0)
+        // 가이드 패널: 스페이스바로만 넘김
+        if (isGuideActive && currentGuidePanels != null && currentGuidePanels.Length > 0)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                guidePanels[currentGuideIndex].SetActive(false);
+                currentGuidePanels[currentGuideIndex].SetActive(false);
                 currentGuideIndex++;
-                if (currentGuideIndex < guidePanels.Length)
+                if (currentGuideIndex < currentGuidePanels.Length)
                 {
-                    guidePanels[currentGuideIndex].SetActive(true);
+                    currentGuidePanels[currentGuideIndex].SetActive(true);
                 }
                 else
                 {
@@ -130,7 +158,7 @@ public class GameMgr : MonoBehaviour
         }
     }
 
-    // --- 볼륨 조절 함수 ---
+    // 볼륨 조절 함수
     public void SetBGMVolume(float value)
     {
         if (bgmSource != null)
@@ -144,14 +172,14 @@ public class GameMgr : MonoBehaviour
 
     private void ShowGuidePanels()
     {
-        if (guidePanels != null && guidePanels.Length > 0)
+        if (currentGuidePanels != null && currentGuidePanels.Length > 0)
         {
             currentGuideIndex = 0;
             isGuideActive = true;
             Time.timeScale = 0.0f;
-            for (int i = 0; i < guidePanels.Length; i++)
-                guidePanels[i].SetActive(false);
-            guidePanels[0].SetActive(true);
+            for (int i = 0; i < currentGuidePanels.Length; i++)
+                currentGuidePanels[i].SetActive(false);
+            currentGuidePanels[0].SetActive(true);
         }
         else
         {
@@ -166,24 +194,13 @@ public class GameMgr : MonoBehaviour
             player.SetActive(false);
             playerInGateCount++;
 
-            if (playerInGateCount >= totalPlayers && currentStage == 1)
+            if (playerInGateCount >= totalPlayers)
             {
-                SceneManager.LoadScene("Stage_2");
-                currentStage = 2;
-            }
-            else if (playerInGateCount >= totalPlayers && currentStage == 2)
-            {
-                SceneManager.LoadScene("Stage_3");
-                currentStage = 3;
-            }
-            else if (playerInGateCount >= totalPlayers && currentStage == 3)
-            {
-                SceneManager.LoadScene("Stage_4");
-                currentStage = 4;
-            }
-            else if (playerInGateCount >= totalPlayers && currentStage == 4)
-            {
-                SceneManager.LoadScene("TitleScene");
+                PlayerPrefs.SetInt("LastClearedStageIndex", currentStage);
+                PlayerPrefs.Save(); // 변경사항을 즉시 저장합니다.
+
+                // 챕터 선택씬으로 이동
+                SceneManager.LoadScene("Stage_Menu");
             }
         }
     }

@@ -1147,6 +1147,8 @@ public class BossCtrl : MonoBehaviour
         }
 
         Time.timeScale = 1f;
+        PlayerPrefs.SetInt("LastClearedStageIndex", 4);
+        PlayerPrefs.Save();
         SceneManager.LoadScene(endingSceneName);
     }
 
